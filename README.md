@@ -1,16 +1,20 @@
-## Hi there 👋
+# QuetraOnline — Yeni Proje
 
-<!--
-**quetraonline/quetraonline** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Quetra için sıfırdan hazırlanmış Next.js tabanlı yayıncı portfolyosu.
 
-Here are some ideas to get you started:
+## İçerik
+- Sinematik ana sayfa ve Quetra tanıtımı
+- YouTube, TikTok LIVE, Twitch ve Kick bağlantıları
+- Video vitrini, Knight Online / Nowa bölümü ve filtrelenebilir rehberler
+- Chaos Zone sıralamasına resmi bağlantı
+- Mobil uyumlu tasarım
+- `/admin` adresinde yerel içerik düzenleme paneli
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## Yerelde çalıştırma
+
+```bash
+npm install
+npm run dev
+```
+
+Yönetim paneli başlangıç sürümünde yalnızca bu tarayıcının localStorage alanına kaydeder; ortak yönetim için veritabanı ve kimlik doğrulaması gerekir. Nowa sıralama verileri bu sürümde resmi sayfaya bağlantı olarak sunulur.

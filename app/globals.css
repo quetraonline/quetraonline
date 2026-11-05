@@ -19,3 +19,48 @@
 .photoFooter{max-width:1180px;margin:38px auto 0;padding:22px 24px 28px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:15px}.photoFooter>a{font:700 17px 'Cinzel',serif;color:var(--gold2)}.photoFooter>span{font-size:9px;letter-spacing:2px;color:#b7a47e}.photoFooter>small{font-size:8px;color:#777}
 @media(max-width:800px){.photoNav{padding:0 20px}.photoNav nav{gap:13px}.photoNav nav a{font-size:10px}.photoHero{height:450px;padding:35px 7%}.photoStreamGrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.photoNav{height:62px}.photoNav nav{display:none}.photoLogo{font-size:19px}.photoHero{height:430px;background-position:58% center}.heroWords h1{font-size:48px}.heroWords h2{font-size:14px}.heroWords p{font-size:11px}.heroFoot{font-size:7px;gap:12px}.photoContent{padding:0 15px}.photoSection{margin-top:31px}.photoSectionHead h2{font-size:20px}.photoStreamGrid{gap:9px}.photoStream{min-height:130px;padding:14px 12px}.photoStream>b{font-size:7px}.photoSocialGrid{grid-template-columns:repeat(2,1fr);gap:8px}.photoSocial{padding:9px;gap:8px}.photoSocial>span{width:32px;height:32px;flex:0 0 32px}.photoSocial strong{font-size:10px}.photoSocial small{font-size:8px}.photoSupportGrid{grid-template-columns:1fr;gap:10px}.donatePhoto{height:170px}.gamePhoto{grid-template-columns:1fr;min-height:380px}.gamePhotoSide{margin:0 15px 18px}.gamePhotoCopy{padding:25px 24px}.photoContact{gap:12px;flex-direction:column}.photoFooter{flex-direction:column;text-align:center}.photoFooter>span{order:3}}
+
+
+/* Fantasy MMORPG visual direction based on the supplied QuetraOnline reference */
+:root{--gold:#ffc65c;--gold2:#ffe2a0;--ink:#080909;--panel:#151311;--muted:#c1b8a9;--line:rgba(255,190,79,.48)}
+body{background:#080909;color:#fff7e8}
+.photoSite{background:radial-gradient(ellipse at 50% 0,rgba(171,104,29,.17),transparent 38%),repeating-linear-gradient(135deg,#11100e 0,#11100e 2px,#0b0b0a 3px,#0b0b0a 6px)}
+.photoNav{height:58px;background:linear-gradient(180deg,#171819,#080a0b);border-bottom:1px solid rgba(255,196,94,.5);padding-left:max(calc((100% - 1200px)/2),28px);padding-right:max(calc((100% - 1200px)/2),28px)}
+.photoLogo{font:800 22px 'Cinzel',serif;color:#fff0cc;text-shadow:0 0 10px #c68a2f,0 2px 3px #000}
+.photoNav nav a{font-weight:700;color:#e8e1d3}.photoNav nav a:hover{color:#ffca67}
+.photoHero{height:365px;max-width:1200px;padding:25px 32px;background-image:linear-gradient(90deg,rgba(5,6,7,.45),rgba(5,6,7,.08)),url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=2000&q=90');background-position:center 45%;border:1px solid rgba(255,192,91,.6);border-radius:0 0 14px 14px}
+.photoHero:before{background-image:url('https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=2000&q=90');opacity:.2;mix-blend-mode:screen}
+.heroShade{background:linear-gradient(90deg,rgba(4,5,6,.78),rgba(4,5,6,.2) 68%,rgba(4,5,6,.38)),linear-gradient(0deg,rgba(4,5,6,.5),transparent 45%)}
+.heroWords{max-width:760px;text-align:center;margin:0 auto;width:100%}
+.heroWords .goldEyebrow{display:none}
+.heroWords h1{font:800 clamp(48px,7.5vw,88px)/.98 'Cinzel',serif;letter-spacing:-2px;color:#fff2d4;text-shadow:0 4px 2px #25180b,0 0 20px #d69b40;margin:0 auto 10px}
+.heroWords h1 span{font-size:clamp(21px,3vw,36px);letter-spacing:6px;color:#ffc64f;margin-top:12px;text-shadow:0 2px 8px #000}
+.heroWords h2{font-size:13px;letter-spacing:2px;margin:16px 0 8px;color:#ffe0a0}
+.heroWords p{margin:0 auto;color:#f1e8d9;text-shadow:0 1px 4px #000}
+.heroActions{justify-content:center;margin-top:17px}
+.goldButton{background:linear-gradient(180deg,#ffd67e,#b86d19);border:1px solid #ffe2a0;box-shadow:0 0 18px rgba(230,155,44,.35)}
+.ghostButton{border-color:#d8a34e;background:rgba(0,0,0,.58)}
+.heroFoot{color:#f1d18e}
+.photoContent{max-width:1200px}
+.photoSection{margin-top:27px}
+.photoSectionHead{justify-content:center;text-align:center;position:relative;margin-bottom:15px}
+.photoSectionHead>div>span{color:#f7c65d}
+.photoSectionHead h2{font:800 23px 'Cinzel',serif;color:#ffd987;text-shadow:0 2px 8px #000}
+.photoSectionHead>i{position:absolute;left:0;right:0;bottom:8px;z-index:-1;background:linear-gradient(90deg,transparent,#c68a2f,transparent)}
+.photoStreamGrid{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.photoStream{min-height:150px;align-items:center;text-align:center;padding:15px 12px;background:linear-gradient(145deg,rgba(28,25,22,.98),rgba(7,8,9,.98));border:1px solid rgba(255,196,93,.55);box-shadow:inset 0 0 25px rgba(255,174,48,.06),0 6px 16px rgba(0,0,0,.35)}
+.photoStreamIcon{font-size:32px}.photoStreamText{align-items:center}.photoStreamText strong{font-size:18px}.photoStream>b{align-self:stretch;text-align:center;padding:10px 5px;border-radius:18px;background:linear-gradient(90deg,#7e1824,#d52c43);color:white;font-size:9px}.kick.photoStream>b{background:linear-gradient(90deg,#168b25,#42db37)}.twitch.photoStream>b{background:linear-gradient(90deg,#5422a5,#9255ed)}.youtube.photoStream>b{background:linear-gradient(90deg,#9e1010,#ef3232)}
+.photoSocialGrid{grid-template-columns:repeat(6,minmax(0,1fr));gap:9px}
+.photoSocial{min-height:62px;padding:8px 9px;background:linear-gradient(145deg,#252729,#101214);border:1px solid rgba(255,196,93,.3)}
+.photoSocial>span{width:33px;height:33px;flex:0 0 33px;background:#08090a;border:1px solid rgba(255,255,255,.12);color:#fff}
+.photoSocial strong{font-size:10px}.photoSocial small{font-size:8px}
+.photoSupportGrid{margin-top:20px;gap:14px}
+.donatePhoto{height:165px;border:1px solid rgba(255,196,93,.65);box-shadow:inset 0 0 25px rgba(255,177,58,.08),0 6px 16px rgba(0,0,0,.35)}
+.donatePhoto:before{background:linear-gradient(90deg,rgba(8,8,8,.93),rgba(8,8,8,.62) 62%,rgba(8,8,8,.12))}
+.donatePhoto h2{font-size:30px;text-shadow:0 2px 8px #000}
+.gamePhoto{margin-top:22px;min-height:165px;border:1px solid rgba(255,196,93,.7);background-image:linear-gradient(90deg,rgba(7,7,7,.15),rgba(7,7,7,.8)),url('https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1800&q=90')}
+.gamePhotoCopy{padding:20px 28px}.gamePhotoCopy h2{font-size:30px}.gamePhotoSide{margin:15px;padding:15px;background:rgba(8,8,8,.83)}
+.photoContact{margin-top:25px;background:linear-gradient(145deg,#24211b,#0b0b0a);border-color:rgba(255,196,93,.55)}
+.photoFooter{margin-top:25px}
+@media(max-width:800px){.photoNav{padding:0 18px}.photoHero{height:340px;margin:0 12px}.photoSocialGrid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.photoHero{height:350px;padding:22px 15px}.heroWords h1{font-size:45px}.photoStreamGrid{grid-template-columns:repeat(2,1fr)}.photoSocialGrid{grid-template-columns:repeat(2,1fr)}.photoSection{margin-top:24px}.donatePhoto{height:150px}.gamePhoto{min-height:360px}}

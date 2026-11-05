@@ -1,117 +1,73 @@
 "use client";
 
-const socials = [
-  { label: "TikTok", handle: "@quetraonline", href: "https://www.tiktok.com/@quetraonline", icon: "♪" },
-  { label: "YouTube", handle: "YouTube kanalım", href: "https://www.youtube.com/@quetraonline", icon: "▶" },
-  { label: "Twitch", handle: "Canlı yayın", href: "https://www.twitch.tv/quetraonline", icon: "▣" },
-  { label: "Kick", handle: "Canlı yayın", href: "https://kick.com/quetraonline", icon: "K" },
-  { label: "Instagram", handle: "@quetraonline", href: "https://www.instagram.com/quetraonline", icon: "◎" },
-  { label: "X", handle: "@quetraonline", href: "https://x.com/quetraonline", icon: "𝕏" },
-  { label: "Facebook", handle: "QuetraOnline", href: "https://www.facebook.com/quetraonline", icon: "f" },
-  { label: "Threads", handle: "@quetraonline", href: "https://www.threads.com/@quetraonline", icon: "@" }
+const streams = [
+  { label: "TikTok LIVE", handle: "@quetraonline", href: "https://www.tiktok.com/@quetraonline", icon: "♪", tone: "tiktok", action: "YAYINA KATIL" },
+  { label: "YouTube", handle: "/quetraonline", href: "https://www.youtube.com/@quetraonline", icon: "▶", tone: "youtube", action: "KANALI ZİYARET ET" },
+  { label: "Kick", handle: "/quetraonline", href: "https://kick.com/quetraonline", icon: "K", tone: "kick", action: "CANLI YAYINI İZLE" },
+  { label: "Twitch", handle: "/quetraonline", href: "https://www.twitch.tv/quetraonline", icon: "▣", tone: "twitch", action: "CANLI YAYINI İZLE" }
 ];
 
-const games = [
-  { title: "Nowa Online World", subtitle: "Birlikte savaştığımız dünya", href: "https://www.nowaonlineworld.com/", icon: "⚔" },
-  { title: "Chaos Zone Sıralaması", subtitle: "Oyuncu sıralamasını görüntüle", href: "https://www.nowaonlineworld.com/chaos-zone-user-ranking", icon: "🏆" },
-  { title: "Garena Delta Force", subtitle: "Savaş alanına katıl", href: "https://deltaforce.garena.com/", icon: "🎯" }
+const socials = [
+  { label: "Instagram", handle: "/quetraonline", href: "https://www.instagram.com/quetraonline", icon: "◎" },
+  { label: "X (Twitter)", handle: "/quetraonline", href: "https://x.com/quetraonline", icon: "𝕏" },
+  { label: "Facebook", handle: "/quetraonline", href: "https://www.facebook.com/quetraonline", icon: "f" },
+  { label: "Threads", handle: "/quetraonline", href: "https://www.threads.com/@quetraonline", icon: "@" },
+  { label: "Telegram", handle: "QuetraOnline", href: "https://t.me/quetraonline", icon: "➤" },
+  { label: "Discord", handle: "Topluluğa katıl", href: "https://discord.com/", icon: "◉" }
 ];
 
 export default function Home() {
   return (
-    <main className="siteShell">
-      <header className="topbar">
-        <a className="brand" href="/" aria-label="QuetraOnline ana sayfa">
-          <span className="brandMark">Q</span>
-          <span>QUETRA<span className="brandLight">ONLINE</span></span>
-        </a>
-        <nav className="topNav">
-          <a href="#yayinda">Yayınlar</a>
-          <a href="#sosyal">Sosyal Medya</a>
-          <a href="#oyunlar">Oyunlar</a>
+    <main className="photoSite">
+      <header className="photoNav">
+        <a className="photoLogo" href="/">✦ QuetraOnline</a>
+        <nav>
+          <a href="#anasayfa">Ana Sayfa</a><a href="#yayinda">Canlı Yayınlar</a><a href="#sosyal">Sosyal Medya</a><a href="#destek">Destek</a><a href="#iletisim">İletişim</a>
         </nav>
-        <a className="topSupport" href="https://www.klasgame.com/yayincilar/quetraonline" target="_blank" rel="noreferrer">♥ <span>Destek Ol</span></a>
       </header>
 
-      <section className="heroBanner">
-        <div className="bannerGlow" />
-        <div className="bannerContent">
-          <span className="eyebrow"><i /> RESMİ YAYINCI PROFİLİ</span>
-          <h1>OYUNUN OLDUĞU<br /><em>YERDEYİZ.</em></h1>
-          <p>Yayınlar, oyunlar ve güçlü bir topluluk. Quetra'nın dünyasına hoş geldin.</p>
+      <section className="photoHero" id="anasayfa">
+        <div className="heroShade" />
+        <div className="heroWords">
+          <span className="goldEyebrow">NOWA ONLINE WORLD • OYUNDA GÖRÜŞÜRÜZ</span>
+          <h1>QUETRA<span>ONLINE</span></h1>
+          <h2>MACERA BURADA BAŞLIYOR.</h2>
+          <p>Canlı yayınlar, oyun dünyası ve aynı tutkuyu paylaşan güçlü bir topluluk.</p>
+          <div className="heroActions"><a href="#yayinda" className="goldButton">CANLI YAYINLAR <b>↗</b></a><a href="#sosyal" className="ghostButton">TOPLULUĞA KATIL</a></div>
         </div>
-        <div className="bannerSeal">Q<span>ONLINE</span></div>
+        <div className="heroFoot"><span>✦ RESMİ TOPLULUK SAYFASI</span><span>KNIGHT ONLINE • NOWA ONLINE WORLD</span></div>
       </section>
 
-      <div className="contentGrid">
-        <section className="mainColumn">
-
-          <section className="sectionBlock" id="yayinda">
-            <div className="sectionHeading"><div><span className="sectionKicker">CANLI YAYIN</span><h2>Yayın kanallarım</h2></div><span className="headingLine" /></div>
-            <div className="streamGrid">
-              <a className="streamCard tiktok" href="https://www.tiktok.com/@quetraonline" target="_blank" rel="noreferrer">
-                <span className="streamIcon">♪</span><span className="streamInfo"><strong>TikTok LIVE</strong><small>@quetraonline</small></span><b>YAYINA GİT ↗</b>
-              </a>
-              <a className="streamCard youtube" href="https://www.youtube.com/@quetraonline" target="_blank" rel="noreferrer">
-                <span className="streamIcon">▶</span><span className="streamInfo"><strong>YouTube</strong><small>QuetraOnline</small></span><b>KANALA GİT ↗</b>
-              </a>
-              <a className="streamCard twitch" href="https://www.twitch.tv/quetraonline" target="_blank" rel="noreferrer">
-                <span className="streamIcon">▣</span><span className="streamInfo"><strong>Twitch</strong><small>QuetraOnline</small></span><b>KANALA GİT ↗</b>
-              </a>
-              <a className="streamCard kick" href="https://kick.com/quetraonline" target="_blank" rel="noreferrer">
-                <span className="streamIcon">K</span><span className="streamInfo"><strong>Kick</strong><small>QuetraOnline</small></span><b>KANALA GİT ↗</b>
-              </a>
-            </div>
-            <div className="streamNotice"><span className="noticePulse" /> Canlı yayın başladığında favori kanalından bize katıl.</div>
-          </section>
-
-          <section className="sectionBlock" id="sosyal">
-            <div className="sectionHeading"><div><span className="sectionKicker">BİZİ TAKİP ET</span><h2>Sosyal medya hesaplarım</h2></div><span className="headingLine" /></div>
-            <div className="socialGrid">
-              {socials.map((item) => (
-                <a className="socialCard" href={item.href} target="_blank" rel="noreferrer" key={item.label}>
-                  <span className="socialIcon">{item.icon}</span><span><strong>{item.label}</strong><small>{item.handle}</small></span><b>↗</b>
-                </a>
-              ))}
-            </div>
-          </section>
-
-          <section className="sectionBlock" id="oyunlar">
-            <div className="sectionHeading"><div><span className="sectionKicker">OYUN DÜNYAM</span><h2>Oynadığım oyunlar</h2></div><span className="headingLine" /></div>
-            <div className="gameGrid">
-              {games.map((game) => (
-                <a className="gameCard" href={game.href} target="_blank" rel="noreferrer" key={game.title}>
-                  <span className="gameIcon">{game.icon}</span><span><strong>{game.title}</strong><small>{game.subtitle}</small></span><b>↗</b>
-                </a>
-              ))}
-            </div>
-          </section>
+      <div className="photoContent">
+        <section className="photoSection" id="yayinda">
+          <div className="photoSectionHead"><div><span>CANLI YAYIN</span><h2>Yayın kanallarım</h2></div><i /></div>
+          <div className="photoStreamGrid">
+            {streams.map((s) => <a className={`photoStream ${s.tone}`} href={s.href} target="_blank" rel="noreferrer" key={s.label}>
+              <span className="photoStreamIcon">{s.icon}</span><span className="photoStreamText"><strong>{s.label}</strong><small>{s.handle}</small></span><b>{s.action} ↗</b>
+            </a>)}
+          </div>
         </section>
 
-        <aside className="sideColumn">
-          <section className="supportPanel">
-            <span className="sideKicker">TOPLULUĞUMUZUN GÜCÜ</span>
-            <div className="heartMark">♥</div>
-            <h2>Yayınlarıma<br /><em>destek ol!</em></h2>
-            <p>Desteğin, daha güzel yayınlar ve içerikler üretmem için bana güç veriyor. Şimdiden teşekkürler!</p>
-            <a className="donateButton" href="https://www.klasgame.com/yayincilar/quetraonline" target="_blank" rel="noreferrer">BAĞIŞ YAP <span>↗</span></a>
-            <a className="secondaryDonate" href="https://donate.bynogame.com/quetraonline" target="_blank" rel="noreferrer">ByNoGame üzerinden destek ol ↗</a>
-          </section>
+        <section className="photoSection" id="sosyal">
+          <div className="photoSectionHead"><div><span>BİZİ TAKİP ET</span><h2>Sosyal medya hesaplarımız</h2></div><i /></div>
+          <div className="photoSocialGrid">
+            {socials.map((s) => <a href={s.href} target="_blank" rel="noreferrer" className="photoSocial" key={s.label}><span>{s.icon}</span><div><strong>{s.label}</strong><small>{s.handle}</small></div><b>↗</b></a>)}
+          </div>
+        </section>
 
-          <section className="contactPanel">
-            <span className="sideKicker">İLETİŞİM</span>
-            <h3>Bir mesaj uzağındayım.</h3>
-            <p>İş birlikleri ve tüm soruların için bana ulaşabilirsin.</p>
-            <a href="mailto:quetraonline@gmail.com?subject=QuetraOnline%20%C4%B0leti%C5%9Fim">✉ quetraonline@gmail.com</a>
-          </section>
-        </aside>
+        <section className="photoSupportGrid" id="destek">
+          <a className="donatePhoto klas" href="https://www.klasgame.com/yayincilar/quetraonline" target="_blank" rel="noreferrer"><div><span>TOPLULUĞUMUZUN DESTEĞİ</span><h2>KLAS<span>GAME</span></h2><p>Yayınlarıma destek olmak için KlasGame üzerinden bağış yapabilirsiniz.</p><b>DESTEK OL ↗</b></div></a>
+          <a className="donatePhoto byno" href="https://donate.bynogame.com/quetraonline" target="_blank" rel="noreferrer"><div><span>HER DESTEK DEĞERLİ</span><h2>ByNoGame</h2><p>Desteğin, daha güzel yayınlar ve içerikler üretmem için güç veriyor.</p><b>DESTEK OL ↗</b></div></a>
+        </section>
+
+        <section className="gamePhoto" id="oyunlar">
+          <div className="gamePhotoCopy"><span>MACERA DEVAM EDİYOR</span><h2>NOWA<br/>ONLINE WORLD</h2><p>Birlikte savaştığımız, birlikte kazandığımız dünya.</p><a href="https://www.nowaonlineworld.com/" target="_blank" rel="noreferrer">RESMİ SİTE <b>↗</b></a></div>
+          <div className="gamePhotoSide"><span>OYUN BAĞLANTILARI</span><a href="https://www.nowaonlineworld.com/" target="_blank" rel="noreferrer">⚔ Nowa Online World <b>↗</b></a><a href="https://www.nowaonlineworld.com/chaos-zone-user-ranking" target="_blank" rel="noreferrer">🏆 Chaos Zone Sıralaması <b>↗</b></a></div>
+        </section>
+
+        <section className="photoContact" id="iletisim"><span>İŞ BİRLİKLERİ VE SORULARIN İÇİN</span><a href="mailto:quetraonline@gmail.com?subject=QuetraOnline%20%C4%B0leti%C5%9Fim">✉ <strong>Bana mail gönder</strong><small>quetraonline@gmail.com</small></a></section>
       </div>
-
-      <footer className="footer">
-        <a className="brand footerBrand" href="/"><span className="brandMark">Q</span><span>QUETRA<span className="brandLight">ONLINE</span></span></a>
-        <p>OYUNDA GÖRÜŞÜRÜZ. <span>✦</span></p>
-        <small>© 2026 QUETRAONLINE · TÜM HAKLARI SAKLIDIR</small>
-      </footer>
+      <footer className="photoFooter"><a href="/">✦ QuetraOnline</a><span>OYUNDA GÖRÜŞÜRÜZ. ✦</span><small>© 2026 QUETRAONLINE</small></footer>
     </main>
   );
 }

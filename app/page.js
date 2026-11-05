@@ -1,130 +1,111 @@
 "use client";
 
-import { useMemo, useState } from "react";
-
-const platforms = [
-  { number: "01", name: "YouTube", detail: "Videolar · yayın arşivi", href: "https://youtube.com/quetraonline", symbol: "▶" },
-  { number: "02", name: "TikTok LIVE", detail: "Canlı yayın · kısa içerikler", href: "https://www.tiktok.com/@quetraonline", symbol: "♪" },
-  { number: "03", name: "Twitch", detail: "Canlı yayın kanalı", href: "https://www.twitch.tv/quetraonline", symbol: "▣" },
-  { number: "04", name: "Kick", detail: "Canlı yayın kanalı", href: "https://kick.com/quetraonline", symbol: "K" }
+const groups = [
+  {
+    title: "BANA DESTEK OLMAK İSTERSENİZ",
+    links: [
+      { name: "KlasGame Bağış Sayfam", note: "Yayınlarıma destek ol", url: "https://www.klasgame.com/yayincilar/quetraonline", icon: "₺", featured: true },
+      { name: "ByNoGame Bağış Sayfam", note: "Quetra'ya destek gönder", url: "https://donate.bynogame.com/quetraonline", icon: "♥", featured: true }
+    ]
+  },
+  {
+    title: "CANLI YAYIN HESAPLARIM",
+    links: [
+      { name: "TikTok", note: "@quetraonline", url: "https://www.tiktok.com/@quetraonline", icon: "♪", tag: "LIVE" },
+      { name: "YouTube", note: "@quetraonline", url: "https://www.youtube.com/@quetraonline", icon: "▶" },
+      { name: "Twitch", note: "Canlı yayın kanalım", url: "https://www.twitch.tv/quetraonline", icon: "▣" },
+      { name: "Kick", note: "Canlı yayın kanalım", url: "https://kick.com/quetraonline", icon: "K" }
+    ]
+  },
+  {
+    title: "SOSYAL MEDYA HESAPLARIM",
+    links: [
+      { name: "Instagram", note: "@quetraonline", url: "https://www.instagram.com/quetraonline", icon: "◎" },
+      { name: "Facebook", note: "@quetraonline", url: "https://www.facebook.com/quetraonline", icon: "f" },
+      { name: "X", note: "@quetraonline", url: "https://x.com/quetraonline", icon: "𝕏" },
+      { name: "Threads", note: "@quetraonline", url: "https://www.threads.com/@quetraonline", icon: "@" }
+    ]
+  },
+  {
+    title: "DİĞER PLATFORM HESAPLARIM",
+    links: [
+      { name: "Discord", note: "Quetra Discord profili", url: "https://discord.com/users/295839795874365440", icon: "◉" },
+      { name: "Telegram", note: "@quetraonline", url: "https://t.me/quetraonline", icon: "➤" },
+      { name: "Tumblr", note: "@quetraonline", url: "https://www.tumblr.com/quetraonline", icon: "t" },
+      { name: "Reddit", note: "u/quetraonline", url: "https://www.reddit.com/user/quetraonline/", icon: "r" }
+    ]
+  },
+  {
+    title: "OYUN PLATFORMLARINDA BEN",
+    links: [
+      { name: "Steam", note: "steamcommunity.com/id/Quetraonline", url: "https://steamcommunity.com/id/Quetraonline", icon: "⌘" }
+    ]
+  }
 ];
 
-const videos = [
-  { tag: "KNIGHT ONLINE", title: "Chaos Zone'da mücadele", image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=85", href: "https://youtube.com/quetraonline" },
-  { tag: "NOWA ONLINE WORLD", title: "Boss avı ve ekip savaşları", image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=1000&q=85", href: "https://youtube.com/quetraonline" },
-  { tag: "HIGHLIGHTS", title: "Yayınlardan unutulmaz anlar", image: "https://images.unsplash.com/photo-1547394765-185e1e68f34e?auto=format&fit=crop&w=1000&q=85", href: "https://youtube.com/quetraonline" }
-];
-
-const guides = [
-  { category: "REHBER", title: "Chaos Zone rehberi", desc: "Bölge, mücadele düzeni ve sıralama hakkında temel notlar." },
-  { category: "KARAKTER", title: "Karakter sınıfları", desc: "Warrior, Rogue, Mage ve Priest sınıflarına genel bakış." },
-  { category: "BOSS", title: "Boss hazırlığı", desc: "Boss karşılaşmaları öncesinde ekip ve hazırlık notları." }
+const games = [
+  { name: "NOWA ONLINE WORLD", detail: "Mobile · Resmî web sitesi", url: "https://www.nowaonlineworld.com/", symbol: "⚔" },
+  { name: "CHAOS ZONE SIRALAMASI", detail: "Oyuncu sıralamasını görüntüle", url: "https://www.nowaonlineworld.com/chaos-zone-user-ranking", symbol: "🏆" },
+  { name: "GARENA DELTA FORCE", detail: "Mobile", url: "https://deltaforce.garena.com/", symbol: "🎯" }
 ];
 
 export default function Home() {
-  const [filter, setFilter] = useState("TÜMÜ");
-  const [menuOpen, setMenuOpen] = useState(false);
-  const filteredGuides = useMemo(() => guides.filter((item) => filter === "TÜMÜ" || item.category === filter), [filter]);
-
   return (
-    <main>
-      <header className="topbar">
-        <a className="brand" href="#top">QUETRA<span>ONLINE</span><i>.</i></a>
-        <button className="menuButton" aria-label="Menüyü aç" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
-        <nav className={menuOpen ? "nav navOpen" : "nav"}>
-          <a href="#about" onClick={() => setMenuOpen(false)}>Hakkımda</a>
-          <a href="#channels" onClick={() => setMenuOpen(false)}>Yayınlar</a>
-          <a href="#videos" onClick={() => setMenuOpen(false)}>Videolar</a>
-          <a href="#world" onClick={() => setMenuOpen(false)}>Oyun dünyası</a>
-        </nav>
-        <a className="topCta" href="#channels">KANALLAR <span>↗</span></a>
-      </header>
+    <main className="linkPage">
+      <div className="ambient ambientOne" />
+      <div className="ambient ambientTwo" />
+      <div className="profile">
+        <div className="profileImageWrap">
+          <img className="profileImage" src="https://ugc.production.linktr.ee/ac7d6a84-ecf8-4272-9f48-4c6c9f21d869_IMG-2626.png" alt="Quetra logosu" />
+          <span className="onlineDot" />
+        </div>
+        <div className="profileName">Quetra<span>®</span></div>
+        <div className="profileSubtitle">RESMİ HESAP · OFFICIAL ACCOUNT</div>
+        <p className="profileBio">Yayınlar, oyunlar ve güzel bir topluluk.<br />Tüm bağlantılarım burada. Hoş geldin!</p>
+        <div className="profileSocials" aria-label="Öne çıkan sosyal hesaplar">
+          <a href="https://www.youtube.com/@quetraonline" target="_blank" rel="noreferrer" aria-label="YouTube">▶</a>
+          <a href="https://www.instagram.com/quetraonline" target="_blank" rel="noreferrer" aria-label="Instagram">◎</a>
+          <a href="https://www.tiktok.com/@quetraonline" target="_blank" rel="noreferrer" aria-label="TikTok">♪</a>
+          <a href="https://www.twitch.tv/quetraonline" target="_blank" rel="noreferrer" aria-label="Twitch">▣</a>
+        </div>
+      </div>
 
-      <section className="hero" id="top">
-        <div className="heroPhoto" />
-        <div className="heroOverlay" />
-        <div className="heroText">
-          <div className="eyebrow"><span /> GAMER · STREAMER · COMMUNITY</div>
-          <h1>OYUNUN<br /><em>RUHUNU</em><br />YAŞA.</h1>
-          <p>Ben Quetra. Knight Online dünyasında macera, rekabet ve dostluk için buradayım.</p>
-          <div className="heroButtons">
-            <a className="buttonGold" href="#channels">YAYIN KANALLARIM <b>↗</b></a>
-            <a className="buttonGhost" href="#about">BENİ TANI</a>
+      <div className="linksWrap">
+        {groups.map((group, groupIndex) => (
+          <section className="linkGroup" key={group.title}>
+            <h2><span>{String(groupIndex + 1).padStart(2, "0")}</span>{group.title}</h2>
+            <div className="linkList">
+              {group.links.map((link) => (
+                <a className={link.featured ? "linkCard featuredLink" : "linkCard"} href={link.url} target="_blank" rel="noreferrer" key={link.name}>
+                  <span className="linkIcon">{link.icon}</span>
+                  <span className="linkText"><strong>{link.name}</strong><small>{link.note}</small></span>
+                  {link.tag && <span className="liveTag">{link.tag}</span>}
+                  <span className="linkArrow">↗</span>
+                </a>
+              ))}
+            </div>
+          </section>
+        ))}
+
+        <section className="linkGroup gameGroup">
+          <h2><span>06</span> OYNADIĞIM OYUNLAR</h2>
+          <div className="gameLinks">
+            {games.map((game) => (
+              <a href={game.url} target="_blank" rel="noreferrer" className="gameCard" key={game.name}>
+                <span className="gameSymbol">{game.symbol}</span>
+                <span><strong>{game.name}</strong><small>{game.detail}</small></span>
+                <b>↗</b>
+              </a>
+            ))}
           </div>
-        </div>
-        <div className="heroFoot"><b>01</b> / CREATOR PORTFOLIO</div>
-        <div className="heroSide">QUETRA ONLINE WORLD</div>
-      </section>
+        </section>
+      </div>
 
-      <div className="ticker"><div>KNIGHT ONLINE　✳　LIVE THE GAME　✳　QUETRA ONLINE　✳　KNIGHT ONLINE　✳　LIVE THE GAME　✳　</div></div>
-
-      <section className="section intro" id="about">
-        <div className="kicker">01 — HAKKIMDA</div>
-        <div className="introGrid">
-          <h2>SADECE<br />OYUN DEĞİL.<br /><em>BİR TOPLULUK.</em></h2>
-          <div className="introCopy">
-            <p className="lead">Ekranın arkasında bir oyuncu, yayında bir enerji, oyunda birlikte büyüyen bir topluluk var.</p>
-            <p>QuetraOnline; yayınları, oyun içerikleri ve Nowa Online World maceralarını tek yerde buluşturur. Yayınlara katıl, videoları keşfet ve bu yolculuğun bir parçası ol.</p>
-            <a className="textLink" href="https://instagram.com/quetraonline">SOSYAL HESAPLARIMA GÖZ AT <b>↗</b></a>
-          </div>
-        </div>
-        <div className="stats"><div><b>KO</b><span>ANA OYUN</span></div><div><b>LIVE</b><span>CANLI YAYIN</span></div><div><b>ONE</b><span>TOPLULUK</span></div></div>
-      </section>
-
-      <section className="channels" id="channels">
-        <div className="section">
-          <div className="kicker gold">02 — YAYIN MERKEZİ</div>
-          <div className="sectionHead"><h2>YAYINDA<br /><em>BULUŞALIM.</em></h2><p>Canlı yayınları kaçırma. Favori platformundan Quetra'ya katıl.</p></div>
-          <div className="platformList">
-            {platforms.map((platform) => <a className="platform" href={platform.href} target="_blank" rel="noreferrer" key={platform.name}>
-              <span className="platformNo">{platform.number}</span><span className="platformIcon">{platform.symbol}</span>
-              <span className="platformName">{platform.name}<small>{platform.detail}</small></span><span className="platformAction">KANALA GİT</span><b>↗</b>
-            </a>)}
-          </div>
-        </div>
-      </section>
-
-      <section className="section videos" id="videos">
-        <div className="kicker">03 — SON İÇERİKLER</div>
-        <div className="sectionHead darkHead"><h2>SON YAYINLAR<br /><em>& VİDEOLAR.</em></h2><a className="textLink" href="https://youtube.com/quetraonline" target="_blank" rel="noreferrer">YOUTUBE KANALI <b>↗</b></a></div>
-        <div className="videoGrid">
-          {videos.map((video, index) => <a className="videoCard" href={video.href} target="_blank" rel="noreferrer" key={video.title}>
-            <div className="videoImage" style={{ backgroundImage: "linear-gradient(0deg,rgba(0,0,0,.58),transparent 65%),url(" + video.image + ")" }}><span className="play">▶</span><b>0{index + 1}</b></div>
-            <div className="videoMeta"><span>{video.tag}</span><b>↗</b></div><h3>{video.title}</h3>
-          </a>)}
-        </div>
-      </section>
-
-      <section className="gameWorld" id="world">
-        <div className="gameBg" />
-        <div className="section gameInner">
-          <div className="kicker gold">04 — OYUN EVRENİ</div>
-          <div className="gameTitle"><span>THE WORLD OF</span><h2>KNIGHT<br /><em>ONLINE.</em></h2><p>Macera burada başlıyor.</p></div>
-          <div className="gameBottom"><div><b>NOWA ONLINE WORLD</b><p>Boss savaşları, Chaos Zone, karakter gelişimi ve oyuncu topluluğu.</p></div><a className="buttonGold" href="https://www.nowaonlineworld.com/" target="_blank" rel="noreferrer">NOWA'YI KEŞFET ↗</a></div>
-        </div>
-      </section>
-
-      <section className="section guides">
-        <div className="kicker">05 — OYUN NOTLARI</div>
-        <div className="sectionHead darkHead"><h2>OYUN BİLGİSİ.<br /><em>TECRÜBE PAYLAŞIMI.</em></h2><span className="muted">Rehberler ve içerikler</span></div>
-        <div className="filters">{["TÜMÜ", "REHBER", "KARAKTER", "BOSS"].map((item) => <button className={filter === item ? "filter active" : "filter"} onClick={() => setFilter(item)} key={item}>{item}</button>)}</div>
-        <div className="guideList">{filteredGuides.map((guide, index) => <article className="guide" key={guide.title}><span>0{index + 1}</span><div><h3>{guide.title}</h3><p>{guide.desc}</p></div><small>{guide.category}</small><b>↗</b></article>)}</div>
-        <a className="ranking" href="https://www.nowaonlineworld.com/chaos-zone-user-ranking" target="_blank" rel="noreferrer"><div><span>NOWA ONLINE WORLD</span><h3>CHAOS ZONE SIRALAMASI</h3><p>Oyuncu sıralamalarını resmi sayfadan takip et.</p></div><b>SIRALAMAYI GÖR ↗</b></a>
-      </section>
-
-      <section className="social">
-        <div className="section">
-          <div className="kicker gold">06 — BAĞLANTIDA KAL</div>
-          <h2>OYUNDA<br /><em>GÖRÜŞÜRÜZ.</em></h2>
-          <p>Yeni yayınlardan ve topluluk etkinliklerinden haberdar ol.</p>
-          <div className="socialRows">
-            <a href="https://youtube.com/quetraonline" target="_blank" rel="noreferrer"><b>YouTube</b><span>youtube.com/quetraonline</span>↗</a>
-            <a href="https://instagram.com/quetraonline" target="_blank" rel="noreferrer"><b>Instagram</b><span>@quetraonline</span>↗</a>
-            <a href="https://www.tiktok.com/@quetraonline" target="_blank" rel="noreferrer"><b>TikTok</b><span>@quetraonline</span>↗</a>
-          </div>
-        </div>
-      </section>
-      <footer><a className="brand" href="#top">QUETRA<span>ONLINE</span><i>.</i></a><span>© 2026 QUETRAONLINE</span><a href="#top">YUKARI DÖN ↑</a></footer>
+      <footer className="linkFooter">
+        <div className="footerBrand">QUETRA<span>ONLINE</span><i>.</i></div>
+        <p>OYUNDA GÖRÜŞÜRÜZ. ✦</p>
+        <small>© 2026 QUETRAONLINE · TÜM HAKLARI SAKLIDIR</small>
+      </footer>
     </main>
   );
 }

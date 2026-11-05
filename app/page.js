@@ -45,32 +45,6 @@ export default function Home() {
 
       <div className="contentGrid">
         <section className="mainColumn">
-          <article className="profilePanel">
-            <div className="profileCover">
-              <div className="coverLines" />
-              <span className="coverTag">QUETRA COMMUNITY</span>
-            </div>
-            <div className="profileBody">
-              <div className="avatarFrame">
-                <img src="https://ugc.production.linktr.ee/ac7d6a84-ecf8-4272-9f48-4c6c9f21d869_IMG-2626.png" alt="Quetra profil görseli" />
-                <span className="statusDot" />
-              </div>
-              <div className="profileInfo">
-                <div className="profileTitleRow">
-                  <h2>Quetra<span className="verified">✓</span></h2>
-                  <span className="profileType">YAYINCI</span>
-                </div>
-                <p>Nowa Online World oyuncusu · İçerik üreticisi · Yayıncı</p>
-                <div className="profileMeta"><span>✦</span> OYUNDA GÖRÜŞÜRÜZ.</div>
-              </div>
-              <a className="profileContact" href="mailto:quetraonline@gmail.com?subject=QuetraOnline%20%C4%B0leti%C5%9Fim">✉ <span>İletişime Geç</span></a>
-            </div>
-            <div className="profileStats">
-              <div><strong>QUETRA</strong><small>Yayıncı adı</small></div>
-              <div><strong>ONLINE</strong><small>Topluluk</small></div>
-              <div><strong>2026</strong><small>Birlikte nice yayınlara</small></div>
-            </div>
-          </article>
 
           <section className="sectionBlock" id="yayinda">
             <div className="sectionHeading"><div><span className="sectionKicker">CANLI YAYIN</span><h2>Yayın kanallarım</h2></div><span className="headingLine" /></div>

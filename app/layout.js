@@ -1,12 +1,12 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Quetra | Tüm Bağlantılarım",
-  description: "Quetra'nın canlı yayın, sosyal medya, destek ve oyun bağlantılarına tek noktadan ulaş.",
+  title: "QuetraOnline | Yayıncı Profili",
+  description: "QuetraOnline yayınları, sosyal medya hesapları, oyunları ve destek bağlantıları.",
   metadataBase: new URL("https://quetraonline-quetraonline.vercel.app"),
   openGraph: {
-    title: "Quetra — Tüm Bağlantılarım",
-    description: "Canlı yayınlar, sosyal medya ve oyun dünyası. Tüm Quetra bağlantıları tek yerde.",
+    title: "QuetraOnline — Yayıncı Profili",
+    description: "Canlı yayınlar, sosyal medya ve oyun topluluğu.",
     type: "website"
   }
 };

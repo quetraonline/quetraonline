@@ -99,6 +99,17 @@ export default function Home() {
             ))}
           </div>
         </section>
+
+        <section className="linkGroup emailGroup">
+          <h2><span>07</span> BENİMLE İLETİŞİME GEÇ</h2>
+          <div className="linkList">
+            <a className="linkCard featuredLink" href="mailto:quetraonline@gmail.com?subject=QuetraOnline%20%C4%B0leti%C5%9Fim">
+              <span className="linkIcon">✉</span>
+              <span className="linkText"><strong>Bana Mail Gönder</strong><small>quetraonline@gmail.com</small></span>
+              <span className="linkArrow">↗</span>
+            </a>
+          </div>
+        </section>
       </div>
 
       <footer className="linkFooter">

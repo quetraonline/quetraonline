@@ -98,13 +98,6 @@ export default function Home() {
             <a className="secondaryDonate" href="https://donate.bynogame.com/quetraonline" target="_blank" rel="noreferrer">ByNoGame üzerinden destek ol ↗</a>
           </section>
 
-          <section className="sidePanel">
-            <div className="sidePanelTitle"><span>✦</span> HIZLI BAĞLANTILAR</div>
-            <a href="https://www.nowaonlineworld.com/" target="_blank" rel="noreferrer">Nowa Online World <b>↗</b></a>
-            <a href="https://www.nowaonlineworld.com/chaos-zone-user-ranking" target="_blank" rel="noreferrer">Chaos Zone Sıralaması <b>↗</b></a>
-            <a href="mailto:quetraonline@gmail.com?subject=QuetraOnline%20%C4%B0leti%C5%9Fim">E-posta gönder <b>↗</b></a>
-          </section>
-
           <section className="contactPanel">
             <span className="sideKicker">İLETİŞİM</span>
             <h3>Bir mesaj uzağındayım.</h3>

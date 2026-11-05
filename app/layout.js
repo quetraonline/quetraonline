@@ -1,12 +1,12 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "QuetraOnline | Gamer · Streamer · Community",
-  description: "QuetraOnline — Knight Online yayınları, videoları ve Nowa Online World topluluğu.",
+  title: "Quetra | Tüm Bağlantılarım",
+  description: "Quetra'nın canlı yayın, sosyal medya, destek ve oyun bağlantılarına tek noktadan ulaş.",
   metadataBase: new URL("https://quetraonline-quetraonline.vercel.app"),
   openGraph: {
-    title: "QuetraOnline",
-    description: "Oyunun ruhunu yaşa.",
+    title: "Quetra — Tüm Bağlantılarım",
+    description: "Canlı yayınlar, sosyal medya ve oyun dünyası. Tüm Quetra bağlantıları tek yerde.",
     type: "website"
   }
 };

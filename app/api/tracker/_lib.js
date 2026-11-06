@@ -15,7 +15,7 @@ export async function callTrackerRpc(functionName, payload) {
   const key = process.env.SUPABASE_PUBLISHABLE_KEY;
   if (!url || !key) throw new Error("Supabase URL veya publishable key eksik.");
 
-  const response = await fetch(url.replace(/\\/$/, "") + "/rest/v1/rpc/" + functionName, {
+  const response = await fetch(url.replace(/\/$/, "") + "/rest/v1/rpc/" + functionName, {
     method: "POST",
     headers: {
       apikey: key,
@@ -77,7 +77,7 @@ export const sessionCookie = {
 };
 
 export function getIstanbulDayBounds(day) {
-  if (!/^\\d{4}-\\d{2}-\\d{2}$/.test(day || "")) return null;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(day || "")) return null;
   const [year, month, date] = day.split("-").map(Number);
   const parsed = new Date(Date.UTC(year, month - 1, date));
   if (parsed.getUTCFullYear() !== year || parsed.getUTCMonth() !== month - 1 || parsed.getUTCDate() !== date) return null;

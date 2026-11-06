@@ -128,13 +128,13 @@ export default function TrackerPage() {
 
         <section className="tracker-stat-grid">
           <article className="tracker-stat"><span>Günlük eşleşen mesaj</span><strong>{stats.total.toLocaleString("tr-TR")}</strong><small>{day}</small></article>
-          <article className="tracker-stat"><span>Takip edilen kelime</span><strong>{stats.keywords?.length || 0}</strong><small>Taş · Felo · Mini Taş · Random</small></article>
+          <article className="tracker-stat"><span>Takip edilen olay</span><strong>4</strong><small>Boss Stone Spawned · Elder Dragon Spawned · Elder Dragon Dead · Boss Stone Dead</small></article>
           <article className="tracker-stat"><span>En aktif oyuncu</span><strong className="tracker-player-name">{topPlayer}</strong><small>{stats.players?.[0]?.count || 0} eşleşen mesaj</small></article>
         </section>
 
         <section className="tracker-filters">
           <label>Tarih<input type="date" value={day} onChange={e => setDay(e.target.value)} /></label>
-          <label>Kelime<input value={keyword} onChange={e => setKeyword(e.target.value)} placeholder="Taş, Felo, Mini Taş…" /></label>
+          <label>Olay türü<select value={keyword} onChange={e => setKeyword(e.target.value)}><option value="">Tüm olaylar</option><option value="Boss Stone Spawned">Boss Stone Spawned</option><option value="Elder Dragon Spawned">Elder Dragon Spawned</option><option value="Elder Dragon Dead">Elder Dragon Dead</option><option value="Boss Stone Dead">Boss Stone Dead</option></select></label>
           <label>Oyuncu<input value={player} onChange={e => setPlayer(e.target.value)} placeholder="Oyuncu adı" /></label>
           <div className="tracker-filter-actions"><button onClick={load}>Filtrele</button><button className="tracker-secondary" onClick={resetFilters}>Temizle</button></div>
         </section>

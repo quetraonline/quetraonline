@@ -1,15 +1,43 @@
-import { createClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
 import { createHmac, timingSafeEqual } from "node:crypto";
 
 const COOKIE_NAME = "nowa_tracker_session";
 const SESSION_SECONDS = 60 * 60 * 12;
+const ALLOWED_RPC = new Set([
+  "tracker_insert_message",
+  "tracker_get_messages",
+  "tracker_get_stats"
+]);
 
-export function getSupabaseAdmin() {
-  const url = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!url || !key) throw new Error("Supabase sunucu ortam değişkenleri eksik.");
-  return createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
+export async function callTrackerRpc(functionName, payload) {
+  if (!ALLOWED_RPC.has(functionName)) throw new Error("İzin verilmeyen veritabanı işlevi.");
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_PUBLISHABLE_KEY;
+  if (!url || !key) throw new Error("Supabase URL veya publishable key eksik.");
+
+  const response = await fetch(url.replace(/\\/$/, "") + "/rest/v1/rpc/" + functionName, {
+    method: "POST",
+    headers: {
+      apikey: key,
+      "content-type": "application/json"
+    },
+    body: JSON.stringify(payload),
+    cache: "no-store"
+  });
+  const raw = await response.text();
+  let result;
+  try { result = raw ? JSON.parse(raw) : null; } catch { result = raw; }
+  if (!response.ok) {
+    const detail = typeof result === "object" && result ? (result.message || result.hint || result.code) : result;
+    throw new Error("Supabase RPC hatası (" + response.status + "): " + String(detail || "Bilinmeyen hata"));
+  }
+  return result;
+}
+
+export function getDashboardRpcSecret() {
+  const secret = process.env.NOWA_TRACKER_SESSION_SECRET;
+  if (!secret) throw new Error("Oturum anahtarı eksik.");
+  return secret;
 }
 
 function sign(value) {
@@ -49,7 +77,7 @@ export const sessionCookie = {
 };
 
 export function getIstanbulDayBounds(day) {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(day || "")) return null;
+  if (!/^\\d{4}-\\d{2}-\\d{2}$/.test(day || "")) return null;
   const [year, month, date] = day.split("-").map(Number);
   const parsed = new Date(Date.UTC(year, month - 1, date));
   if (parsed.getUTCFullYear() !== year || parsed.getUTCMonth() !== month - 1 || parsed.getUTCDate() !== date) return null;

@@ -24,6 +24,7 @@ export default function Home() {
           <a href="#live">▣ <span>Canlı Yayınlar</span></a>
           <a href="#social">✥ <span>Sosyal Medya</span></a>
           <a href="#support">♙ <span>Destek</span></a>
+          <a href="/tracker">◉ <span>Chat Tracker</span></a>
           <a href="#contact">✉ <span>İletişim</span></a>
         </nav>
       </header>

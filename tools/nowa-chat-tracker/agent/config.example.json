@@ -1,0 +1,11 @@
+{
+  "api_url": "https://SITENIZ.vercel.app",
+  "ingest_token": "VERCEL_NOWA_TRACKER_INGEST_TOKEN",
+  "capture": { "left": 100, "top": 100, "width": 500, "height": 250 },
+  "keywords": ["Taş", "Felo", "Mini Taş", "Random"],
+  "capture_interval_seconds": 0.30,
+  "dedupe_seconds": 20,
+  "dry_run": true,
+  "tesseract_cmd": "",
+  "line_pattern": "^(?P<player>[^:]{1,32}):\\s*(?P<message>.+)$"
+}

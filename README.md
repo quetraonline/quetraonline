@@ -6,27 +6,30 @@ Quetra için Next.js tabanlı yayıncı portfolyosu ve Nowa Online World toplulu
 
 Tracker, bu Next.js projesine entegredir ve `/tracker` adresinden açılır. LDPlayer OCR ajanı oyun sohbetinde **Taş**, **Felo**, **Mini Taş** ve **Random** kelimelerini içeren satırları yakalayıp sunucu API'sine gönderir. Panel günlük mesajları, oyuncu sıralamasını ve kelime istatistiklerini gösterir.
 
-### 1. Supabase veritabanı
+### Veritabanı ve güvenli erişim
 
-Supabase projesinde SQL Editor'ü açıp `supabase/nowa-chat-tracker.sql` dosyasının tamamını çalıştırın.
+- `supabase/nowa-chat-tracker.sql` tabloyu, özel kimlik bilgisi şemasını ve sınırlı RPC işlevlerini kurar.
+- `chat_messages` tablosunda RLS açıktır; istemciye doğrudan okuma/yazma izni verilmez.
+- Uygulama Supabase publishable anahtarıyla yalnızca üç RPC işlevini çağırır. Ham dashboard ve OCR sırları Supabase'in özel şemasında SHA-256 özeti olarak saklanır.
+- Service-role anahtarı kullanılmaz ve tarayıcıya açılmaz.
 
-### 2. Vercel ortam değişkenleri
+Bu kurulumda SQL migration'ları ve sır özetleri proje sahibi tarafından kuruldu. Sırları değiştirdiğinde Vercel'deki `NOWA_TRACKER_SESSION_SECRET` ve `NOWA_TRACKER_INGEST_TOKEN` değerlerini güncelle; ardından aynı değerlerin hash'lerini `tracker_private.credentials` tablosuna güvenli bir yönetim oturumundan yaz. Ham sırları GitHub'a ekleme.
 
-Vercel Project Settings → Environment Variables bölümüne aşağıdaki değerleri ekleyin (Production, Preview ve Development ihtiyacınıza göre):
+### Vercel ortam değişkenleri
+
+Vercel Project Settings → Environment Variables içinde Production, Preview ve Development için:
 
 - `SUPABASE_URL`: Supabase Project URL
-- `SUPABASE_SERVICE_ROLE_KEY`: Supabase service_role secret (yalnızca sunucu tarafında; asla NEXT_PUBLIC_ olarak tanımlamayın)
+- `SUPABASE_PUBLISHABLE_KEY`: Supabase Project Settings → API Keys bölümündeki publishable key
 - `NOWA_TRACKER_DASHBOARD_PASSWORD`: `/tracker` giriş şifresi
 - `NOWA_TRACKER_SESSION_SECRET`: Uzun ve rastgele oturum imzalama anahtarı
 - `NOWA_TRACKER_INGEST_TOKEN`: OCR ajanının veri gönderme anahtarı
 
-Güçlü, birbirinden farklı gizli değerler kullanın. Değerleri GitHub'a commit etmeyin.
+### Bağımlılık ve yayın
 
-### 3. Bağımlılık ve yayın
+`@supabase/supabase-js` istemcisi kullanılmaz; sunucu, Supabase REST RPC uçlarını sadece `apikey` başlığıyla çağırır. Değişiklikler ana dala alındığında Vercel otomatik build alır. Yerelde `npm install` ve `npm run dev` komutlarıyla çalıştırabilirsiniz.
 
-`@supabase/supabase-js` bağımlılığı package.json'a eklendi. Değişiklikler ana dala alındığında Vercel otomatik build alır. Yerelde `npm install` ve `npm run dev` komutlarıyla çalıştırabilirsiniz.
-
-### 4. LDPlayer OCR ajanı (Windows)
+### LDPlayer OCR ajanı (Windows)
 
 1. Python 3.10+ kurun.
 2. Tesseract OCR'ı ve Türkçe dil paketini kurun. Windows'taki tesseract.exe yolunu config'e yazabilirsiniz.
@@ -42,9 +45,9 @@ Ajanın gönderdiği istekler `POST /api/tracker/messages` adresine gider. Panel
 
 ### Güvenlik notları
 
-- Supabase service_role anahtarı ve üç NOWA_TRACKER gizli değeri sadece Vercel sunucu ortam değişkenlerinde bulunmalıdır.
+- Gizli anahtarları sadece Vercel sunucu ortam değişkenlerinde tutun; OCR ajanındaki aktarım anahtarını paylaşmayın.
 - `/tracker` parola korumalıdır; giriş oturumu 12 saat geçerli, HttpOnly ve SameSite=Strict çerezle tutulur.
-- OCR ajanının `config.json` dosyası gizli aktarım anahtarı içerir; paylaşmayın ve Git'e eklemeyin.
+- `tracker_private.credentials` şeması API tarafından erişilebilir değildir; sadece doğrulanan RPC fonksiyonları okuyabilir.
 - OCR oyuncu adını okuyamazsa satır `Bilinmiyor` olarak kaydedilir. Gerçek oyun ekranında OCR bölgesi ve satır biçimi test edilmelidir.
 
 ## Yerel geliştirme

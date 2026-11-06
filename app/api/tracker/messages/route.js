@@ -44,7 +44,7 @@ export async function POST(request) {
   const message = typeof body.message === "string" ? body.message.trim().slice(0, 1000) : "";
   const matched = Array.isArray(body.matched_keywords) ? body.matched_keywords.filter(x => typeof x === "string").slice(0, 20) : [];
   if (!message || !matched.length) return NextResponse.json({ error: "Mesaj ve eşleşen kelime zorunludur." }, { status: 400 });
-  const normalized = message.replace(/\\s+/g, " ").toLocaleLowerCase("tr-TR");
+  const normalized = message.replace(/\s+/g, " ").toLocaleLowerCase("tr-TR");
   const fallbackDigest = createHash("sha256").update((player.toLocaleLowerCase("tr-TR") + "|" + normalized + "|" + String(Math.floor(Date.now() / 20000))), "utf8").digest("hex");
   const suppliedDigest = typeof body.dedupe_hash === "string" && /^[a-f0-9]{64}$/i.test(body.dedupe_hash) ? body.dedupe_hash.toLowerCase() : fallbackDigest;
   try {

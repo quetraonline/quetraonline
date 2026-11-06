@@ -13,7 +13,7 @@ if cfg.get("tesseract_cmd"):
     pytesseract.pytesseract.tesseract_cmd = cfg["tesseract_cmd"]
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s | %(message)s")
-keywords = cfg.get("keywords", [])
+keywords = ["Boss Stone Spawned", "Elder Dragon Spawned", "Elder Dragon Dead", "Boss Stone Dead"]
 pattern = re.compile(cfg.get("line_pattern", r"^(?P<player>[^:]{1,32}):\s*(?P<message>.+)$"))
 seen = {}
 

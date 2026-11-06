@@ -4,6 +4,8 @@ import { callTrackerRpc, getDashboardRpcSecret, getIstanbulDayBounds, hasDashboa
 
 export const runtime = "nodejs";
 
+const TRACKED_KEYWORDS = ["Boss Stone Spawned", "Elder Dragon Spawned", "Elder Dragon Dead", "Boss Stone Dead"];
+
 export async function GET(request) {
   if (!(await hasDashboardSession())) return NextResponse.json({ error: "Oturum gerekli." }, { status: 401 });
   try {
@@ -18,7 +20,7 @@ export async function GET(request) {
       end = bounds.end;
     }
     const keywordRaw = (params.get("keyword") || "").trim();
-    const keyword = ["Taş", "Felo", "Mini Taş", "Random"].find(word => word.toLocaleLowerCase("tr-TR") === keywordRaw.toLocaleLowerCase("tr-TR")) || (keywordRaw || null);
+    const keyword = TRACKED_KEYWORDS.find(word => word.toLocaleLowerCase("en-US") === keywordRaw.toLocaleLowerCase("en-US")) || (keywordRaw || null);
     const player = (params.get("player") || "").trim() || null;
     const data = await callTrackerRpc("tracker_get_messages", {
       p_session_secret: getDashboardRpcSecret(),
@@ -42,8 +44,8 @@ export async function POST(request) {
   try { body = await request.json(); } catch { return NextResponse.json({ error: "Geçersiz JSON." }, { status: 400 }); }
   const player = typeof body.player === "string" ? body.player.trim().slice(0, 80) : "Bilinmiyor";
   const message = typeof body.message === "string" ? body.message.trim().slice(0, 1000) : "";
-  const matched = Array.isArray(body.matched_keywords) ? body.matched_keywords.filter(x => typeof x === "string").slice(0, 20) : [];
-  if (!message || !matched.length) return NextResponse.json({ error: "Mesaj ve eşleşen kelime zorunludur." }, { status: 400 });
+  const matched = Array.isArray(body.matched_keywords) ? [...new Set(body.matched_keywords.filter(x => typeof x === "string").map(value => TRACKED_KEYWORDS.find(word => word.toLocaleLowerCase("en-US") === value.trim().toLocaleLowerCase("en-US"))).filter(Boolean))] : [];
+  if (!message || !matched.length) return NextResponse.json({ error: "Mesaj ve takip edilen dört olaydan biri zorunludur." }, { status: 400 });
   const normalized = message.replace(/\s+/g, " ").toLocaleLowerCase("tr-TR");
   const fallbackDigest = createHash("sha256").update((player.toLocaleLowerCase("tr-TR") + "|" + normalized + "|" + String(Math.floor(Date.now() / 20000))), "utf8").digest("hex");
   const suppliedDigest = typeof body.dedupe_hash === "string" && /^[a-f0-9]{64}$/i.test(body.dedupe_hash) ? body.dedupe_hash.toLowerCase() : fallbackDigest;

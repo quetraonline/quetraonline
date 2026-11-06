@@ -21,8 +21,8 @@ export async function GET(request) {
       p_start: start,
       p_end: end
     });
-    return NextResponse.json(result || { total: 0, players: [], keywords: [] });
+    return NextResponse.json(result || { total: 0, active_players: 0, players: [], last_message_at: null });
   } catch (error) {
-    return NextResponse.json({ error: "İstatistik alınamadı: " + (error.message || "veritabanı hatası") }, { status: 500 });
+    return NextResponse.json({ error: "Sohbet istatistiği alınamadı: " + (error.message || "veritabanı hatası") }, { status: 500 });
   }
 }

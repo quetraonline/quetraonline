@@ -4,7 +4,7 @@ Quetra için Next.js tabanlı yayıncı portfolyosu ve Nowa Online World toplulu
 
 ## Nowa Chat Tracker
 
-Tracker, bu Next.js projesine entegredir ve `/tracker` adresinden açılır. LDPlayer OCR ajanı oyun sohbetinde **Taş**, **Felo**, **Mini Taş** ve **Random** kelimelerini içeren satırları yakalayıp sunucu API'sine gönderir. Panel günlük mesajları, oyuncu sıralamasını ve kelime istatistiklerini gösterir.
+Tracker, bu Next.js projesine entegredir ve `/tracker` adresinden açılır. LDPlayer OCR ajanı oyun sohbetinde **Boss Stone Spawned**, **Elder Dragon Spawned**, **Elder Dragon Dead** ve **Boss Stone Dead** olaylarını içeren satırları yakalayıp sunucu API'sine gönderir. Panel günlük mesajları, oyuncu sıralamasını ve kelime istatistiklerini gösterir.
 
 ### Veritabanı ve güvenli erişim
 
@@ -29,7 +29,7 @@ Vercel Project Settings → Environment Variables içinde Production, Preview ve
 
 `@supabase/supabase-js` istemcisi kullanılmaz; sunucu, Supabase REST RPC uçlarını sadece `apikey` başlığıyla çağırır. Değişiklikler ana dala alındığında Vercel otomatik build alır. Yerelde `npm install` ve `npm run dev` komutlarıyla çalıştırabilirsiniz.
 
-### LDPlayer OCR ajanı (Windows)
+### Takip edilen olaylar\n\nOCR ajanı yalnızca şu dört olayı algılar: `Boss Stone Spawned`, `Elder Dragon Spawned`, `Elder Dragon Dead` ve `Boss Stone Dead`. Ajan kodunda bu liste sabittir; eski `config.json` dosyasında kalmış kelime listesi kullanılmaz.\n\n### LDPlayer OCR ajanı (Windows)
 
 1. Python 3.10+ kurun.
 2. Tesseract OCR'ı ve Türkçe dil paketini kurun. Windows'taki tesseract.exe yolunu config'e yazabilirsiniz.

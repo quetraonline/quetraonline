@@ -33,7 +33,7 @@ timestamp_pattern = re.compile(
 
 
 def parse_line(raw_line):
-    """Return every readable non-empty chat row; keywords are not required."""
+    """Return every readable non-empty chat row; keyword filtering is disabled."""
     line = " ".join(raw_line.split()).strip()
     if not line:
         return None
@@ -76,23 +76,24 @@ def main():
     cap = cfg["capture"]
     interval = max(0.15, float(cfg.get("capture_interval_seconds", 0.30)))
     missing_frames_to_rearm = max(1, int(cfg.get("missing_frames_to_rearm", 3)))
+    dry_run = bool(cfg.get("dry_run", True))
     api = cfg["api_url"].rstrip("/") + "/api/tracker/messages"
     headers = {
         "Authorization": "Bearer " + cfg["ingest_token"],
         "Content-Type": "application/json"
     }
 
-    # Keep lines active while they remain visible in the chat viewport.
-    # This avoids posting the same row on every OCR frame, but allows it
-    # to be recorded again if it scrolls away and later appears again.
+    # A visible chat row is sent once, not once per OCR frame.
+    # If it scrolls away for several frames and later reappears, it is a new appearance.
+    # Failed POSTs retain the same dedupe hash so a retry cannot create duplicate rows.
     active_lines = {}
 
     logging.info(
         "Nowa Chat Tracker OCR başladı. Alan=%s, dry_run=%s",
         cap,
-        cfg.get("dry_run", True)
+        dry_run
     )
-    logging.info("Anahtar kelime filtresi kapalı: sohbet alanındaki tüm okunabilir satırlar kaydedilecek.")
+    logging.info("Kelime filtresi kapalı: sohbet alanındaki tüm okunabilir satırlar kaydedilecek.")
 
     with mss.MSS() as screen:
         while True:
@@ -113,7 +114,6 @@ def main():
                     config="--psm 6"
                 )
 
-                now = time.time()
                 current_fingerprints = set()
 
                 for line in ocr_text.splitlines():
@@ -124,41 +124,43 @@ def main():
                     fingerprint = make_fingerprint(item)
                     current_fingerprints.add(fingerprint)
 
-                    if fingerprint in active_lines:
-                        active_lines[fingerprint] = 0
+                    state = active_lines.get(fingerprint)
+                    if state:
+                        state["missing_frames"] = 0
+                        if state["sent"] or dry_run:
+                            continue
+                    else:
+                        state = {
+                            "missing_frames": 0,
+                            "sent": False,
+                            "dedupe_hash": hashlib.sha256(
+                                (fingerprint + "|" + str(time.time_ns())).encode("utf-8")
+                            ).hexdigest()
+                        }
+                        active_lines[fingerprint] = state
+
+                    item["dedupe_hash"] = state["dedupe_hash"]
+                    visible_time = item["game_time_text"] or datetime.now().astimezone().strftime("%H:%M:%S")
+                    logging.info("[%s] %s: %s", visible_time, item["player"], item["message"])
+
+                    if dry_run:
+                        state["sent"] = True
                         continue
 
-                    active_lines[fingerprint] = 0
-                    item["dedupe_hash"] = hashlib.sha256(
-                        (fingerprint + "|" + str(int(now))).encode("utf-8")
-                    ).hexdigest()
+                    try:
+                        response = requests.post(api, json=item, headers=headers, timeout=8)
+                        response.raise_for_status()
+                        state["sent"] = True
+                    except requests.RequestException as error:
+                        logging.error("Sunucuya gönderilemedi; aynı kayıt kimliğiyle tekrar denenecek: %s", error)
+                        state["sent"] = False
 
-                    visible_time = item["game_time_text"] or datetime.now().astimezone().strftime("%H:%M:%S")
-                    logging.info(
-                        "[%s] %s: %s",
-                        visible_time,
-                        item["player"],
-                        item["message"]
-                    )
-
-                    if not cfg.get("dry_run", True):
-                        try:
-                            response = requests.post(
-                                api,
-                                json=item,
-                                headers=headers,
-                                timeout=8
-                            )
-                            response.raise_for_status()
-                        except requests.RequestException as error:
-                            logging.error("Sunucuya gönderilemedi; sonraki OCR turunda tekrar denenecek: %s", error)
-                            active_lines.pop(fingerprint, None)
-
-                # Rearm a line only after it is absent for several frames.
-                for fingerprint in list(active_lines):
+                # A line becomes eligible for a new capture after it has
+                # disappeared for several consecutive frames.
+                for fingerprint, state in list(active_lines.items()):
                     if fingerprint not in current_fingerprints:
-                        active_lines[fingerprint] += 1
-                        if active_lines[fingerprint] >= missing_frames_to_rearm:
+                        state["missing_frames"] += 1
+                        if state["missing_frames"] >= missing_frames_to_rearm:
                             active_lines.pop(fingerprint, None)
 
             except Exception as error:

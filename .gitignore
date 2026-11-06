@@ -4,3 +4,7 @@ out
 .vercel
 .env*
 !.env.example
+
+# Local LDPlayer OCR configuration and virtual environment
+tools/nowa-chat-tracker/agent/config.json
+tools/nowa-chat-tracker/agent/.venv/

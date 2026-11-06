@@ -49,11 +49,11 @@ begin
   if v_expected is null or extensions.digest(convert_to(coalesce(p_ingest_token, ''), 'UTF8'), 'sha256') is distinct from v_expected then
     raise exception 'unauthorized' using errcode = '42501';
   end if;
-  if coalesce(trim(p_message), '') = '' or coalesce(array_length(p_matched_keywords, 1), 0) = 0 then
-    raise exception 'message and matched keywords are required' using errcode = '22023';
+  if coalesce(trim(p_message), '') = '' then
+    raise exception 'message is required' using errcode = '22023';
   end if;
   insert into public.chat_messages (player, message, matched_keywords, game_time_text, source, dedupe_hash)
-  values (coalesce(nullif(trim(p_player), ''), 'Bilinmiyor'), left(trim(p_message), 1000), p_matched_keywords[1:20], left(p_game_time_text, 80), 'ldplayer-ocr', p_dedupe_hash)
+  values (coalesce(nullif(trim(p_player), ''), 'Bilinmiyor'), left(trim(p_message), 1000), coalesce(p_matched_keywords[1:20], '{}'::text[]), left(p_game_time_text, 80), 'ldplayer-ocr', p_dedupe_hash)
   on conflict (dedupe_hash) do nothing;
   get diagnostics v_inserted = row_count;
   return v_inserted > 0;
@@ -84,13 +84,17 @@ begin
   from public.chat_messages m
   where (p_start is null or m.created_at >= p_start)
     and (p_end is null or m.created_at < p_end)
-    and (p_keyword is null or p_keyword = any(m.matched_keywords))
+    and (p_keyword is null or m.message ilike '%' || replace(replace(p_keyword, '%', ''), '_', '') || '%')
     and (p_player is null or m.player ilike '%' || replace(replace(p_player, '%', ''), '_', '') || '%')
-  order by m.created_at desc limit 500;
+  order by m.created_at desc limit 1000;
 end;
 $$;
 
-create or replace function public.tracker_get_stats(p_session_secret text, p_start timestamptz default null, p_end timestamptz default null)
+create or replace function public.tracker_get_stats(
+  p_session_secret text,
+  p_start timestamptz default null,
+  p_end timestamptz default null
+)
 returns jsonb
 language plpgsql
 security definer
@@ -105,23 +109,19 @@ begin
     raise exception 'unauthorized' using errcode = '42501';
   end if;
   with base as (
-    select m.player, m.matched_keywords from public.chat_messages m
-    where (p_start is null or m.created_at >= p_start) and (p_end is null or m.created_at < p_end)
-    limit 10000
+    select m.player, m.created_at from public.chat_messages m
+    where (p_start is null or m.created_at >= p_start)
+      and (p_end is null or m.created_at < p_end)
   ),
   player_counts as (
     select coalesce(nullif(player, ''), 'Bilinmiyor') as name, count(*)::bigint as count
     from base group by 1 order by count desc, name asc limit 20
-  ),
-  keyword_counts as (
-    select word as name, count(*)::bigint as count
-    from base cross join lateral unnest(matched_keywords) as word
-    group by word order by count desc, name asc
   )
   select jsonb_build_object(
     'total', (select count(*) from base),
     'players', coalesce((select jsonb_agg(jsonb_build_object('name', name, 'count', count) order by count desc, name asc) from player_counts), '[]'::jsonb),
-    'keywords', coalesce((select jsonb_agg(jsonb_build_object('name', name, 'count', count) order by count desc, name asc) from keyword_counts), '[]'::jsonb)
+    'active_players', (select count(distinct player) from base),
+    'last_message_at', (select max(created_at) from base)
   ) into v_result;
   return v_result;
 end;

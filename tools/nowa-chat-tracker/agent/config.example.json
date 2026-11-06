@@ -1,11 +1,11 @@
 {
-  "api_url": "https://SITENIZ.vercel.app",
-  "ingest_token": "VERCEL_NOWA_TRACKER_INGEST_TOKEN",
+  "api_url": "https://quetraonline.vercel.app",
+  "ingest_token": "MEVCUT_NOWA_TRACKER_INGEST_TOKEN_DEGERIN",
   "capture": { "left": 100, "top": 100, "width": 500, "height": 250 },
-  "keywords": ["Boss Stone Spawned", "Elder Dragon Spawned", "Elder Dragon Dead", "Boss Stone Dead"],
   "capture_interval_seconds": 0.30,
-  "dedupe_seconds": 20,
+  "missing_frames_to_rearm": 3,
   "dry_run": true,
-  "tesseract_cmd": "",
-  "line_pattern": "^(?P<player>[^:]{1,32}):\\s*(?P<message>.+)$"
+  "tesseract_cmd": "C:/Program Files/Tesseract-OCR/tesseract.exe",
+  "line_pattern": "^(?P<player>[^:]{1,32}):\\s*(?P<message>.+)$",
+  "timestamp_pattern": "^(?:\\[(?P<bracketed>\\d{1,2}:\\d{2}(?::\\d{2})?)\\]|(?P<plain>\\d{1,2}:\\d{2}(?::\\d{2})?))\\s+"
 }

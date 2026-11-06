@@ -4,8 +4,6 @@ import { callTrackerRpc, getDashboardRpcSecret, getIstanbulDayBounds, hasDashboa
 
 export const runtime = "nodejs";
 
-const TRACKED_KEYWORDS = ["Boss Stone Spawned", "Elder Dragon Spawned", "Elder Dragon Dead", "Boss Stone Dead"];
-
 export async function GET(request) {
   if (!(await hasDashboardSession())) return NextResponse.json({ error: "Oturum gerekli." }, { status: 401 });
   try {
@@ -19,19 +17,18 @@ export async function GET(request) {
       start = bounds.start;
       end = bounds.end;
     }
-    const keywordRaw = (params.get("keyword") || "").trim();
-    const keyword = TRACKED_KEYWORDS.find(word => word.toLocaleLowerCase("en-US") === keywordRaw.toLocaleLowerCase("en-US")) || (keywordRaw || null);
+    const search = (params.get("search") || "").trim() || null;
     const player = (params.get("player") || "").trim() || null;
     const data = await callTrackerRpc("tracker_get_messages", {
       p_session_secret: getDashboardRpcSecret(),
       p_start: start,
       p_end: end,
-      p_keyword: keyword,
+      p_keyword: search,
       p_player: player
     });
     return NextResponse.json({ items: Array.isArray(data) ? data : [] });
   } catch (error) {
-    return NextResponse.json({ error: "Mesajlar okunamadı: " + (error.message || "veritabanı hatası") }, { status: 500 });
+    return NextResponse.json({ error: "Sohbet kayıtları okunamadı: " + (error.message || "veritabanı hatası") }, { status: 500 });
   }
 }
 
@@ -40,26 +37,37 @@ export async function POST(request) {
   if (!token || request.headers.get("authorization") !== "Bearer " + token) {
     return NextResponse.json({ error: "Geçersiz aktarım anahtarı." }, { status: 401 });
   }
+
   let body;
-  try { body = await request.json(); } catch { return NextResponse.json({ error: "Geçersiz JSON." }, { status: 400 }); }
+  try { body = await request.json(); } catch {
+    return NextResponse.json({ error: "Geçersiz JSON." }, { status: 400 });
+  }
+
   const player = typeof body.player === "string" ? body.player.trim().slice(0, 80) : "Bilinmiyor";
   const message = typeof body.message === "string" ? body.message.trim().slice(0, 1000) : "";
-  const matched = Array.isArray(body.matched_keywords) ? [...new Set(body.matched_keywords.filter(x => typeof x === "string").map(value => TRACKED_KEYWORDS.find(word => word.toLocaleLowerCase("en-US") === value.trim().toLocaleLowerCase("en-US"))).filter(Boolean))] : [];
-  if (!message || !matched.length) return NextResponse.json({ error: "Mesaj ve takip edilen dört olaydan biri zorunludur." }, { status: 400 });
-  const normalized = message.replace(/\s+/g, " ").toLocaleLowerCase("tr-TR");
-  const fallbackDigest = createHash("sha256").update((player.toLocaleLowerCase("tr-TR") + "|" + normalized + "|" + String(Math.floor(Date.now() / 20000))), "utf8").digest("hex");
-  const suppliedDigest = typeof body.dedupe_hash === "string" && /^[a-f0-9]{64}$/i.test(body.dedupe_hash) ? body.dedupe_hash.toLowerCase() : fallbackDigest;
+  const gameTime = typeof body.game_time_text === "string" ? body.game_time_text.trim().slice(0, 80) : null;
+
+  if (!message) return NextResponse.json({ error: "Sohbet mesajı boş olamaz." }, { status: 400 });
+
+  const normalized = [player.toLocaleLowerCase("tr-TR"), gameTime || "", message.replace(/\s+/g, " ").toLocaleLowerCase("tr-TR")].join("|");
+  const fallbackDigest = createHash("sha256")
+    .update(normalized + "|" + String(Math.floor(Date.now() / 1000)), "utf8")
+    .digest("hex");
+  const suppliedDigest = typeof body.dedupe_hash === "string" && /^[a-f0-9]{64}$/i.test(body.dedupe_hash)
+    ? body.dedupe_hash.toLowerCase()
+    : fallbackDigest;
+
   try {
     const stored = await callTrackerRpc("tracker_insert_message", {
       p_ingest_token: token,
       p_player: player || "Bilinmiyor",
       p_message: message,
-      p_matched_keywords: [...new Set(matched)],
-      p_game_time_text: typeof body.game_time_text === "string" ? body.game_time_text.slice(0, 80) : null,
+      p_matched_keywords: [],
+      p_game_time_text: gameTime,
       p_dedupe_hash: suppliedDigest
     });
     return NextResponse.json({ ok: true, stored: stored === true });
   } catch (error) {
-    return NextResponse.json({ error: "Kayıt yapılamadı: " + (error.message || "veritabanı hatası") }, { status: 500 });
+    return NextResponse.json({ error: "Sohbet kaydedilemedi: " + (error.message || "veritabanı hatası") }, { status: 500 });
   }
 }

@@ -35,6 +35,6 @@
 .support-card.klas .klasgame-logo{display:block;width:clamp(112px,24%,170px);height:auto;max-height:58px;object-fit:contain;flex:0 0 auto;align-self:center;filter:drop-shadow(0 2px 5px rgba(0,0,0,.12))}
 @media(max-width:520px){.support-card.klas .klasgame-logo{width:100px;max-height:42px}}
 
-.support-card.byno .bynogame-mascot{display:block;width:clamp(92px,22%,136px);height:auto;max-height:72px;object-fit:contain;align-self:center;flex:0 0 auto}
+.support-card.byno .bynogame-mascot{display:block;width:auto;height:58px;max-width:170px;max-height:58px;object-fit:contain;object-position:center;align-self:center;flex:0 0 auto;overflow:visible}
 .support-card.byno .bynogame-wordmark{display:block;width:92px;height:52px;object-fit:contain;object-position:left center;margin:0 0 5px}
-@media(max-width:520px){.support-card.byno .bynogame-mascot{width:86px;max-height:52px}.support-card.byno .bynogame-wordmark{width:78px;height:42px}}
+@media(max-width:520px){.support-card.byno .bynogame-mascot{width:auto;height:42px;max-width:100px;max-height:42px}.support-card.byno .bynogame-wordmark{width:78px;height:42px}}

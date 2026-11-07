@@ -59,7 +59,7 @@ export default function Home() {
           <div className="social-grid">
             {socials.map(([name, handle, href, mark]) => (
               <a href={href} target="_blank" rel="noreferrer" className="social-card" key={name}>
-                <b>{mark}</b><span><strong>{name}</strong><small>{handle}</small></span>
+                {name === "Instagram" ? <img className="social-instagram-logo" src="/instagram-logo.webp" alt="Instagram" /> : <b>{mark}</b>}<span><strong>{name}</strong><small>{handle}</small></span>
               </a>
             ))}
           </div>

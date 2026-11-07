@@ -46,7 +46,7 @@ export default function Home() {
           <div className="live-grid">
             {live.map((item) => (
               <a className={`live-card ${item.tone}`} href={item.href} target="_blank" rel="noreferrer" key={item.name}>
-                <div className="live-brand"><b>{item.mark}</b><strong>{item.name}</strong></div>
+                <div className="live-brand">{item.name === "TikTok LIVE" ? <img className="tiktok-mark" src="/tiktok-logo.svg" alt="TikTok" /> : <b>{item.mark}</b>}<strong>{item.name}</strong></div>
                 <span className="handle">{item.handle}</span>
                 <span className="live-action">{item.action} <i>›</i></span>
               </a>

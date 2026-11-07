@@ -59,7 +59,7 @@ export default function Home() {
           <div className="social-grid">
             {socials.map(([name, handle, href, mark]) => (
               <a href={href} target="_blank" rel="noreferrer" className="social-card" key={name}>
-                {name === "Instagram" ? <img className="social-instagram-logo" src="/instagram-logo.webp" alt="Instagram" /> : <b>{mark}</b>}<span><strong>{name}</strong><small>{handle}</small></span>
+                {name === "Instagram" ? <img className="social-instagram-logo" src="/instagram-logo.webp" alt="Instagram" /> : name === "X (Twitter)" ? <img className="social-x-logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAQ7ElEQVR42u1ce2yURfc+M+9t24XSglAQ+LiIFCpyiSBKa7DIrYYAAREklYQiYEQIipcgokYlGEAxQAkoGkFBgorUGKoCEZSCQLmJSFUuEUqF0GIp3X1vM3N+f/w6b3bZth/Ctl0+d5L9p+nuvnuemWeeM+c5Q1RVRYiPRhs0HoI4AHEA4iMOQByA+IgDEAcgPuIAxAGIjzgAcQDiIw5AHID4iAMQByA+6n+o0f5AQshNvR8xNsoT1/6O+nquqAIghLhpACiljQ4CpRQ45xG/TVGU6AMdzYqYz+dD27bxZlaC4zhEVVVCCGkUICil4DgO6LouQoOfkJBATNMk9bECEABu6oMVRQHbtiEjI4OtXr2aBAIB8k9nixACdF2HAwcOiIkTJyqappGGBkBVVbAsC55//nk2ffp0Yts2ICI0a9YM3nrrLZ6Xl6cZhhGxOm72S4WqqnizL13XkVIq8vPzGd7kmDlzpgsA6PP5MBrPdj0vn8+HAICPPfaYi4gCEVEIgYiIW7duZYZhCE3TUNO0qH4vUVWVR0MNUUqBMQYpKSn8yJEjkJqaqjDGgNL//2jDMOp8v5xtlFJwXVf069cPi4uLFV3Xozvj6pj5mZmZbPv27S" alt="X" /> : <b>{mark}</b>}<span><strong>{name}</strong><small>{handle}</small></span>
               </a>
             ))}
           </div>

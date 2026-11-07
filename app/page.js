@@ -1,7 +1,7 @@
 const live = [
   { name: "TikTok", handle: "@quetraonline", action: "Yayına Katıl", href: "https://www.tiktok.com/@quetraonline", tone: "pink", mark: "♪" },
   { name: "YouTube", handle: "/quetraonline", action: "Kanalı Ziyaret Et", href: "https://www.youtube.com/@quetraonline", tone: "red", mark: "▶" },
-  { name: "KICK", handle: "/quetraonline", action: "Canlı Yayını İzle", href: "https://kick.com/quetraonline", tone: "green", mark: "K" },
+  { name: "Kick", handle: "/quetraonline", action: "Canlı Yayını İzle", href: "https://kick.com/quetraonline", tone: "green", mark: "K" },
   { name: "Twitch", handle: "/quetraonline", action: "Canlı Yayını İzle", href: "https://www.twitch.tv/quetraonline", tone: "purple", mark: "▣" },
 ];
 
@@ -46,7 +46,7 @@ export default function Home() {
           <div className="live-grid">
             {live.map((item) => (
               <a className={`live-card ${item.tone}`} href={item.href} target="_blank" rel="noreferrer" key={item.name}>
-                <div className="live-brand">{item.name === "TikTok" ? <img className="platform-mark tiktok-mark" src="/tiktok-logo.svg" alt="TikTok" /> : item.name === "YouTube" ? <img className="platform-mark" src="/youtube-logo.svg" alt="YouTube" /> : <b>{item.mark}</b>}<strong>{item.name}</strong></div>
+                <div className="live-brand">{item.name === "TikTok" ? <img className="platform-mark tiktok-mark" src="/tiktok-logo.svg" alt="TikTok" /> : item.name === "YouTube" ? <img className="platform-mark" src="/youtube-logo.svg" alt="YouTube" /> : item.name === "Kick" ? <img className="platform-mark" src="/kick-logo.svg" alt="Kick" /> : item.name === "Twitch" ? <img className="platform-mark" src="/twitch-logo.svg" alt="Twitch" /> : <b>{item.mark}</b>}<strong>{item.name}</strong></div>
                 <span className="handle">{item.handle}</span>
                 <span className="live-action">{item.action} <i>›</i></span>
               </a>

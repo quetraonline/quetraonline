@@ -71,8 +71,8 @@ export default function Home() {
             <img className="klasgame-logo" src="/klasgame-logo.svg" alt="KLASGAME" />
           </a>
           <a className="support-card byno" href="https://www.bynogame.com/" target="_blank" rel="noreferrer">
-            <div><h3>◒ ByNoGame</h3><small>Destek Olmak İçin</small><p>ByNoGame üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>
-            <span className="treasure">♛</span>
+            <div><img className="bynogame-wordmark" src="/bynogame-mark.svg" alt="ByNoGame" /><small>Destek Olmak İçin</small><p>ByNoGame üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>
+            <img className="bynogame-mascot" src="/bynogame-mascot.svg" alt="ByNoGame maskot" />
           </a>
         </section>
 

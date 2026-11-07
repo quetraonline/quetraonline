@@ -18,7 +18,9 @@ export default function Home() {
   return (
     <main className="quetra-site">
       <header className="site-header">
-        <a className="wordmark" href="#home">Quetra<span>Online</span></a>
+        <a className="wordmark" href="#home" aria-label="QuetraOnline ana sayfa">
+          <img src="/quetra-logo.svg" alt="QuetraOnline" />
+        </a>
         <nav aria-label="Ana menü">
           <a className="active" href="#home">⌂ <span>Ana Sayfa</span></a>
           <a href="#live">▣ <span>Canlı Yayınlar</span></a>
@@ -32,8 +34,7 @@ export default function Home() {
       <section className="hero-banner" id="home">
         <div className="hero-sky" />
         <div className="hero-copy">
-          <div className="crown">♛</div>
-          <h1>QuetraOnline</h1>
+          <img className="hero-logo" src="/quetra-logo.svg" alt="QuetraOnline" />
           <p>NOWA ONLINE WORLD</p>
           <span className="ornament">✦ ━━━━━━━━━━━━━━━━━ ✦</span>
         </div>

@@ -2,7 +2,7 @@
 :root{--bg:#0c0e12;--surface:#13161c;--surface2:#191d24;--line:#292f38;--gold:#c9a86a;--gold-soft:#e0c58f;--muted:#929aa6;--text:#eef0f3}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif}a{color:inherit;text-decoration:none}
 .quetra-site{min-height:100vh;background:radial-gradient(ellipse at 50% -18%,#27231b 0,transparent 47%),var(--bg);padding-bottom:34px;overflow:hidden}
-.site-header{height:76px;padding:0 max(calc((100vw - 1160px)/2),28px);display:flex;align-items:center;justify-content:space-between;gap:24px;background:#0d0f13eF;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;backdrop-filter:blur(16px)}
+.site-header{height:76px;padding:0 max(calc((100vw - 1160px)/2),28px);display:flex;align-items:center;justify-content:center;gap:24px;background:#0d0f13eF;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;backdrop-filter:blur(16px)}
 .wordmark{font:800 21px Manrope,sans-serif;letter-spacing:-1px;color:#f2f3f5;white-space:nowrap}.wordmark span{color:var(--gold);margin-left:5px}
 .site-header nav{display:flex;align-items:center;gap:5px}.site-header nav a{font-size:12px;font-weight:600;padding:11px 12px;color:#aeb5bf;border-radius:7px;white-space:nowrap;transition:.18s}.site-header nav a span{margin-left:6px}.site-header nav a:hover,.site-header nav a.active{background:#22262d;color:var(--gold-soft)}
 .hero-banner{height:250px;position:relative;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid var(--line);background:linear-gradient(115deg,#14171d,#20232a 50%,#17191e)}

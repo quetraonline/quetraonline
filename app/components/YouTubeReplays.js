@@ -1,26 +1,31 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export default function YouTubeReplays() {
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    let active = true;
-    fetch("/api/youtube-streams")
-      .then((response) => response.json())
-      .then((data) => {
-        if (active) setVideos(Array.isArray(data.videos) ? data.videos.slice(0, 5) : []);
-      })
-      .catch(() => {
-        if (active) setVideos([]);
-      })
-      .finally(() => {
-        if (active) setLoading(false);
-      });
-    return () => { active = false; };
+  const loadVideos = useCallback(async (showLoader = false) => {
+    if (showLoader) setLoading(true);
+    try {
+      const response = await fetch("/api/youtube-streams", { cache: "no-store" });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "Yayınlar alınamadı");
+      setVideos(Array.isArray(data.videos) ? data.videos.slice(0, 5) : []);
+    } catch (error) {
+      console.error("YouTube yayın listesi yüklenemedi:", error);
+      setVideos([]);
+    } finally {
+      setLoading(false);
+    }
   }, []);
+
+  useEffect(() => {
+    loadVideos(true);
+    const interval = window.setInterval(() => loadVideos(false), 5 * 60 * 1000);
+    return () => window.clearInterval(interval);
+  }, [loadVideos]);
 
   return (
     <section className="youtube-replays" id="youtube-replays">

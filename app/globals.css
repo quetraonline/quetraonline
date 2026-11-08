@@ -76,6 +76,6 @@
 
 
 /* YouTube archive heading logo */
-.youtube-replays-title{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.youtube-section-logo{display:block;width:54px;height:auto;max-height:42px;object-fit:contain;flex:0 0 auto}
-@media(max-width:520px){.youtube-section-logo{width:46px;max-height:36px}.youtube-replays-title{gap:9px}}
+.youtube-replays-title{display:flex;align-items:center;gap:8px;flex-wrap:nowrap}
+.youtube-section-logo{display:block;width:22px;height:22px;object-fit:contain;flex:0 0 22px}
+@media(max-width:520px){.youtube-section-logo{width:22px;height:22px;flex-basis:22px}.youtube-replays-title{gap:7px}}

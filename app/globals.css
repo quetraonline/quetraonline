@@ -99,3 +99,8 @@
 .contact-status{margin:0;color:var(--gold-soft);font-size:12px;line-height:1.6}
 .contact-honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;opacity:0!important}
 @media(max-width:520px){.contact-shell{padding:32px 0 48px}.contact-panel{padding:22px 17px}.contact-form button{width:100%}}
+
+
+/* Oyuneks donation card logo */
+.support-card.oyuneks .oyuneks-logo{display:block;width:clamp(58px,18%,104px);height:76px;object-fit:contain;flex:0 0 auto;align-self:center;opacity:.96;filter:drop-shadow(0 2px 5px rgba(0,0,0,.12))}
+@media(max-width:520px){.support-card.oyuneks .oyuneks-logo{width:52px;height:68px;flex-basis:52px}}

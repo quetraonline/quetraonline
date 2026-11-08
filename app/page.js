@@ -71,6 +71,9 @@ export default function Home() {
             <div><h3>KLAS<span>GAME</span></h3><small>Destek Olmak İçin</small><p>KlasGame üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>
             <img className="klasgame-logo" src="/klasgame-logo.svg?v=20261108" alt="KLASGAME" />
           </a>
+          <a className="support-card oyuneks" href="https://oyuneks.com/yayinci/quetraonline" target="_blank" rel="noreferrer">
+            <div><h3>OYUN<span>EKS</span></h3><small>Destek Olmak İçin</small><p>Oyuneks üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>
+          </a>
           <a className="support-card byno" href="https://www.bynogame.com/" target="_blank" rel="noreferrer">
             <div><h3>ByNo<span>Game</span></h3><small>Destek Olmak İçin</small><p>ByNoGame üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>
             <img className="bynogame-mascot" src="/bynogame-logo.svg?v=20261108" alt="ByNoGame maskotu" />

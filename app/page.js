@@ -83,10 +83,11 @@ export default function Home() {
           <a href="https://www.nowaonlineworld.com/chaos-zone-user-ranking" target="_blank" rel="noreferrer">🏆 <span>Chaos Zone<small>Sıralaması</small></span> ›</a>
         </section>
 
-        <footer className="site-footer" id="contact">
+        <section className="youtube-replays" id="youtube-replays">\n          <div className="youtube-replays-heading">\n            <div><span className="youtube-kicker">QUETRAONLINE YOUTUBE</span><h2 className="gold-heading"><span>▶</span> SON CANLI YAYINLARIMIZ</h2><p>Son yayın kayıtlarını buradan izleyebilir, tüm canlı yayın arşivine ulaşabilirsiniz.</p></div>\n            <a className="youtube-all-link" href="https://www.youtube.com/@quetraonline/streams" target="_blank" rel="noreferrer">Tüm Yayınları Gör <span>↗</span></a>\n          </div>\n          <div className="youtube-replays-player">\n            <iframe src="https://www.youtube.com/embed?listType=user_uploads&list=quetraonline" title="QuetraOnline son YouTube yayınları" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen />\n          </div>\n        </section>\n\n        <footer className="site-footer" id="contact">
           <a href="mailto:quetraonline@gmail.com"><span>✉</span><strong>Bana Mail Gönder</strong><small>quetraonline@gmail.com</small></a>
         </footer>
       </div>
     </main>
   );
 }
+

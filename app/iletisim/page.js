@@ -22,7 +22,7 @@ export default function ContactPage() {
         <section className="contact-panel">
           <p className="contact-eyebrow">QUETRAONLINE</p>
           <h1>Benimle İletişime Geçin</h1>
-          <p className="contact-intro">Sorularınız, önerileriniz veya iş birliği talepleriniz için formu doldurun. Mesajınız doğrudan e-posta adresimize iletilecektir.</p>
+          <p className="contact-intro">Sorularınız, önerileriniz veya iş birliği talepleriniz için formu doldurun. Mesajınız doğrudan e-posta adresime iletilecektir.</p>
           <ContactForm />
         </section>
       </div>

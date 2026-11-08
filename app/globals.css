@@ -32,7 +32,7 @@
 
 .live-brand .platform-mark{display:block;width:22px;height:22px;object-fit:contain;flex:0 0 22px}.live-brand .tiktok-mark{filter:drop-shadow(1px 0 0 #25f4ee) drop-shadow(-1px 0 0 #fe2c55)}
 
-.support-card.klas .klasgame-logo{display:block;width:clamp(112px,24%,170px);height:auto;max-height:58px;object-fit:contain;flex:0 0 auto;align-self:center;margin-right:-14px;filter:drop-shadow(0 2px 5px rgba(0,0,0,.12))}
+.support-card.klas .klasgame-logo{display:block;width:clamp(112px,24%,170px);height:auto;max-height:58px;object-fit:contain;flex:0 0 auto;align-self:center;margin-right:-18px;filter:drop-shadow(0 2px 5px rgba(0,0,0,.12))}
 @media(max-width:520px){.support-card.klas .klasgame-logo{width:100px;max-height:42px}}
 
 

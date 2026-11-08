@@ -110,3 +110,44 @@
 .youtube-title-mobile,.youtube-copy-mobile{display:none}
 @media(max-width:520px){.youtube-title-desktop,.youtube-copy-desktop{display:none}.youtube-title-mobile,.youtube-copy-mobile{display:inline}.youtube-replays-grid .youtube-replay-card:nth-child(n+5){display:none}}
 
+
+
+/* Header logo glass-and-gold backdrop */
+.site-header .wordmark{
+  position:relative;
+  isolation:isolate;
+  height:56px;
+  padding:6px 13px;
+  margin-left:12px;
+  border:1px solid rgba(201,168,106,.34);
+  border-radius:13px;
+  background:
+    radial-gradient(ellipse at 50% 0%,rgba(224,197,143,.20),transparent 72%),
+    linear-gradient(145deg,rgba(49,43,32,.94),rgba(20,22,27,.96) 58%,rgba(35,30,23,.94));
+  box-shadow:
+    0 5px 18px rgba(0,0,0,.28),
+    inset 0 1px 0 rgba(255,255,255,.10),
+    inset 0 -1px 0 rgba(201,168,106,.10);
+  transition:border-color .2s,box-shadow .2s,background .2s;
+}
+.site-header .wordmark:before{
+  content:"";
+  position:absolute;
+  inset:3px;
+  border:1px solid rgba(224,197,143,.12);
+  border-radius:9px;
+  pointer-events:none;
+  z-index:-1;
+}
+.site-header .wordmark:hover{
+  border-color:rgba(224,197,143,.62);
+  box-shadow:0 7px 22px rgba(0,0,0,.34),0 0 18px rgba(201,168,106,.12),inset 0 1px 0 rgba(255,255,255,.12);
+}
+.site-header .wordmark img{
+  position:relative;
+  z-index:1;
+}
+@media(max-width:520px){
+  .site-header .wordmark{height:46px;padding:4px 9px;border-radius:11px}
+  .site-header .wordmark:before{inset:2px;border-radius:8px}
+}

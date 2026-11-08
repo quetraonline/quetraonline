@@ -58,7 +58,9 @@ function fromRenderers(renderers) {
       || [];
     const thumbnail = thumbnails[thumbnails.length - 1]?.url
       || "https://i.ytimg.com/vi/" + video.videoId + "/hqdefault.jpg";
-    const published = textOf(video.publishedTimeText);\n    const views = textOf(video.shortViewCountText) || textOf(video.viewCountText);\n    const meta = [published, views ? "◉ " + views : ""].filter(Boolean).join(" · ");
+    const published = textOf(video.publishedTimeText);
+    const views = textOf(video.shortViewCountText) || textOf(video.viewCountText);
+    const meta = [published, views ? "◉ " + views : ""].filter(Boolean).join(" · ");
     unique.set(video.videoId, {
       id: video.videoId,
       title: title || "QuetraOnline canlı yayın kaydı",

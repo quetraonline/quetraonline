@@ -43,7 +43,7 @@ export default function Home() {
 
       <div className="content-shell">
         <section className="live-section" id="live">
-          <h2 className="gold-heading"><span>◉</span> CANLI YAYINLAR</h2>
+          <h2 className="gold-heading">🎥 CANLI YAYIN HESAPLARIM</h2>
           <div className="live-grid">
             {live.map((item) => (
               <a className={`live-card ${item.tone}`} href={item.href} target="_blank" rel="noreferrer" key={item.name}>
@@ -56,7 +56,7 @@ export default function Home() {
         </section>
 
         <section className="social-section" id="social">
-          <h2 className="gold-heading"><span>✧</span> SOSYAL MEDYA HESAPLARIMIZ <span>✧</span></h2>
+          <h2 className="gold-heading">🌎 SOSYAL MEDYA HESAPLARIM</h2>
           <div className="social-grid">
             {socials.map(([name, handle, href, mark]) => (
               <a href={href} target="_blank" rel="noreferrer" className="social-card" key={name}>

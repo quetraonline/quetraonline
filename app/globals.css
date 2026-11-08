@@ -78,4 +78,4 @@
 /* YouTube archive heading logo */
 .youtube-replays-title{display:flex;align-items:center;gap:7px;flex-wrap:nowrap}
 .youtube-section-logo{display:block;width:16px;height:16px;object-fit:contain;flex:0 0 16px}
-@media(max-width:520px){.youtube-section-logo{width:16px;height:16px;flex-basis:16px}.youtube-replays-title{gap:6px}}
+@media(max-width:520px){.youtube-section-logo{width:16px;height:16px;flex-basis:16px}.youtube-replays-title{gap:6px}.youtube-play-icon{display:none}}

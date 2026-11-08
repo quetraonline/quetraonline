@@ -26,6 +26,11 @@ export default function ContactPage() {
           <ContactForm />
         </section>
       </div>
+      <footer className="site-footer" id="contact">
+        <img className="footer-logo" src="/quetra-logo.svg?v=20261108" alt="QuetraOnline" />
+        <p>© 2026 QuetraOnline.com - Tüm hakları saklıdır.</p>
+        <p>Sorun ve şikayetleriniz için <a href="/iletisim">İletişim</a> sayfasından bana ulaşın.</p>
+      </footer>
     </main>
   );
 }

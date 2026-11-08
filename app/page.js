@@ -59,7 +59,7 @@ export default function Home() {
           <div className="social-grid">
             {socials.map(([name, handle, href, mark]) => (
               <a href={href} target="_blank" rel="noreferrer" className="social-card" key={name}>
-                {name === "Instagram" ? <img className="social-instagram-logo" src="/instagram-logo.webp" alt="Instagram" /> : name === "X (Twitter)" ? <img className="social-x-logo" src="/x-logo.svg" alt="X" /> : name === "Facebook" ? <img className="social-x-logo" src="/facebook-logo.svg" alt="Facebook" /> : name === "Threads" ? <img className="social-x-logo" src="/threads-logo.svg" alt="Threads" /> : <b>{mark}</b>}<span><strong>{name}</strong><small>{handle}</small></span>
+                {name === "Instagram" ? <img className="social-instagram-logo" src="/instagram-logo.webp" alt="Instagram" /> : name === "X (Twitter)" ? <img className="social-x-logo" src="/x-logo.svg" alt="X" /> : name === "Facebook" ? <img className="social-x-logo" src="/facebook-logo.svg" alt="Facebook" /> : name === "Threads" ? <img className="social-x-logo" src="/threads-logo.svg" alt="Threads" /> : name === "Telegram" ? <img className="social-x-logo" src="/telegram-logo.svg" alt="Telegram" /> : name === "Discord" ? <img className="social-x-logo" src="/discord-logo.svg" alt="Discord" /> : <b>{mark}</b>}<span><strong>{name}</strong><small>{handle}</small></span>
               </a>
             ))}
           </div>

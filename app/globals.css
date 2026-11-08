@@ -73,3 +73,9 @@
 .youtube-replays-status a{color:var(--gold-soft);text-decoration:underline}
 @media(max-width:850px){.youtube-replays-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:520px){.youtube-replays{padding:14px}.youtube-replays-heading{align-items:flex-start;flex-direction:column}.youtube-all-link{padding:9px 11px}.youtube-replays-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.youtube-replay-card strong{font-size:10px}}
+
+
+/* YouTube archive heading logo */
+.youtube-replays-title{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.youtube-section-logo{display:block;width:54px;height:auto;max-height:42px;object-fit:contain;flex:0 0 auto}
+@media(max-width:520px){.youtube-section-logo{width:46px;max-height:36px}.youtube-replays-title{gap:9px}}

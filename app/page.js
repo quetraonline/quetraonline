@@ -19,7 +19,7 @@ export default function Home() {
     <main className="quetra-site">
       <header className="site-header">
         <a className="wordmark" href="#home" aria-label="QuetraOnline ana sayfa">
-          <img src="/quetra-logo.svg" alt="QuetraOnline" />
+          <img src="/quetra-logo.svg?v=20261108" alt="QuetraOnline" />
         </a>
         <nav aria-label="Ana menü">
           <a className="active" href="#home">⌂ <span>Ana Sayfa</span></a>
@@ -34,7 +34,7 @@ export default function Home() {
       <section className="hero-banner" id="home">
         <div className="hero-sky" />
         <div className="hero-copy">
-          <img className="hero-logo" src="/quetra-logo.svg" alt="QuetraOnline" />
+          <img className="hero-logo" src="/quetra-logo.svg?v=20261108" alt="QuetraOnline" />
           <p>NOWA ONLINE WORLD</p>
           <span className="ornament">✦ ━━━━━━━━━━━━━━━━━ ✦</span>
         </div>
@@ -46,7 +46,7 @@ export default function Home() {
           <div className="live-grid">
             {live.map((item) => (
               <a className={`live-card ${item.tone}`} href={item.href} target="_blank" rel="noreferrer" key={item.name}>
-                <div className="live-brand">{item.name === "TikTok" ? <img className="platform-mark tiktok-mark" src="/tiktok-logo.svg" alt="TikTok" /> : item.name === "YouTube" ? <img className="platform-mark" src="/youtube-logo.svg" alt="YouTube" /> : item.name === "Kick" ? <img className="platform-mark" src="/kick-logo.svg" alt="Kick" /> : item.name === "Twitch" ? <img className="platform-mark" src="/twitch-logo.svg" alt="Twitch" /> : <b>{item.mark}</b>}<strong>{item.name}</strong></div>
+                <div className="live-brand">{item.name === "TikTok" ? <img className="platform-mark tiktok-mark" src="/tiktok-logo.svg?v=20261108" alt="TikTok" /> : item.name === "YouTube" ? <img className="platform-mark" src="/youtube-logo.svg?v=20261108" alt="YouTube" /> : item.name === "Kick" ? <img className="platform-mark" src="/kick-logo.svg?v=20261108" alt="Kick" /> : item.name === "Twitch" ? <img className="platform-mark" src="/twitch-logo.svg?v=20261108" alt="Twitch" /> : <b>{item.mark}</b>}<strong>{item.name}</strong></div>
                 <span className="handle">{item.handle}</span>
                 <span className="live-action">{item.action} <i>›</i></span>
               </a>
@@ -59,7 +59,7 @@ export default function Home() {
           <div className="social-grid">
             {socials.map(([name, handle, href, mark]) => (
               <a href={href} target="_blank" rel="noreferrer" className="social-card" key={name}>
-                {name === "Instagram" ? <img className="social-instagram-logo" src="/instagram-logo.webp" alt="Instagram" /> : name === "X (Twitter)" ? <img className="social-x-logo" src="/x-logo.svg" alt="X" /> : name === "Facebook" ? <img className="social-x-logo" src="/facebook-logo.svg" alt="Facebook" /> : name === "Threads" ? <img className="social-x-logo" src="/threads-logo.svg" alt="Threads" /> : name === "Telegram" ? <img className="social-x-logo" src="/telegram-logo.svg?v=2" alt="Telegram" /> : name === "Discord" ? <img className="social-x-logo" src="/discord-logo.png" alt="Discord" /> : <b>{mark}</b>}<span><strong>{name}</strong><small>{handle}</small></span>
+                {name === "Instagram" ? <img className="social-instagram-logo" src="/instagram-logo.webp?v=20261108" alt="Instagram" /> : name === "X (Twitter)" ? <img className="social-x-logo" src="/x-logo.svg?v=20261108" alt="X" /> : name === "Facebook" ? <img className="social-x-logo" src="/facebook-logo.svg?v=20261108" alt="Facebook" /> : name === "Threads" ? <img className="social-x-logo" src="/threads-logo.svg?v=20261108" alt="Threads" /> : name === "Telegram" ? <img className="social-x-logo" src="/telegram-logo.svg?v=20261108" alt="Telegram" /> : name === "Discord" ? <img className="social-x-logo" src="/discord-logo.svg?v=20261108" alt="Discord" /> : <b>{mark}</b>}<span><strong>{name}</strong><small>{handle}</small></span>
               </a>
             ))}
           </div>
@@ -68,16 +68,16 @@ export default function Home() {
         <section className="support-grid" id="support">
           <a className="support-card klas" href="https://www.klasgame.com/yayincilar/quetraonline" target="_blank" rel="noreferrer">
             <div><h3>KLAS<span>GAME</span></h3><small>Destek Olmak İçin</small><p>KlasGame üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>
-            <img className="klasgame-logo" src="/klasgame-logo.svg" alt="KLASGAME" />
+            <img className="klasgame-logo" src="/klasgame-logo.svg?v=20261108" alt="KLASGAME" />
           </a>
           <a className="support-card byno" href="https://www.bynogame.com/" target="_blank" rel="noreferrer">
             <div><h3>ByNo<span>Game</span></h3><small>Destek Olmak İçin</small><p>ByNoGame üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>
-            <img className="bynogame-mascot" src="/bynogame-mascot.png" alt="ByNoGame maskotu" />
+            <img className="bynogame-mascot" src="/bynogame-mascot.png?v=20261108" alt="ByNoGame maskotu" />
           </a>
         </section>
 
         <section className="game-links">
-          <div className="game-brand"><img src="/nowa-online-world-logo.png" alt="NOWA Online World" /></div>
+          <div className="game-brand"><img src="/nowa-online-world-logo.png?v=20261108" alt="NOWA Online World" /></div>
           <h2 className="gold-heading">OYUN BAĞLANTILARI</h2>
           <a href="https://www.nowaonlineworld.com/" target="_blank" rel="noreferrer">♟ <span>Nowa Online World<small>Resmi Site</small></span> ›</a>
           <a href="https://www.nowaonlineworld.com/chaos-zone-user-ranking" target="_blank" rel="noreferrer">🏆 <span>Chaos Zone<small>Sıralaması</small></span> ›</a>

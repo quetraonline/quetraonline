@@ -109,3 +109,5 @@
 /* Mobile-specific YouTube archive: show four newest cards */
 .youtube-title-mobile,.youtube-copy-mobile{display:none}
 @media(max-width:520px){.youtube-title-desktop,.youtube-copy-desktop{display:none}.youtube-title-mobile,.youtube-copy-mobile{display:inline}.youtube-replays-grid .youtube-replay-card:nth-child(n+5){display:none}}
+
+@media(max-width:520px){.support-card.klas picture{display:contents}}

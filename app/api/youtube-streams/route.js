@@ -31,8 +31,8 @@ export async function GET() {
     });
     if (!response.ok) throw new Error("YouTube sayfası alınamadı");
     const html = await response.text();
-    const match = html.match(/var ytInitialData = (\\{.*?\\});<\\/script>/s)
-      || html.match(/ytInitialData\\s*=\\s*(\\{.*?\\})\\s*;\\s*<\\/script>/s);
+    const match = html.match(/var ytInitialData = (\{.*?\\});<\/script>/s)
+      || html.match(/ytInitialData\s*=\s*(\{.*?\\})\s*;\s*<\/script>/s);
     if (!match) throw new Error("YouTube yayın listesi bulunamadı");
 
     const initialData = JSON.parse(match[1]);

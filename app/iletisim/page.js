@@ -1,6 +1,6 @@
 import ContactForm from "../components/ContactForm";
 
-export const metadata = { title: "İletişim | QuetraOnline", description: "QuetraOnline ile iletişime geçin." };
+export const metadata = { title: "İletişim | QuetraOnline - Resmi Web Sitesi", description: "QuetraOnline ile iletişime geçin." };
 
 export default function ContactPage() {
   return (

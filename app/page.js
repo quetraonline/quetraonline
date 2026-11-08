@@ -80,7 +80,7 @@ export default function Home() {
         </section>
 
         <section className="game-links">
-          <div className="game-brand"><img src="/nowa-online-world-logo.png?v=20261108" alt="NOWA Online World" /></div>
+          <div className="game-brand"><img src="/c12449a6-73d4-4bcd-8234-dd18147dc63c.png" alt="NOWA Online World" /></div>
           <h2 className="gold-heading">OYUN BAĞLANTILARI</h2>
           <a href="https://www.nowaonlineworld.com/" target="_blank" rel="noreferrer">♟ <span>Nowa Online World<small>Resmi Site</small></span> ›</a>
           <a href="https://www.nowaonlineworld.com/chaos-zone-user-ranking" target="_blank" rel="noreferrer">🏆 <span>Chaos Zone<small>Sıralaması</small></span> ›</a>

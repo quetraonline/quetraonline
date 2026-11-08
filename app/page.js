@@ -58,7 +58,7 @@ export default function Home() {
           </div>
         </section>
 
-        <h2 className="gold-heading support-heading"><a href="https://www.klasgame.com/yayincilar/quetraonline" target="_blank" rel="noreferrer" aria-label="KlasGame destek sayfası">💰</a> BANA DESTEK OLMAK İSTERSENİZ;</h2>
+        <h2 className="gold-heading support-heading">💰 BANA DESTEK OLMAK İSTERSENİZ;</h2>
         <section className="support-grid" id="support">
           <a className="support-card klas" href="https://www.klasgame.com/yayincilar/quetraonline" target="_blank" rel="noreferrer">
             <div><h3>KLAS<span>GAME</span></h3><small>Destek Olmak İçin</small><p>KlasGame üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>

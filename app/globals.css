@@ -111,3 +111,10 @@
 @media(max-width:520px){.youtube-title-desktop,.youtube-copy-desktop{display:none}.youtube-title-mobile,.youtube-copy-mobile{display:inline}.youtube-replays-grid .youtube-replay-card:nth-child(n+5){display:none}}
 
 
+
+
+/* Search-friendly homepage introduction */
+.seo-intro{margin:20px 0;padding:18px 20px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.seo-intro h1{margin:0 0 9px;color:var(--gold-soft);font-size:clamp(16px,2.5vw,20px);font-weight:800;line-height:1.35}
+.seo-intro p{margin:0;color:var(--muted);font-size:12px;line-height:1.8}
+@media(max-width:520px){.seo-intro{padding:15px}.seo-intro p{font-size:11px}}

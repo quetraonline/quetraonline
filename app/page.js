@@ -67,7 +67,7 @@ export default function Home() {
         <section className="support-grid" id="support">
           <a className="support-card klas" href="https://www.klasgame.com/yayincilar/quetraonline" target="_blank" rel="noreferrer">
             <div><h3>KLAS<span>GAME</span></h3><small>Destek Olmak İçin</small><p>KlasGame üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>
-            <img className="klasgame-logo" src="/klasgame-logo.svg?v=20261108" alt="KLASGAME" />
+            <picture><source media="(max-width: 520px)" srcSet="/klasgame-mobile-logo.svg?v=20261108" /><img className="klasgame-logo" src="/klasgame-logo.svg?v=20261108" alt="KLASGAME" /></picture>
           </a>
           <a className="support-card oyuneks" href="https://oyuneks.com/yayinci/quetraonline" target="_blank" rel="noreferrer">
             <div><h3>OYUN<span>EKS</span></h3><small>Destek Olmak İçin</small><p>Oyuneks üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>

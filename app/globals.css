@@ -22,7 +22,7 @@
 @media(max-width:520px){.site-header{padding:12px 14px}.site-header nav{display:grid;grid-template-columns:repeat(3,1fr);width:100%}.site-header nav a{text-align:center;padding:8px 4px;font-size:10px}.site-header nav a span{display:block;margin:4px 0 0}.hero-banner{height:190px}.hero-copy h1{font-size:38px;letter-spacing:-2px}.hero-copy p{font-size:10px;letter-spacing:3px}.content-shell{width:calc(100% - 24px)}.live-grid{gap:8px}.live-card{min-height:98px;padding:12px}.live-brand strong{font-size:14px}.social-grid{grid-template-columns:repeat(2,1fr);gap:8px}.support-grid{grid-template-columns:1fr;gap:9px}.support-card{min-height:110px;padding:14px 16px}.support-card h3{font-size:20px;letter-spacing:-.5px}.support-card p{font-size:11px;line-height:1.4}.support-card small{font-size:10px}.support-button{font-size:10px}.bynogame-mascot{width:46px;height:68px;flex-basis:46px}.game-links{grid-template-columns:1fr 1fr;padding:12px;gap:9px}.game-brand strong{font-size:24px}.game-links .gold-heading{font-size:10px}.game-links>a{min-height:52px}.site-footer>a{width:min(100%,300px)}}
 
 /* Quetra logo placements */
-.wordmark{display:flex;align-items:center;flex:0 0 auto;height:56px}
+.wordmark{display:flex;align-items:center;flex:0 0 auto;height:56px} .wordmark{margin-left:12px}
 .wordmark img{display:block;width:148px;height:auto;max-height:48px;object-fit:contain}
 .hero-copy{width:min(720px,88vw);display:flex;flex-direction:column;align-items:center}
 .hero-logo{display:block;width:min(560px,82vw);height:auto;max-height:172px;object-fit:contain;filter:drop-shadow(0 5px 14px #0007)}

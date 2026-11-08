@@ -22,9 +22,6 @@ export default function Home() {
       <header className="site-header">
         <nav aria-label="Ana menü">
           <a className="active" href="#home">⌂ <span>Ana Sayfa</span></a>
-          <a href="#live">▣ <span>Canlı Yayınlar</span></a>
-          <a href="#social">✥ <span>Sosyal Medya</span></a>
-          <a href="#support">♙ <span>Destek</span></a>
           <a href="/iletisim">✉ <span>İletişim</span></a>
         </nav>
       </header>

@@ -52,7 +52,6 @@ export default function YouTubeReplays() {
             <a className="youtube-replay-card" href={video.url} target="_blank" rel="noreferrer" key={video.id}>
               <div className="youtube-replay-thumb">
                 <img src={video.thumbnail} alt="" loading="lazy" />
-                <span className="youtube-play-icon">▶</span>
               </div>
               <strong>{video.title}</strong>
               {video.meta ? <small>{video.meta}</small> : null}

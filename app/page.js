@@ -89,7 +89,6 @@ export default function Home() {
         <YouTubeReplays />
 
         <footer className="site-footer" id="contact">
-          <a href="mailto:quetraonline@gmail.com"><span>✉</span><strong>Bana Mail Gönder</strong><small>quetraonline@gmail.com</small></a>
         </footer>
       </div>
     </main>

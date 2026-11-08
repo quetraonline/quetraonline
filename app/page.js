@@ -76,11 +76,6 @@ export default function Home() {
 
         <YouTubeReplays />
 
-        <section className="seo-intro" aria-labelledby="seo-intro-title">
-          <h1 id="seo-intro-title">QuetraOnline - Knight Online ve Nowa Online World</h1>
-          <p>QuetraOnline; Knight Online ve Nowa Online World oyuncuları için canlı yayınları, oyun içeriklerini, etkinlik ve topluluk bağlantılarını bir araya getirir. Quetra ve QuetraOnline yayınlarını takip edebilir, Nowa Online World bağlantılarına ulaşabilir ve Knight Online dünyasındaki yayın içeriklerini keşfedebilirsiniz.</p>
-        </section>
-
         <section className="game-links">
           <div className="game-brand"><img src="/c12449a6-73d4-4bcd-8234-dd18147dc63c.png" alt="NOWA Online World" /></div>
           <h2 className="gold-heading">OYUN BAĞLANTILARI</h2>

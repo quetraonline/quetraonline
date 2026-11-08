@@ -73,7 +73,7 @@ export default function Home() {
           </a>
           <a className="support-card byno" href="https://www.bynogame.com/" target="_blank" rel="noreferrer">
             <div><h3>ByNo<span>Game</span></h3><small>Destek Olmak İçin</small><p>ByNoGame üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>
-            <img className="bynogame-mascot" src="/bynogame-mascot.png?v=20261108" alt="ByNoGame maskotu" />
+            <img className="bynogame-mascot" src="/bynogame-logo.svg?v=20261108" alt="ByNoGame maskotu" />
           </a>
         </section>
 

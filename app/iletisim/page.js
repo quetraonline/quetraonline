@@ -11,6 +11,12 @@ export default function ContactPage() {
           <a className="active" href="/iletisim">✉ <span>İletişim</span></a>
         </nav>
       </header>
+      <section className="hero-banner" id="home">
+        <div className="hero-sky" />
+        <div className="hero-copy">
+          <img className="hero-logo" src="/quetra-logo.svg?v=20261108" alt="QuetraOnline" />
+        </div>
+      </section>
       <div className="contact-shell">
         <a className="contact-back" href="/">← Ana Sayfaya Dön</a>
         <section className="contact-panel">

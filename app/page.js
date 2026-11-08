@@ -83,6 +83,9 @@ export default function Home() {
         </section>
 
         <footer className="site-footer" id="contact">
+          <img className="footer-logo" src="/quetra-logo.svg?v=20261108" alt="QuetraOnline" />
+          <p>© 2026 QuetraOnline. Tüm hakları saklıdır.</p>
+          <p>Sorun ve şikayetleriniz için <a href="/iletisim">İletişim</a> sayfasından bana ulaşın.</p>
         </footer>
       </div>
     </main>

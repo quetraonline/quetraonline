@@ -32,7 +32,10 @@ export default function YouTubeReplays() {
       <div className="youtube-replays-heading">
         <div>
           <span className="youtube-kicker">QUETRAONLINE YOUTUBE</span>
-          <h2 className="gold-heading"><span>▶</span> SON CANLI YAYINLARIMIZ</h2>
+          <h2 className="gold-heading youtube-replays-title">
+            <img className="youtube-section-logo" src="/youtube-logo.svg?v=20261108" alt="YouTube" />
+            <span>YOUTUBE SON 5 CANLI YAYINIM</span>
+          </h2>
           <p>YouTube kanalındaki en yeni 5 canlı yayın kaydı.</p>
         </div>
         <a className="youtube-all-link" href="https://www.youtube.com/@quetraonline/streams" target="_blank" rel="noreferrer">

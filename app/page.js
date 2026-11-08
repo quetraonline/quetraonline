@@ -11,7 +11,7 @@ const socials = [
   ["Facebook", "/quetraonline", "https://www.facebook.com/quetraonline", "f"],
   ["Threads", "/quetraonline", "https://www.threads.com/@quetraonline", "＠"],
   ["Telegram", "/quetraonline", "https://t.me/quetraonline", "➤"],
-  ["Discord", "QuetraOnline", "https://discord.com", "◉"],
+  ["Discord", "/quetraonline", "https://discord.com", "◉"],
 ];
 
 export default function Home() {

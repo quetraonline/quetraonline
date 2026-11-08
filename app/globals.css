@@ -78,4 +78,4 @@
 /* YouTube archive heading logo */
 .youtube-replays-title{display:flex;align-items:center;gap:7px;flex-wrap:nowrap}
 .youtube-section-logo{display:block;width:16px;height:16px;object-fit:contain;flex:0 0 16px}
-@media(max-width:520px){.youtube-section-logo{width:16px;height:16px;flex-basis:16px}.youtube-replays-title{gap:6px}.youtube-play-icon{display:grid;font-size:0;padding:0}.youtube-play-icon::before{content:"";width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:9px solid #fff;margin-left:2px}}
+@media(max-width:520px){.youtube-section-logo{width:16px;height:16px;flex-basis:16px}.youtube-replays-title{gap:6px}.youtube-play-icon{display:grid;font-size:0;padding:0}.youtube-play-icon::before{content:"";display:block;width:0;height:0;border-top:6px solid transparent;border-bottom:6px solid transparent;border-left:9px solid #fff;margin:0;position:absolute;left:50%;top:50%;transform:translate(-40%,-50%)}}

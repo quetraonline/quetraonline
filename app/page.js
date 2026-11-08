@@ -36,8 +36,6 @@ export default function Home() {
         <div className="hero-sky" />
         <div className="hero-copy">
           <img className="hero-logo" src="/quetra-logo.svg?v=20261108" alt="QuetraOnline" />
-          <p>NOWA ONLINE WORLD</p>
-          <span className="ornament">✦ ━━━━━━━━━━━━━━━━━ ✦</span>
         </div>
       </section>
 

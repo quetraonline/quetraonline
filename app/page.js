@@ -20,9 +20,6 @@ export default function Home() {
   return (
     <main className="quetra-site">
       <header className="site-header">
-        <a className="wordmark" href="#home" aria-label="QuetraOnline ana sayfa">
-          <img src="/quetra-logo.svg?v=20261108" alt="QuetraOnline" />
-        </a>
         <nav aria-label="Ana menü">
           <a className="active" href="#home">⌂ <span>Ana Sayfa</span></a>
           <a href="#live">▣ <span>Canlı Yayınlar</span></a>

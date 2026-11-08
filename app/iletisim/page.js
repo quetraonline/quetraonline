@@ -21,7 +21,7 @@ export default function ContactPage() {
         <a className="contact-back" href="/">← Ana Sayfaya Dön</a>
         <section className="contact-panel">
           <p className="contact-eyebrow">QUETRAONLINE</p>
-          <h1>Bizimle İletişime Geçin</h1>
+          <h1>Benimle İletişime Geçin</h1>
           <p className="contact-intro">Sorularınız, önerileriniz veya iş birliği talepleriniz için formu doldurun. Mesajınız doğrudan e-posta adresimize iletilecektir.</p>
           <ContactForm />
         </section>

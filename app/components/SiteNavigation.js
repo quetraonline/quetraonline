@@ -17,7 +17,7 @@ export default function SiteNavigation({ active = "home" }) {
         <span className="hamburger-icon" aria-hidden="true">
           <i /><i /><i />
         </span>
-        <span>KLAN MENÜSÜ</span>
+        <span>MENÜ</span>
       </button>
       <nav id="site-navigation-links" className={open ? "is-open" : ""} aria-label="Ana menü">
         <a className={active === "home" ? "active" : ""} href="/" onClick={() => setOpen(false)}>⌂ <span>Ana Sayfa</span></a>

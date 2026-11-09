@@ -2,27 +2,51 @@
 
 import { useCallback, useEffect, useState } from "react";
 
+const CACHE_KEY = "quetraonline-youtube-streams-v1";
+
 export default function YouTubeReplays() {
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [refreshError, setRefreshError] = useState(false);
 
   const loadVideos = useCallback(async (showLoader = false) => {
-    if (showLoader) setLoading(true);
+    if (showLoader && videos.length === 0) setLoading(true);
     try {
-      const response = await fetch("/api/youtube-streams", { cache: "no-store" });
+      const response = await fetch("/api/youtube-streams", {
+        cache: "no-store",
+        headers: { Accept: "application/json" },
+      });
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || "Yayınlar alınamadı");
-      setVideos(Array.isArray(data.videos) ? data.videos.slice(0, 5) : []);
+      const nextVideos = Array.isArray(data.videos) ? data.videos.slice(0, 5) : [];
+      if (!nextVideos.length) throw new Error("YouTube yayın listesi boş döndü");
+
+      setVideos(nextVideos);
+      setRefreshError(false);
+      try {
+        window.localStorage.setItem(CACHE_KEY, JSON.stringify({
+          savedAt: Date.now(),
+          videos: nextVideos,
+        }));
+      } catch {}
     } catch (error) {
-      console.error("YouTube yayın listesi yüklenemedi:", error);
-      setVideos([]);
+      console.error("YouTube yayın listesi yenilenemedi:", error);
+      // Geçici YouTube/Vercel hatalarında daha önce yüklenen yayınları silme.
+      setRefreshError(true);
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [videos.length]);
 
   useEffect(() => {
-    loadVideos(true);
+    try {
+      const cached = JSON.parse(window.localStorage.getItem(CACHE_KEY) || "null");
+      if (Array.isArray(cached?.videos) && cached.videos.length) {
+        setVideos(cached.videos.slice(0, 5));
+        setLoading(false);
+      }
+    } catch {}
+    loadVideos(false);
     const interval = window.setInterval(() => loadVideos(false), 5 * 60 * 1000);
     return () => window.clearInterval(interval);
   }, [loadVideos]);
@@ -47,17 +71,20 @@ export default function YouTubeReplays() {
       {loading ? (
         <div className="youtube-replays-status">Son canlı yayınlar yükleniyor…</div>
       ) : videos.length ? (
-        <div className="youtube-replays-grid">
-          {videos.map((video) => (
-            <a className="youtube-replay-card" href={video.url} target="_blank" rel="noreferrer" key={video.id}>
-              <div className="youtube-replay-thumb">
-                <img src={video.thumbnail} alt="" loading="lazy" />
-              </div>
-              <strong>{video.title}</strong>
-              {video.meta ? <small>{video.meta}</small> : null}
-            </a>
-          ))}
-        </div>
+        <>
+          {refreshError ? <div className="youtube-replays-status">Yayınlar geçici olarak yenilenemedi; son başarılı kayıtlar gösteriliyor.</div> : null}
+          <div className="youtube-replays-grid">
+            {videos.map((video) => (
+              <a className="youtube-replay-card" href={video.url} target="_blank" rel="noreferrer" key={video.id}>
+                <div className="youtube-replay-thumb">
+                  <img src={video.thumbnail} alt="" loading="lazy" />
+                </div>
+                <strong>{video.title}</strong>
+                {video.meta ? <small>{video.meta}</small> : null}
+              </a>
+            ))}
+          </div>
+        </>
       ) : (
         <div className="youtube-replays-status">
           Yayın kayıtları şu anda alınamadı. <a href="https://www.youtube.com/@quetraonline/streams" target="_blank" rel="noreferrer">YouTube yayın arşivini aç ↗</a>

@@ -1,4 +1,5 @@
 import "./globals.css";
+import BackToTop from "./components/BackToTop";
 
 export const metadata = {
   title: "QuetraOnline - Resmi Web Sitesi",
@@ -22,7 +23,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="tr">
-      <body>{children}</body>
+      <body>
+        {children}
+        <BackToTop />
+      </body>
     </html>
   );
 }

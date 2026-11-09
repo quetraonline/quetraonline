@@ -1,4 +1,5 @@
 import YouTubeReplays from "./components/YouTubeReplays";
+import VisitorCounter from "./components/VisitorCounter";
 
 const live = [
   { name: "TikTok", handle: "@quetraonline", action: "Yayına Katıl", href: "https://www.tiktok.com/@quetraonline", tone: "pink", mark: "♪" },
@@ -78,6 +79,7 @@ export default function Home() {
 
         <footer className="site-footer" id="contact">
           <img className="footer-logo" src="/quetra-logo.svg?v=20261108" alt="QuetraOnline" />
+          <VisitorCounter />
           <p>© 2026 QuetraOnline.com - Tüm hakları saklıdır.</p>
           <p>Sorun ve şikayetleriniz için <a href="/iletisim">İletişim</a> sayfasından bana ulaşın.</p>
         </footer>
@@ -85,4 +87,3 @@ export default function Home() {
     </main>
   );
 }
-

@@ -1,5 +1,6 @@
 import YouTubeReplays from "./components/YouTubeReplays";
 import VisitorCounter from "./components/VisitorCounter";
+import SiteNavigation from "./components/SiteNavigation";
 
 const live = [
   { name: "TikTok", handle: "@quetraonline", action: "Yayına Katıl", href: "https://www.tiktok.com/@quetraonline", tone: "pink", mark: "♪" },
@@ -20,12 +21,7 @@ const socials = [
 export default function Home() {
   return (
     <main className="quetra-site">
-      <header className="site-header">
-        <nav aria-label="Ana menü">
-          <a className="active" href="#home">⌂ <span>Ana Sayfa</span></a>
-          <a href="/iletisim">✉ <span>İletişim</span></a>
-        </nav>
-      </header>
+      <SiteNavigation active="home" />
 
       <section className="hero-banner" id="home">
         <div className="hero-sky" />

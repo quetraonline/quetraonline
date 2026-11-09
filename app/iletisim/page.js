@@ -1,17 +1,13 @@
 import ContactForm from "../components/ContactForm";
 import VisitorCounter from "../components/VisitorCounter";
+import SiteNavigation from "../components/SiteNavigation";
 
 export const metadata = { title: "İletişim | QuetraOnline - Resmi Web Sitesi", description: "QuetraOnline ile iletişime geçin." };
 
 export default function ContactPage() {
   return (
     <main className="quetra-site contact-page">
-      <header className="site-header">
-        <nav aria-label="Ana menü">
-          <a href="/">⌂ <span>Ana Sayfa</span></a>
-          <a className="active" href="/iletisim">✉ <span>İletişim</span></a>
-        </nav>
-      </header>
+      <SiteNavigation active="contact" />
       <section className="hero-banner" id="home">
         <div className="hero-sky" />
         <div className="hero-copy">

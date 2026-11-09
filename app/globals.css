@@ -124,3 +124,12 @@
 .visitor-counter-icon{font-size:15px;filter:grayscale(.15)}
 .visitor-counter strong{color:var(--gold-soft);font-weight:800;font-variant-numeric:tabular-nums}
 @media(max-width:520px){.visitor-counter{max-width:100%;padding:9px 13px;font-size:11px}}
+
+
+/* Floating back-to-top button */
+.back-to-top{position:fixed;right:22px;bottom:24px;z-index:50;display:flex;align-items:center;gap:8px;padding:11px 15px;border:1px solid #8d744c;border-radius:999px;background:linear-gradient(135deg,#d2b477,#a88750);color:#17130c;font:800 12px 'DM Sans',sans-serif;box-shadow:0 7px 24px #0008;cursor:pointer;transition:transform .18s,box-shadow .18s,filter .18s;animation:back-to-top-in .2s ease-out}
+.back-to-top:hover{transform:translateY(-3px);box-shadow:0 10px 28px #0009;filter:brightness(1.08)}
+.back-to-top svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@keyframes back-to-top-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:520px){.back-to-top{right:14px;bottom:16px;padding:11px 13px;font-size:11px}}
+@media(prefers-reduced-motion:reduce){.back-to-top{animation:none;transition:none}}

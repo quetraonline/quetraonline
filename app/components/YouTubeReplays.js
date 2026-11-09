@@ -47,7 +47,7 @@ export default function YouTubeReplays() {
       }
     } catch {}
     loadVideos(false);
-    const interval = window.setInterval(() => loadVideos(false), 5 * 60 * 1000);
+    const interval = window.setInterval(() => loadVideos(false), 30 * 60 * 1000);
     return () => window.clearInterval(interval);
   }, [loadVideos]);
 

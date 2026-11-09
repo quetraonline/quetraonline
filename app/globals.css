@@ -118,3 +118,9 @@
 .seo-intro h1{margin:0 0 9px;color:var(--gold-soft);font-size:clamp(16px,2.5vw,20px);font-weight:800;line-height:1.35}
 .seo-intro p{margin:0;color:var(--muted);font-size:12px;line-height:1.8}
 @media(max-width:520px){.seo-intro{padding:15px}.seo-intro p{font-size:11px}}
+
+
+.visitor-counter{display:flex;align-items:center;justify-content:center;gap:9px;margin:4px 0 2px;padding:10px 16px;border:1px solid #4b412f;border-radius:999px;background:linear-gradient(135deg,#191a1b,#211e18);color:#c7cbd1;font-size:12px;line-height:1.4;box-shadow:0 4px 16px #0002}
+.visitor-counter-icon{font-size:15px;filter:grayscale(.15)}
+.visitor-counter strong{color:var(--gold-soft);font-weight:800;font-variant-numeric:tabular-nums}
+@media(max-width:520px){.visitor-counter{max-width:100%;padding:9px 13px;font-size:11px}}

@@ -378,3 +378,9 @@
 .contact-back-icon{display:grid;place-items:center;width:12px;height:14px;border:0;border-radius:0;background:transparent}
 .contact-back-icon svg{width:12px;height:12px;stroke:#f1c45d;stroke-width:2.3}
 @media(max-width:520px){.contact-back{padding:9px 12px;font-size:13px}}
+
+
+/* Remove the decorative backdrop behind the large Quetra hero logo */
+.hero-banner{background:transparent;border-bottom:0}
+.hero-sky{background:none}
+.hero-banner:before,.hero-banner:after{display:none}

@@ -21,6 +21,7 @@ export default function SiteNavigation({ active = "home" }) {
       </button>
       <nav id="site-navigation-links" className={open ? "is-open" : ""} aria-label="Ana menü">
         <a className={active === "home" ? "active" : ""} href="/" onClick={() => setOpen(false)}><span>Ana Sayfa</span></a>
+        <a className={active === "about" ? "active" : ""} href="/hakkimda" onClick={() => setOpen(false)}><span>Hakkımızda</span></a>
         <a className={active === "contact" ? "active" : ""} href="/iletisim" onClick={() => setOpen(false)}><span>İletişim</span></a>
       </nav>
     </header>

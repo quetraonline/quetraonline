@@ -43,9 +43,7 @@ export default function AboutPage() {
             </div>
           </div>
           <div className="about-hero-visual">
-            <div className="about-hero-glow" />
             <img src="/quetra-logo.svg?v=20261108" alt="QuetraOnline logosu" />
-            <span>QUETRAONLINE</span>
           </div>
         </section>
         <section className="about-grid">
@@ -88,11 +86,9 @@ export default function AboutPage() {
         .about-hero-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:17px}
         .about-hero-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 15px;border-radius:7px;background:#e51d2a;color:#fff;font-size:11px;font-weight:800}
         .about-hero-actions a+ a{background:#41454c;border:1px solid #555b65}
-        .about-hero-visual{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;min-height:230px;overflow:hidden}
-        .about-hero-glow{position:absolute;width:280px;height:220px;bottom:-90px;border-radius:50%;background:#c9a86a26;filter:blur(35px)}
-        .about-hero-visual img{position:relative;z-index:1;display:block;width:min(100%,330px);height:190px;object-fit:contain;filter:drop-shadow(0 8px 18px #0009)}
-        .about-hero-visual span{position:relative;z-index:1;margin:0 0 7px;color:#c9a86a;font-size:9px;font-weight:800;letter-spacing:3px}
-        .about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-top:22px}
+        .about-hero-visual{position:relative;display:flex;align-items:center;justify-content:center;min-height:230px;overflow:hidden}
+                .about-hero-visual img{position:relative;z-index:1;display:block;width:min(100%,330px);height:190px;object-fit:contain;filter:drop-shadow(0 5px 10px #0007)}
+                .about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-top:22px}
         .about-panel{background:rgba(26,30,39,.94);border:1px solid #51402a;border-radius:13px;padding:26px;box-shadow:0 10px 28px #0003}
         .about-panel h2{font-size:19px;color:#f0c36b;margin:0 0 14px}
         .about-panel p{color:#cbd0d9;line-height:1.85;margin:0 0 12px}

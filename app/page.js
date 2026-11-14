@@ -18,6 +18,8 @@ const socials = [
   ["Discord", "/quetraonline", "http://discordapp.com/users/295839795874365440", "◉"],
 ];
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   let heroLogoVisible = true;
   try {

@@ -53,18 +53,15 @@ export default function AboutPage() {
           </div>
           <div className="profile-table">
             {[
-              ["Tam adı", "Cenk Pekkan"],
-              ["Bilinen adı", "CenkBeyResmi"],
-              ["Eski takma adı", "JackPackkan (Twitch dönemi)"],
-              ["İzleyicilerin deyişiyle", "Cenk Bey, Cenk Abi"],
+              ["Tam adı", "Ahmet Enes"],
+              ["Bilinen adı", "Quetra"],
+              ["Eski takma adı", "QuetraOnline"],
               ["Meslek", "Yayıncı, içerik üreticisi"],
-              ["Yaşadığı yer", "Malta"],
-              ["Önceki ikamet", "Kuzey Makedonya (~2 yıl)"],
-              ["Doğum yılı", "1990"],
-              ["Ana platform", "YouTube (@CenkBeyYayin)"],
-              ["Casino yayınları", "Kendi sitesi (cenkbey)"],
-              ["Kick hesabı", "Şu anda askıda"],
-              ["Yayına başlangıç", "2019"]
+              ["Yaşadığı yer", "İstanbul - Türkiye"],
+              ["Doğum yılı", "1993"],
+              ["Ana platform", "TikTok (@quetraonline)"],
+              ["Kick hesabı", "Quetra (@quetraonline)"],
+              ["Yayına başlangıç", "2012"]
             ].map(([label, value]) => (
               <div className="profile-row" key={label}><span>{label}</span><strong>{value}</strong></div>
             ))}

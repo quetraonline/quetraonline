@@ -12,12 +12,26 @@ export default function SiteNavigation({ active = "home" }) {
   const [heroVisible, setHeroVisible] = useState(true);
   const [panelLoading, setPanelLoading] = useState(false);
   const [password, setPassword] = useState("");
+  const [recoveryOpen, setRecoveryOpen] = useState(false);
+  const [recoveryToken, setRecoveryToken] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const menuRef = useRef(null);
 
   useEffect(() => {
+    const hash = window.location.hash;
+    if (hash.includes("access_token=") && (hash.includes("type=recovery") || hash.includes("type%3Drecovery"))) {
+      const params = new URLSearchParams(hash.replace(/^#/, ""));
+      const accessToken = params.get("access_token");
+      if (accessToken) {
+        setRecoveryToken(accessToken);
+        setRecoveryOpen(true);
+        setLoginOpen(false);
+      }
+    }
     const savedToken = sessionStorage.getItem("quetra_admin_token");
     setIsAdmin(Boolean(savedToken));
     if (savedToken) loadAdminSettings(savedToken);
@@ -66,6 +80,43 @@ export default function SiteNavigation({ active = "home" }) {
   function logout() {
     sessionStorage.removeItem("quetra_admin_token");
     setIsAdmin(false); setLoginOpen(false); setError(""); setPassword("");
+  }
+
+  async function handlePasswordRecovery(event) {
+    event.preventDefault();
+    setBusy(true);
+    setError("");
+    if (newPassword.length < 8) {
+      setError("Şifre en az 8 karakter olmalıdır.");
+      setBusy(false);
+      return;
+    }
+    if (newPassword !== confirmPassword) {
+      setError("Şifreler birbiriyle eşleşmiyor.");
+      setBusy(false);
+      return;
+    }
+    try {
+      const response = await fetch(`${SUPABASE_URL}/auth/v1/user`, {
+        method: "PUT",
+        headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${recoveryToken}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ password: newPassword }),
+      });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.msg || data.message || "Şifre güncellenemedi. Kurtarma bağlantısının süresi dolmuş olabilir.");
+      window.history.replaceState(null, "", window.location.pathname + window.location.search);
+      setRecoveryOpen(false);
+      setRecoveryToken("");
+      setNewPassword("");
+      setConfirmPassword("");
+      setPassword("");
+      setLoginOpen(true);
+      setError("Şifreniz başarıyla oluşturuldu. Yeni şifrenizle giriş yapabilirsiniz.");
+    } catch (err) {
+      setError(err.message || "Şifre güncellenemedi.");
+    } finally {
+      setBusy(false);
+    }
   }
 
   async function handleLogin(event) {
@@ -151,7 +202,7 @@ export default function SiteNavigation({ active = "home" }) {
         </div>
       </header>
 
-      {loginOpen && (
+      {(loginOpen || recoveryOpen) && (
         <div
           role="presentation"
           onMouseDown={(event) => { if (event.target === event.currentTarget && !busy) setLoginOpen(false); }}
@@ -176,10 +227,19 @@ export default function SiteNavigation({ active = "home" }) {
             <div style={{ textAlign: "center", marginBottom: 25 }}>
               <img src="/quetra-logo.svg?v=20261108" alt="QuetraOnline" style={{ width: 150, maxWidth: "65%", height: 58, objectFit: "contain", margin: "0 auto 13px" }} />
               <div style={{ color: "#c9a86a", fontSize: 10, fontWeight: 900, letterSpacing: 3 }}>QUETRAONLINE</div>
-              <h2 id="quetra-login-title" style={{ margin: "9px 0 5px", fontSize: 27 }}>Yönetici Girişi</h2>
-              <p style={{ margin: 0, color: "#9da4af", fontSize: 13 }}>Yönetim paneline erişmek için giriş yapın.</p>
+              <h2 id="quetra-login-title" style={{ margin: "9px 0 5px", fontSize: 27 }}>{recoveryOpen ? "Yeni Şifre Belirle" : "Yönetici Girişi"}</h2>
+              <p style={{ margin: 0, color: "#9da4af", fontSize: 13 }}>{recoveryOpen ? "QuetraOnline hesabınız için yeni şifrenizi oluşturun." : "Yönetim paneline erişmek için giriş yapın."}</p>
             </div>
-            {isAdmin ? (
+            {recoveryOpen ? (
+              <form onSubmit={handlePasswordRecovery} style={{ display: "grid", gap: 12 }}>
+                <label htmlFor="quetra-new-password" style={{ color: "#d6d9df", fontSize: 12, fontWeight: 700 }}>Yeni şifre</label>
+                <input id="quetra-new-password" type="password" value={newPassword} onChange={(event) => setNewPassword(event.target.value)} autoComplete="new-password" required minLength={8} placeholder="En az 8 karakter" style={{ width: "100%", boxSizing: "border-box", padding: 13, borderRadius: 8, border: "1px solid #3a414c", background: "#0d1015", color: "#eef0f3" }} />
+                <label htmlFor="quetra-confirm-password" style={{ color: "#d6d9df", fontSize: 12, fontWeight: 700 }}>Yeni şifre tekrar</label>
+                <input id="quetra-confirm-password" type="password" value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} autoComplete="new-password" required minLength={8} placeholder="Yeni şifrenizi tekrar girin" style={{ width: "100%", boxSizing: "border-box", padding: 13, borderRadius: 8, border: "1px solid #3a414c", background: "#0d1015", color: "#eef0f3" }} />
+                {error && <p role="alert" style={{ margin: "3px 0", color: "#ff9292", fontSize: 12, lineHeight: 1.5 }}>{error}</p>}
+                <button type="submit" disabled={busy} style={{ ...loginButtonStyle, marginTop: 9, padding: 14, opacity: busy ? .7 : 1 }}>{busy ? "KAYDEDİLİYOR..." : "ŞİFREYİ KAYDET"}</button>
+              </form>
+            ) : isAdmin ? (
               <div style={{ display: "grid", gap: 15 }}>
                 <div style={{ padding: 17, border: "1px solid #3a414c", borderRadius: 10, background: "#0d1015" }}>
                   <div style={{ color: "#c9a86a", fontSize: 10, fontWeight: 900, letterSpacing: 1.5, marginBottom: 9 }}>ANA SAYFA GÖRÜNÜMÜ</div>

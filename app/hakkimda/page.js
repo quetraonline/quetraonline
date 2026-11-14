@@ -106,11 +106,6 @@ export default function AboutPage() {
             <div className="about-values">
               {values.map(([title, desc]) => <div className="about-value" key={title}><b>{title}</b><span>{desc}</span></div>)}
             </div>
-            <div className="about-links" id="social-links">
-              <a href="https://www.youtube.com/@quetraonline" target="_blank" rel="noreferrer">YouTube</a>
-              <a href="https://www.tiktok.com/@quetraonline" target="_blank" rel="noreferrer">TikTok</a>
-              <a href="https://www.instagram.com/quetraonline" target="_blank" rel="noreferrer">Instagram</a>
-            </div>
           </aside>
         </section>
         <footer className="site-footer" id="contact">

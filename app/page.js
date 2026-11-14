@@ -73,10 +73,10 @@ export default function Home() {
             <div><h3>OYUNFOR</h3><small>Destek Olmak İçin</small><p>Oyunfor üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>
             <img className="support-logo-placeholder oyunfor-logo" src="/oyunfor.png?v=20261114-1634" alt="Oyunfor logosu" />
           </a>
-          <div className="support-card kopazar">
+          <a className="support-card kopazar" href="https://www.kopazar.com/streamer/quetraonline" target="_blank" rel="noreferrer">
             <div><h3>KOPAZAR</h3><small>Destek Olmak İçin</small><p>Kopazar üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>
-            <span className="support-logo-placeholder" aria-hidden="true" />
-          </div>
+            <img className="support-logo-placeholder kopazar-logo" src="/kopazar.png?v=20261114-1709" alt="Kopazar logosu" />
+          </a>
           <a className="support-card sonteklif" href="https://www.sonteklif.com/yayinci/quetraonline" target="_blank" rel="noreferrer">
             <div><h3>SONTEKLİF</h3><small>Destek Olmak İçin</small><p>Sonteklif üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>
             <img className="support-logo-placeholder sonteklif-logo" src="/sontekliflogoo.png?v=20261114-1705" alt="Sonteklif logosu" />

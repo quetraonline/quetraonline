@@ -172,3 +172,28 @@
 @media(max-width:520px){.support-logo-placeholder.oyunfor-logo{width:58px;height:58px;min-width:58px;max-width:58px;flex-basis:58px}.support-card.oyunfor{min-height:110px}}
 
 .support-card.klas h3{color:#ff8a00}
+
+
+@media(min-width:851px){
+  .site-header nav{gap:10px}
+  .site-header nav a,
+  .site-header nav a:hover,
+  .site-header nav a.active{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:40px;
+    padding:0 18px;
+    border:1px solid #ffe27a;
+    border-radius:9px;
+    background:linear-gradient(180deg,#ffe77a 0%,#ffd84d 100%);
+    color:#17130a;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.35px;
+    text-transform:uppercase;
+    box-shadow:0 2px 7px rgba(255,204,51,.16);
+  }
+  .site-header nav a:hover{filter:brightness(1.06);transform:translateY(-1px)}
+  .site-header nav a span{margin-left:6px}
+}

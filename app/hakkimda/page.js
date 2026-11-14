@@ -37,13 +37,13 @@ export default function AboutPage() {
               <div><span>BAŞLANGIÇ</span><strong>2012</strong></div>
               <div><span>ANA PLATFORM</span><strong>TikTok</strong></div>
             </div>
+          </div>
+          <div className="about-hero-visual">
+            <img src="/quetra-logo.svg?v=20261108" alt="QuetraOnline logosu" />
             <div className="about-hero-actions">
               <a href="https://www.tiktok.com/@quetraonline" target="_blank" rel="noreferrer">TikTok Kanalı</a>
               <a href="#social-links">Sosyal Hesaplar</a>
             </div>
-          </div>
-          <div className="about-hero-visual">
-            <img src="/quetra-logo.svg?v=20261108" alt="QuetraOnline logosu" />
           </div>
         </section>
         <section className="profile-section">
@@ -149,10 +149,10 @@ export default function AboutPage() {
         .about-facts div{display:flex;flex-direction:column;gap:5px}
         .about-facts span{font-size:9px;font-weight:800;letter-spacing:1.3px;color:#aeb4bf}
         .about-facts strong{font:800 18px Manrope,sans-serif;color:#f1f2f4}
-        .about-hero-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:17px}
+        .about-hero-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin-top:0}
         .about-hero-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 15px;border-radius:7px;background:#e51d2a;color:#fff;font-size:11px;font-weight:800}
         .about-hero-actions a+ a{background:#41454c;border:1px solid #555b65}
-        .about-hero-visual{position:relative;display:flex;align-items:center;justify-content:center;min-height:230px;overflow:hidden}
+        .about-hero-visual{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;min-height:230px;overflow:hidden}
                 .about-hero-visual img{position:relative;z-index:1;display:block;width:min(100%,330px);height:190px;object-fit:contain;filter:drop-shadow(0 5px 10px #0007)}
         .profile-section{margin-top:22px}
         .profile-heading{display:flex;align-items:center;gap:15px;margin:0 0 16px}

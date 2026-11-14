@@ -112,14 +112,11 @@ export default function AboutPage() {
           </div>
           <div className="faq-list">
             {[
-              ["Quetra kimdir?", "Quetra, QuetraOnline adıyla tanınan yayıncı ve içerik üreticisidir. Minecraft ve Knight Online yayınlarıyla tanınmıştır."],
-              ["Quetra nerede yaşıyor?", "Sayfada yer alan biyografi bilgisine göre Malta'da yaşamaktadır."],
-              ["Quetra'ın gerçek adı ne?", "Gerçek adı Cenk Pekkan'dır."],
-              ["Quetra kaç yaşında?", "1990 doğumludur. Doğum günü bilgisi paylaşılmadığı için kesin yaşı belirtilmemiştir."],
-              ["Quetra hangi platformda yayın yapıyor?", "Ana yayın kanalı YouTube'dur. Kanalı: @CenkBeyYayin."],
-              ["Quetra'ın Kick hesabına ne oldu?", "Paylaşılan biyografi bilgisinde Kick hesabının şu anda askıda olduğu belirtilmektedir."],
-              ["Quetra neden gündemde?", "Bu sayfada güncel gündem konusu hakkında doğrulanmış bir bilgi bulunmamaktadır."],
-              ["Quetra çekiliş yapıyor mu?", "Çekiliş ve etkinlik duyuruları için Quetra'nın Telegram kanalını takip edebilirsiniz."]
+              ["Quetra kimdir?", "Ahmet Enes, Quetra adıyla tanınan yayıncı ve içerik üreticisidir. Nowa Online World ve Delta Force oyunlarının yayınlarıyla tanınmıştır."],
+              ["Quetra nerede yaşıyor?", "Sayfada yer alan biyografi bilgisine göre İstanbul'da yaşamaktadır."],
+              ["Quetra'ın gerçek adı ne?", "Gerçek adı Ahmet Enes Güney'dır."],
+              ["Quetra kaç yaşında?", "1993 doğumludur. Doğum günü bilgisi paylaşılmadığı için kesin yaşı belirtilmemiştir."],
+              ["Quetra hangi platformda yayın yapıyor?", "Ana yayın kanalı TikTok'tur. Kanalı: @quetraonline."]
             ].map(([question, answer]) => (
               <details className="faq-item" key={question}>
                 <summary>{question}</summary>

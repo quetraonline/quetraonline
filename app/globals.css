@@ -164,3 +164,6 @@
 .support-card.kopazar h3{color:#f3f3f3}
 .support-card.sonteklif h3{color:#f3f3f3}
 @media(max-width:520px){.support-logo-placeholder{width:46px;height:60px;flex-basis:46px}}
+
+.support-logo-placeholder.oyunfor-logo{width:64px;height:64px;flex:0 0 64px;object-fit:contain;border-radius:10px;display:block}
+@media(max-width:520px){.support-logo-placeholder.oyunfor-logo{width:52px;height:52px;flex-basis:52px}}

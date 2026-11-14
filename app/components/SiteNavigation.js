@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 const SUPABASE_URL = "https://hfmosadynxpwkscvpard.supabase.co";
 const SUPABASE_KEY = "sb_publishable_1UDqJWj6DAKrx7tfWMs2lA_nW-Ee29S";
-const ADMIN_EMAIL = "aenesguney@gmail.com";
+const ADMIN_EMAIL = "quetraonline@gmail.com";
 
 export default function SiteNavigation({ active = "home" }) {
   const [open, setOpen] = useState(false);

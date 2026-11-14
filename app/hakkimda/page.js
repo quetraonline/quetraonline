@@ -77,7 +77,9 @@ export default function AboutPage() {
               { icon: "♪", iconUrl: "https://cdn.simpleicons.org/tiktok/FFFFFF", name: "TikTok", handle: "@quetraonline", detail: "TikTok hesabı", href: "https://www.tiktok.com/@quetraonline" },
               { icon: "▶", iconUrl: "https://cdn.simpleicons.org/youtube/FF0033", name: "YouTube", handle: "@quetraonline", detail: "YouTube kanalı", href: "https://www.youtube.com/@quetraonline" },
               { icon: "◎", iconUrl: "https://cdn.simpleicons.org/instagram/E4405F", name: "Instagram", handle: "@quetraonline", detail: "Instagram hesabı", href: "https://www.instagram.com/quetraonline" },
+              { icon: "f", iconUrl: "https://cdn.simpleicons.org/facebook/1877F2", name: "Facebook", handle: "quetraonline", detail: "Facebook sayfası", href: "https://www.facebook.com/quetraonline" },
               { icon: "➤", iconUrl: "https://cdn.simpleicons.org/telegram/26A5E4", name: "Telegram", handle: "quetraonline", detail: "Telegram kanalı", href: "https://t.me/quetraonline" },
+              { icon: "𝕏", iconUrl: "https://cdn.simpleicons.org/x/FFFFFF", name: "X", handle: "@quetraonline", detail: "X hesabı", href: "https://x.com/quetraonline" },
               { icon: "◉", iconUrl: "https://cdn.simpleicons.org/twitch/9146FF", name: "Twitch", handle: "quetraonline", detail: "Twitch kanalı", href: "https://www.twitch.tv/quetraonline" },
               { icon: "K", iconUrl: "https://cdn.simpleicons.org/kick/53FC18", name: "Kick", handle: "quetraonline", detail: "Kick kanalı", href: "https://kick.com/quetraonline" }
             ].map((item) => (

@@ -69,10 +69,10 @@ export default function Home() {
             <div><h3>ByNo<span>Game</span></h3><small>Destek Olmak İçin</small><p>ByNoGame üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>
             <img className="bynogame-mascot" src="/bynogame-logo.svg?v=20261108" alt="ByNoGame maskotu" />
           </a>
-          <div className="support-card oyunfor">
+          <a className="support-card oyunfor" href="https://www.oyunfor.com/donate/quetraonline" target="_blank" rel="noreferrer">
             <div><h3>OYUNFOR</h3><small>Destek Olmak İçin</small><p>Oyunfor üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>
-            <span className="support-logo-placeholder" aria-hidden="true" />
-          </div>
+            <img className="support-logo-placeholder oyunfor-logo" src="/oyunfor-logo.png?v=20261114" alt="Oyunfor logosu" />
+          </a>
           <div className="support-card kopazar">
             <div><h3>KOPAZAR</h3><small>Destek Olmak İçin</small><p>Kopazar üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>
             <span className="support-logo-placeholder" aria-hidden="true" />

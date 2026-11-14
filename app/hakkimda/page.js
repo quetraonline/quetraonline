@@ -2,7 +2,7 @@ import SiteNavigation from "../components/SiteNavigation";
 import VisitorCounter from "../components/VisitorCounter";
 
 export const metadata = {
-  title: "Hakkımızda | QuetraOnline",
+  title: "Hakkımda | QuetraOnline",
   description: "QuetraOnline hakkında: Nowa Online World ve Knight Online topluluğu için yayınlar, içerikler ve topluluk çalışmaları.",
   alternates: { canonical: "/hakkimda" },
   openGraph: {
@@ -30,15 +30,15 @@ export default function AboutPage() {
         <section className="about-hero">
           <div className="about-hero-copy">
             <span className="about-eyebrow">BİYOGRAFİ</span>
-            <h1>QUETRAONLINE KİMDİR?</h1>
+            <h1>Quetra Kimdir?</h1>
             <p>QuetraOnline; oyun, canlı yayın ve topluluk kültürünü bir araya getiren kişisel bir marka ve dijital buluşma noktasıdır. Nowa Online World ve Knight Online başta olmak üzere çevrim içi oyun dünyasındaki yayınları, içerikleri ve topluluk çalışmalarını tek çatı altında buluşturur.</p>
             <div className="about-facts">
               <div><span>ODAK NOKTASI</span><strong>Oyun & Yayın</strong></div>
-              <div><span>TOPLULUK</span><strong>Nowa Online World</strong></div>
-              <div><span>İÇERİK</span><strong>Canlı Yayınlar</strong></div>
+              <div><span>BAŞLANGIÇ</span><strong>2012</strong></div>
+              <div><span>ANA PLATFORM</span><strong>TikTok</strong></div>
             </div>
             <div className="about-hero-actions">
-              <a href="https://www.youtube.com/@quetraonline" target="_blank" rel="noreferrer">YouTube Kanalı ↗</a>
+              <a href="https://www.tiktok.com/@quetraonline" target="_blank" rel="noreferrer">TikTok Kanalı</a>
               <a href="#social-links">Sosyal Hesaplar</a>
             </div>
           </div>

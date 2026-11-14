@@ -49,7 +49,7 @@ export default function AboutPage() {
         <section className="profile-section">
           <div className="profile-heading">
             <div className="profile-icon" aria-hidden="true">▣</div>
-            <div><span>BİYOGRAFİ</span><h2>Quetra</h2></div>
+            <div><span>BİYOGRAFİ</span><h2>Quetra Kimdir?</h2></div>
           </div>
           <div className="profile-table">
             {[

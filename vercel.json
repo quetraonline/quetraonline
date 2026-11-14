@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/hakkimda",
+      "destination": "/hakkimda.html"
+    }
+  ]
+}

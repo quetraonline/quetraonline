@@ -1,4 +1,4 @@
-export const revalidate = 300;
+export const dynamic = "force-dynamic";
 
 function extractJsonAfter(html, marker) {
   const markerIndex = html.indexOf(marker);

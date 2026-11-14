@@ -193,7 +193,7 @@ export default function SiteNavigation({ active = "home" }) {
             <a className={active === "contact" ? "active" : ""} href="/iletisim" onClick={() => setOpen(false)}>İletişim</a>
           </nav>
         </div>
-        <div style={{ marginLeft: "auto", paddingRight: "clamp(14px,3vw,34px)", display: "flex", alignItems: "center" }}>
+        <div style={{ position: "absolute", top: "50%", right: "max(calc((100vw - 1024px)/2),20px)", transform: "translateY(-50%)", paddingRight: 0, display: "flex", alignItems: "center", zIndex: 2 }}>
           {isAdmin ? (
             <button type="button" style={loginButtonStyle} onClick={() => { setError(""); setLoginOpen(true); }}>YÖNETİCİ PANELİ</button>
           ) : (

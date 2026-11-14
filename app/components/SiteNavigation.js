@@ -251,6 +251,10 @@ export default function SiteNavigation({ active = "home" }) {
                   <button type="button" onClick={logout} style={{ marginLeft: "auto", padding: "8px 12px", borderRadius: 7, border: "1px solid #465365", background: "#1a2330", color: "#e6e9ee", fontSize: 11, fontWeight: 800, cursor: "pointer" }}>ÇIKIŞ YAP</button>
                 </div>
                 <div style={{ height: 1, width: "100%", background: "#303b4a", marginTop: -2 }} />
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap", padding: "14px 0 2px" }}>
+                  <span style={{ color: heroVisible ? "#a8d6a1" : "#f0b17d", fontSize: 12, fontWeight: 800 }}>{heroVisible ? "● LOGO AKTİF" : "● LOGO GİZLİ"}</span>
+                  <button type="button" disabled={busy || panelLoading} onClick={toggleHero} style={{ ...loginButtonStyle, padding: "9px 14px", opacity: busy || panelLoading ? .65 : 1 }}>{panelLoading ? "YÜKLENİYOR..." : busy ? "KAYDEDİLİYOR..." : heroVisible ? "LOGOYU GİZLE" : "LOGOYU GÖSTER"}</button>
+                </div>
 
                 {error && <p role="alert" style={{ margin: 0, color: "#ff9292", fontSize: 12 }}>{error}</p>}
               </div>

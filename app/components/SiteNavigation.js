@@ -2,16 +2,29 @@
 
 import { useEffect, useRef, useState } from "react";
 
+const SUPABASE_URL = "https://hfmosadynxpwkscvpard.supabase.co";
+const SUPABASE_KEY = "sb_publishable_1UDqJWj6DAKrx7tfWMs2lA_nW-Ee29S";
+const ADMIN_EMAIL = "aenesguney@gmail.com";
+
 export default function SiteNavigation({ active = "home" }) {
   const [open, setOpen] = useState(false);
+  const [loginOpen, setLoginOpen] = useState(false);
+  const [password, setPassword] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
   const menuRef = useRef(null);
 
   useEffect(() => {
+    setIsAdmin(Boolean(sessionStorage.getItem("quetra_admin_token")));
     function handlePointerDown(event) {
       if (!menuRef.current?.contains(event.target)) setOpen(false);
     }
     function handleKeyDown(event) {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key === "Escape") {
+        setOpen(false);
+        setLoginOpen(false);
+      }
     }
     document.addEventListener("pointerdown", handlePointerDown);
     document.addEventListener("keydown", handleKeyDown);
@@ -21,28 +34,133 @@ export default function SiteNavigation({ active = "home" }) {
     };
   }, []);
 
+  async function handleLogin(event) {
+    event.preventDefault();
+    setBusy(true);
+    setError("");
+    try {
+      const response = await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=password`, {
+        method: "POST",
+        headers: { apikey: SUPABASE_KEY, "Content-Type": "application/json" },
+        body: JSON.stringify({ email: ADMIN_EMAIL, password }),
+      });
+      const data = await response.json();
+      if (!response.ok || !data.access_token) {
+        throw new Error(data.msg || data.message || "Giriş başarısız. E-posta davetini onaylayıp şifrenizi oluşturduğunuzdan emin olun.");
+      }
+
+      const verify = await fetch(`${SUPABASE_URL}/rest/v1/quetra_admins?select=user_id&limit=1`, {
+        headers: {
+          apikey: SUPABASE_KEY,
+          Authorization: `Bearer ${data.access_token}`,
+        },
+        cache: "no-store",
+      });
+      if (!verify.ok) throw new Error("Yönetici yetkisi doğrulanamadı. Lütfen tekrar deneyin.");
+      const admins = await verify.json();
+      if (!admins.length) throw new Error("Bu hesap yönetici olarak yetkilendirilmemiş.");
+
+      sessionStorage.setItem("quetra_admin_token", data.access_token);
+      setIsAdmin(true);
+      setPassword("");
+      setLoginOpen(false);
+      window.location.href = "/admin";
+    } catch (err) {
+      setError(err.message || "Giriş yapılamadı.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  const loginButtonStyle = {
+    border: "1px solid #b8955c",
+    borderRadius: 7,
+    padding: "10px 17px",
+    background: "linear-gradient(135deg,#c9a86a,#94703e)",
+    color: "#111",
+    fontSize: 12,
+    fontWeight: 900,
+    letterSpacing: 1,
+    cursor: "pointer",
+    whiteSpace: "nowrap",
+  };
+
   return (
-    <header className="site-header">
-      <div className="site-menu" ref={menuRef}>
-        <button
-          className="site-menu-trigger"
-          type="button"
-          aria-expanded={open}
-          aria-haspopup="true"
-          aria-controls="site-navigation-links"
-          onClick={() => setOpen((value) => !value)}
+    <>
+      <header className="site-header">
+        <div className="site-menu" ref={menuRef}>
+          <button
+            className="site-menu-trigger"
+            type="button"
+            aria-expanded={open}
+            aria-haspopup="true"
+            aria-controls="site-navigation-links"
+            onClick={() => setOpen((value) => !value)}
+          >
+            <img src="/quetra-logo.svg?v=20261108" alt="QuetraOnline menüsünü aç" />
+          </button>
+          <nav
+            id="site-navigation-links"
+            className={`site-menu-dropdown${open ? " is-open" : ""}`}
+            aria-label="Ana menü"
+          >
+            <a className={active === "home" ? "active" : ""} href="/" onClick={() => setOpen(false)}>Ana Sayfa</a>
+            <a className={active === "contact" ? "active" : ""} href="/iletisim" onClick={() => setOpen(false)}>İletişim</a>
+          </nav>
+        </div>
+        <div style={{ marginLeft: "auto", paddingRight: "clamp(14px,3vw,34px)", display: "flex", alignItems: "center" }}>
+          {isAdmin ? (
+            <a href="/admin" style={{ ...loginButtonStyle, display: "inline-flex", alignItems: "center", textDecoration: "none" }}>YÖNETİCİ PANELİ</a>
+          ) : (
+            <button type="button" style={loginButtonStyle} onClick={() => { setError(""); setLoginOpen(true); }}>GİRİŞ YAP</button>
+          )}
+        </div>
+      </header>
+
+      {loginOpen && (
+        <div
+          role="presentation"
+          onMouseDown={(event) => { if (event.target === event.currentTarget && !busy) setLoginOpen(false); }}
+          style={{
+            position: "fixed", inset: 0, zIndex: 10000, display: "grid", placeItems: "center",
+            padding: 18, background: "rgba(0,0,0,.78)", backdropFilter: "blur(7px)",
+          }}
         >
-          <img src="/quetra-logo.svg?v=20261108" alt="QuetraOnline menüsünü aç" />
-        </button>
-        <nav
-          id="site-navigation-links"
-          className={`site-menu-dropdown${open ? " is-open" : ""}`}
-          aria-label="Ana menü"
-        >
-          <a className={active === "home" ? "active" : ""} href="/" onClick={() => setOpen(false)}>Ana Sayfa</a>
-          <a className={active === "contact" ? "active" : ""} href="/iletisim" onClick={() => setOpen(false)}>İletişim</a>
-        </nav>
-      </div>
-    </header>
+          <section
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="quetra-login-title"
+            style={{
+              width: "min(100%,430px)", position: "relative", padding: "clamp(24px,5vw,36px)",
+              border: "1px solid #655033", borderRadius: 15,
+              background: "radial-gradient(ellipse at 50% 0%,#302719 0,transparent 48%),#14171d",
+              color: "#eef0f3", boxShadow: "0 24px 90px #000b",
+            }}
+          >
+            <button type="button" aria-label="Pencereyi kapat" onClick={() => setLoginOpen(false)}
+              style={{ position: "absolute", top: 12, right: 14, border: 0, background: "transparent", color: "#aeb4bd", fontSize: 27, cursor: "pointer" }}>×</button>
+            <div style={{ textAlign: "center", marginBottom: 25 }}>
+              <img src="/quetra-logo.svg?v=20261108" alt="QuetraOnline" style={{ width: 150, maxWidth: "65%", height: 58, objectFit: "contain", margin: "0 auto 13px" }} />
+              <div style={{ color: "#c9a86a", fontSize: 10, fontWeight: 900, letterSpacing: 3 }}>QUETRAONLINE</div>
+              <h2 id="quetra-login-title" style={{ margin: "9px 0 5px", fontSize: 27 }}>Yönetici Girişi</h2>
+              <p style={{ margin: 0, color: "#9da4af", fontSize: 13 }}>Yönetim paneline erişmek için giriş yapın.</p>
+            </div>
+            <form onSubmit={handleLogin} style={{ display: "grid", gap: 12 }}>
+              <label htmlFor="quetra-admin-email" style={{ color: "#d6d9df", fontSize: 12, fontWeight: 700 }}>E-posta adresi</label>
+              <input id="quetra-admin-email" type="email" value={ADMIN_EMAIL} readOnly
+                style={{ width: "100%", boxSizing: "border-box", padding: 13, borderRadius: 8, border: "1px solid #3a414c", background: "#0d1015", color: "#cbd0d8" }} />
+              <label htmlFor="quetra-admin-password" style={{ color: "#d6d9df", fontSize: 12, fontWeight: 700, marginTop: 4 }}>Şifre</label>
+              <input id="quetra-admin-password" type="password" value={password} onChange={(event) => setPassword(event.target.value)}
+                autoComplete="current-password" required placeholder="Şifrenizi girin"
+                style={{ width: "100%", boxSizing: "border-box", padding: 13, borderRadius: 8, border: "1px solid #3a414c", background: "#0d1015", color: "#eef0f3" }} />
+              {error && <p role="alert" style={{ margin: "3px 0", color: "#ff9292", fontSize: 12, lineHeight: 1.5 }}>{error}</p>}
+              <button type="submit" disabled={busy} style={{ ...loginButtonStyle, marginTop: 9, padding: 14, opacity: busy ? .7 : 1 }}>
+                {busy ? "GİRİŞ YAPILIYOR..." : "GİRİŞ YAP"}
+              </button>
+            </form>
+          </section>
+        </div>
+      )}
+    </>
   );
 }

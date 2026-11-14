@@ -108,23 +108,6 @@ export default function AboutPage() {
             </div>
           </aside>
         </section>
-        <section className="formats-section">
-          <div className="formats-heading">
-            <div className="formats-icon" aria-hidden="true">▱</div>
-            <div><span>İÇERİKLER</span><h2>YAYIN FORMATLARI</h2></div>
-          </div>
-          <div className="formats-grid">
-            {[
-              ["Just Chatting", "İzleyiciyle sohbet, soru-cevap ve gündem yayınları. YouTube kanalında en sık yaptığı yayın türü."],
-              ["IRL yayınları", "Malta gece hayatı, pool party ve festival yayınları. En bilineni Exit Festival yayını. Bunlar da YouTube'da."],
-              ["Slots & Casino", "Casino yayınları. Her hafta yaptığı “KUMARTESİ” yayını da bu başlığın altında. Kendi sitesi cenkbey’den yayınlanıyor."],
-              ["Çekilişler", "Kanalın en çok konuşulan tarafı. Bugüne kadar 0 Km Fiat Egea, iPhone, Monster laptop, PS5, motosiklet ve nakit para çekilişi yaptı."],
-              ["Bağış yayınları", "Küçük yayıncılara bağış attığı yayınlar ve izleyiciyle birlikte izlediği watch party'ler."]
-            ].map(([title, description]) => (
-              <article className="format-card" key={title}><h3>{title}</h3><p>{description}</p></article>
-            ))}
-          </div>
-        </section>
         <section className="faq-section">
           <div className="faq-heading">
             <div className="faq-icon" aria-hidden="true">?</div>
@@ -197,15 +180,6 @@ export default function AboutPage() {
         .platform-copy strong{font-size:12px;color:#d7d9de;font-weight:700}
         .platform-copy small{font-size:11px;color:#c4c8d0}
         .platform-arrow{margin-left:auto;color:#c4c4c4;font-size:16px}
-        .formats-section{margin-top:24px}
-        .formats-heading{display:flex;align-items:center;gap:15px;margin:0 0 16px}
-        .formats-icon{width:56px;height:56px;flex:0 0 56px;display:grid;place-items:center;border:1px solid #4b4b4b;border-radius:17px;background:#333;color:#fff;font-size:28px}
-        .formats-heading span{display:block;color:#b9c0ca;font-size:10px;font-weight:800;letter-spacing:1.5px;margin-bottom:3px}
-        .formats-heading h2{margin:0;color:#f2f3f5;font:900 clamp(22px,3vw,31px)/1.1 Manrope,sans-serif;letter-spacing:-.8px;text-transform:uppercase;text-shadow:2px 2px 0 #9d702e}
-        .formats-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-        .format-card{min-height:126px;padding:17px 16px;border:1px solid #4a4a4a;border-radius:16px;background:#303030}
-        .format-card h3{margin:0 0 7px;color:#fff;font-size:13px;font-weight:900}
-        .format-card p{margin:0;color:#d0d3da;font-size:13px;line-height:1.75}
         .faq-section{margin-top:24px}
         .faq-heading{display:flex;align-items:center;gap:15px;margin:0 0 16px}
         .faq-icon{width:56px;height:56px;flex:0 0 56px;display:grid;place-items:center;border:1px solid #4b4b4b;border-radius:17px;background:#333;color:#fff;font-size:28px;font-weight:800}
@@ -230,7 +204,7 @@ export default function AboutPage() {
         .about-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
         .about-links a{color:#fff;text-decoration:none;border:1px solid #9d702e;background:#332719;padding:10px 14px;border-radius:8px;font-weight:700;font-size:13px}
         .about-links a:hover{border-color:#f0c36b;background:#49351c}
-        @media(max-width:900px){.formats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}\n        @media(max-width:700px){.formats-heading{gap:11px}.formats-icon{width:48px;height:48px;flex-basis:48px}.formats-grid{grid-template-columns:1fr}.format-card{min-height:unset;padding:15px}.faq-heading{gap:11px}.faq-icon{width:48px;height:48px;flex-basis:48px}.faq-item summary{min-height:49px;padding-left:12px;font-size:12px}.faq-item p{padding-left:12px;font-size:12px}.platform-heading{gap:11px}.platform-icon{width:48px;height:48px;flex-basis:48px}.platform-row{min-height:57px;padding:9px 12px;gap:11px}.platform-copy b{font-size:12px}.platform-copy strong{font-size:11px}.profile-heading{gap:11px}.profile-icon{width:48px;height:48px;flex-basis:48px}.profile-row{grid-template-columns:minmax(112px,38%) 1fr;gap:10px;padding:9px 12px;min-height:42px}.profile-row span,.profile-row strong{font-size:11px}.about-page{padding-top:24px}.about-hero{grid-template-columns:1fr;padding:25px 19px 14px}.about-hero-copy{order:1}.about-hero-visual{order:2;min-height:145px;margin-top:10px}.about-hero-visual img{height:120px;width:min(75%,280px)}.about-hero h1{font-size:clamp(25px,7vw,35px)}.about-hero p{font-size:12px}.about-facts{gap:18px;margin-top:17px}.about-facts strong{font-size:15px}.about-grid{grid-template-columns:1fr}.about-panel{padding:21px}}
+        @media(max-width:700px){.faq-heading{gap:11px}.faq-icon{width:48px;height:48px;flex-basis:48px}.faq-item summary{min-height:49px;padding-left:12px;font-size:12px}.faq-item p{padding-left:12px;font-size:12px}.platform-heading{gap:11px}.platform-icon{width:48px;height:48px;flex-basis:48px}.platform-row{min-height:57px;padding:9px 12px;gap:11px}.platform-copy b{font-size:12px}.platform-copy strong{font-size:11px}.profile-heading{gap:11px}.profile-icon{width:48px;height:48px;flex-basis:48px}.profile-row{grid-template-columns:minmax(112px,38%) 1fr;gap:10px;padding:9px 12px;min-height:42px}.profile-row span,.profile-row strong{font-size:11px}.about-page{padding-top:24px}.about-hero{grid-template-columns:1fr;padding:25px 19px 14px}.about-hero-copy{order:1}.about-hero-visual{order:2;min-height:145px;margin-top:10px}.about-hero-visual img{height:120px;width:min(75%,280px)}.about-hero h1{font-size:clamp(25px,7vw,35px)}.about-hero p{font-size:12px}.about-facts{gap:18px;margin-top:17px}.about-facts strong{font-size:15px}.about-grid{grid-template-columns:1fr}.about-panel{padding:21px}}
       `}</style>
     </main>
   );

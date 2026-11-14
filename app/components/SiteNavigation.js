@@ -23,7 +23,7 @@ export default function SiteNavigation({ active = "home" }) {
 
   useEffect(() => {
     const hash = window.location.hash;
-    if (hash.includes("access_token=") && (hash.includes("type=recovery") || hash.includes("type%3Drecovery"))) {
+    if (hash.includes("access_token=")) {
       const params = new URLSearchParams(hash.replace(/^#/, ""));
       const accessToken = params.get("access_token");
       if (accessToken) {

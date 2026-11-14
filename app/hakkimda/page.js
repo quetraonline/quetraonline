@@ -141,8 +141,8 @@ export default function AboutPage() {
         .profile-icon{width:56px;height:56px;flex:0 0 56px;display:grid;place-items:center;border:1px solid #4b4b4b;border-radius:17px;background:#333;color:#f3f3f3;font-size:26px}
         .profile-heading span{display:block;color:#b9c0ca;font-size:10px;font-weight:800;letter-spacing:1.5px;margin-bottom:3px}
         .profile-heading h2{margin:0;color:#f2f3f5;font:900 clamp(22px,3vw,31px)/1.1 Manrope,sans-serif;letter-spacing:-.8px;text-transform:uppercase;text-shadow:2px 2px 0 #9d702e}
-        .profile-table{overflow:hidden;border:1px solid #4a4a4a;border-radius:16px;background:#303030}
-        .profile-row{display:grid;grid-template-columns:minmax(180px,18%) 1fr;min-height:41px;align-items:center;border-bottom:1px solid #484848;padding:0 16px;gap:16px}
+        .profile-table{overflow:hidden;border:1px solid rgba(224,170,69,.55);border-radius:16px;background:#303644}
+        .profile-row{display:grid;grid-template-columns:minmax(180px,18%) 1fr;min-height:41px;align-items:center;border-bottom:1px solid rgba(255,255,255,.09);padding:0 16px;gap:16px}
         .profile-row:last-child{border-bottom:0}
         .profile-row span{color:#d0d3da;font-size:13px;font-weight:700}
         .profile-row strong{color:#f7f7f7;font-size:13px;font-weight:800}
@@ -151,10 +151,10 @@ export default function AboutPage() {
         .platform-icon{width:56px;height:56px;flex:0 0 56px;display:grid;place-items:center;border:1px solid #4b4b4b;border-radius:17px;background:#333;color:#fff;font-size:27px}
         .platform-heading span{display:block;color:#b9c0ca;font-size:10px;font-weight:800;letter-spacing:1.5px;margin-bottom:3px}
         .platform-heading h2{margin:0;color:#f2f3f5;font:900 clamp(22px,3vw,31px)/1.1 Manrope,sans-serif;letter-spacing:-.8px;text-transform:uppercase;text-shadow:2px 2px 0 #9d702e}
-        .platform-list{overflow:hidden;border:1px solid #4a4a4a;border-radius:16px;background:#303030}
-        .platform-row{display:flex;align-items:center;gap:14px;min-height:60px;padding:9px 17px;border-bottom:1px solid #484848;color:#fff;text-decoration:none;transition:background .15s}
+        .platform-list{overflow:hidden;border:1px solid rgba(224,170,69,.55);border-radius:16px;background:#303644}
+        .platform-row{display:flex;align-items:center;gap:14px;min-height:60px;padding:9px 17px;border-bottom:1px solid rgba(255,255,255,.09);color:#fff;text-decoration:none;transition:background .15s}
         .platform-row:last-child{border-bottom:0}
-        .platform-row[href]:hover{background:#393939}
+        .platform-row[href]:hover{background:#3a4252}
         .platform-brand-icon{width:20px;flex:0 0 20px;text-align:center;color:#fff;font-size:19px;font-weight:900}
         .platform-copy{display:flex;flex-direction:column;gap:2px;min-width:0}
         .platform-copy>span{display:flex;flex-wrap:wrap;gap:9px;align-items:baseline}

@@ -250,23 +250,8 @@ export default function SiteNavigation({ active = "home" }) {
                   <span style={{ padding: "8px 12px", borderRadius: 7, border: "1px solid #d1a957", background: "linear-gradient(135deg,#d9b66b,#a47b3e)", color: "#17130c", fontSize: 11, fontWeight: 900 }}>SİTE AYARLARI</span>
                   <button type="button" onClick={logout} style={{ marginLeft: "auto", padding: "8px 12px", borderRadius: 7, border: "1px solid #465365", background: "#1a2330", color: "#e6e9ee", fontSize: 11, fontWeight: 800, cursor: "pointer" }}>ÇIKIŞ YAP</button>
                 </div>
-                <div style={{ padding: "4px 0 0", border: 0, borderRadius: 0, background: "transparent" }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
-                    <span style={{ display: "grid", placeItems: "center", width: 34, height: 34, borderRadius: 8, background: "#332a1c", color: "#e8b95c", fontSize: 17 }}>⚙</span>
-                    <div>
-                      <div style={{ color: "#e8b95c", fontSize: 10, fontWeight: 900, letterSpacing: 1.5 }}>GENEL AYARLAR</div>
-                      <strong style={{ display: "block", marginTop: 3, fontSize: 15 }}>Ana Sayfa Görünümü</strong>
-                    </div>
-                  </div>
-                  <div style={{ padding: "0 0 0 44px", border: 0, borderRadius: 0, background: "transparent" }}>
-                    <strong style={{ display: "block", color: "#f1f3f6", fontSize: 13, marginBottom: 6 }}>Büyük QuetraOnline logosu</strong>
-                    <p style={{ color: "#9da8b7", fontSize: 12, lineHeight: 1.6, margin: "0 0 14px" }}>Ana sayfanın üst bölümündeki büyük logonun ziyaretçilere gösterilip gösterilmeyeceğini belirleyin.</p>
-                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
-                      <span style={{ color: heroVisible ? "#a8d6a1" : "#f0b17d", fontSize: 11, fontWeight: 700 }}>{heroVisible ? "● LOGO AKTİF" : "● LOGO GİZLİ"}</span>
-                      <button type="button" disabled={busy || panelLoading} onClick={toggleHero} style={{ ...loginButtonStyle, padding: "9px 14px", opacity: busy || panelLoading ? .65 : 1 }}>{panelLoading ? "YÜKLENİYOR..." : busy ? "KAYDEDİLİYOR..." : heroVisible ? "LOGOYU GİZLE" : "LOGOYU GÖSTER"}</button>
-                    </div>
-                  </div>
-                </div>
+                <div style={{ height: 1, width: "100%", background: "#303b4a", marginTop: -2 }} />
+
                 {error && <p role="alert" style={{ margin: 0, color: "#ff9292", fontSize: 12 }}>{error}</p>}
               </div>
             ) : (

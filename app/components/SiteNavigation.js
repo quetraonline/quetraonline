@@ -224,12 +224,14 @@ export default function SiteNavigation({ active = "home" }) {
           >
             <button type="button" aria-label="Pencereyi kapat" onClick={() => setLoginOpen(false)}
               style={{ position: "absolute", top: 12, right: 14, border: 0, background: "transparent", color: "#aeb4bd", fontSize: 27, cursor: "pointer" }}>×</button>
-            <div style={{ textAlign: "center", marginBottom: 25 }}>
-              <img src="/quetra-logo.svg?v=20261108" alt="QuetraOnline" style={{ width: 150, maxWidth: "65%", height: 58, objectFit: "contain", margin: "0 auto 13px" }} />
-              <div style={{ color: "#c9a86a", fontSize: 10, fontWeight: 900, letterSpacing: 3 }}>QUETRAONLINE</div>
-              <h2 id="quetra-login-title" style={{ margin: "9px 0 5px", fontSize: 27 }}>{recoveryOpen ? "Yeni Şifre Belirle" : "Yönetici Girişi"}</h2>
-              <p style={{ margin: 0, color: "#9da4af", fontSize: 13 }}>{recoveryOpen ? "QuetraOnline hesabınız için yeni şifrenizi oluşturun." : "Yönetim paneline erişmek için giriş yapın."}</p>
-            </div>
+            {!isAdmin || recoveryOpen ? (
+              <div style={{ textAlign: "center", marginBottom: 25 }}>
+                <img src="/quetra-logo.svg?v=20261108" alt="QuetraOnline" style={{ width: 150, maxWidth: "65%", height: 58, objectFit: "contain", margin: "0 auto 13px" }} />
+                <div style={{ color: "#c9a86a", fontSize: 10, fontWeight: 900, letterSpacing: 3 }}>QUETRAONLINE</div>
+                <h2 id="quetra-login-title" style={{ margin: "9px 0 5px", fontSize: 27 }}>{recoveryOpen ? "Yeni Şifre Belirle" : "Yönetici Girişi"}</h2>
+                <p style={{ margin: 0, color: "#9da4af", fontSize: 13 }}>{recoveryOpen ? "QuetraOnline hesabınız için yeni şifrenizi oluşturun." : "Yönetim paneline erişmek için giriş yapın."}</p>
+              </div>
+            ) : null}
             {recoveryOpen ? (
               <form onSubmit={handlePasswordRecovery} style={{ display: "grid", gap: 12 }}>
                 <label htmlFor="quetra-new-password" style={{ color: "#d6d9df", fontSize: 12, fontWeight: 700 }}>Yeni şifre</label>
@@ -241,12 +243,8 @@ export default function SiteNavigation({ active = "home" }) {
               </form>
             ) : isAdmin ? (
               <div style={{ display: "grid", gap: 16 }}>
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, paddingBottom: 15, borderBottom: "1px solid #303b4a" }}>
-                  <div>
-                    <div style={{ color: "#e8b95c", fontSize: 10, fontWeight: 900, letterSpacing: 2 }}>QUETRAONLINE • YÖNETİM</div>
-                    <h2 style={{ margin: "5px 0 0", fontSize: 22, letterSpacing: .5 }}>YÖNETİM PANELİ</h2>
-                  </div>
-                  <span style={{ border: "1px solid #52634f", color: "#a8d6a1", background: "#18251c", borderRadius: 20, padding: "6px 10px", fontSize: 10, fontWeight: 800, whiteSpace: "nowrap" }}>● YETKİLİ</span>
+                <div style={{ padding: "0 42px 14px 0", borderBottom: "1px solid #303b4a" }}>
+                  <h2 id="quetra-login-title" style={{ margin: 0, fontSize: 20, letterSpacing: .2, fontWeight: 900 }}>YÖNETİM PANELİ</h2>
                 </div>
                 <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                   <span style={{ padding: "8px 12px", borderRadius: 7, border: "1px solid #d1a957", background: "linear-gradient(135deg,#d9b66b,#a47b3e)", color: "#17130c", fontSize: 11, fontWeight: 900 }}>SİTE AYARLARI</span>

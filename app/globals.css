@@ -168,3 +168,5 @@
 .support-logo-placeholder.oyunfor-logo{width:58px;height:58px;min-width:58px;max-width:58px;flex:0 0 58px;object-fit:contain;object-position:center;border-radius:0;display:block;overflow:visible}
 .support-card.oyunfor{min-height:120px}
 @media(max-width:520px){.support-logo-placeholder.oyunfor-logo{width:58px;height:58px;min-width:58px;max-width:58px;flex-basis:58px}.support-card.oyunfor{min-height:110px}}
+
+.support-card.klas h3{color:#ff8a00}

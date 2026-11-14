@@ -70,6 +70,30 @@ export default function AboutPage() {
             ))}
           </div>
         </section>
+        <section className="platform-section">
+          <div className="platform-heading">
+            <div className="platform-icon" aria-hidden="true">⌘</div>
+            <div><span>PLATFORMLAR</span><h2>NEREDE BULUNUR?</h2></div>
+          </div>
+          <div className="platform-list">
+            {[
+              { icon: "▶", name: "YouTube", handle: "@CenkBeyYayin", detail: "Ana yayın kanalı", href: "https://www.youtube.com/@CenkBeyYayin" },
+              { icon: "◎", name: "Instagram", handle: "@realcenkkpekkan", detail: "Aktif Instagram hesabı", href: "https://www.instagram.com/realcenkkpekkan" },
+              { icon: "➤", name: "Telegram", handle: "cenkbeychat", detail: "Sohbet grubu", href: "https://t.me/cenkbeychat" },
+              { icon: "➤", name: "Telegram", handle: "cenkbeyduyuru", detail: "Duyuru kanalı", href: "https://t.me/cenkbeyduyuru" },
+              { icon: "➤", name: "Telegram", handle: "cenkbeyetkinlik", detail: "Etkinlik ve çekiliş kanalı", href: "https://t.me/cenkbeyetkinlik" },
+              { icon: "◉", name: "WhatsApp", handle: "CenkBey WhatsApp", detail: "WhatsApp kanalı" },
+              { icon: "◉", name: "Spotify", handle: "CenkBey Spotify", detail: "Spotify profili" },
+              { icon: "K", name: "Kick", handle: "cenkbeyresmi", detail: "Eski ana platform, hesap askıda", href: "https://kick.com/cenkbeyresmi" }
+            ].map((item) => (
+              <a className="platform-row" key={item.name + item.handle} href={item.href || undefined} target={item.href ? "_blank" : undefined} rel={item.href ? "noreferrer" : undefined}>
+                <span className="platform-brand-icon">{item.icon}</span>
+                <span className="platform-copy"><span><b>{item.name}</b><strong>{item.handle}</strong></span><small>{item.detail}</small></span>
+                {item.href && <span className="platform-arrow">↗</span>}
+              </a>
+            ))}
+          </div>
+        </section>
         <section className="about-grid">
           <article className="about-panel">
             <h2>QuetraOnline Hakkında</h2>
@@ -122,6 +146,22 @@ export default function AboutPage() {
         .profile-row:last-child{border-bottom:0}
         .profile-row span{color:#d0d3da;font-size:13px;font-weight:700}
         .profile-row strong{color:#f7f7f7;font-size:13px;font-weight:800}
+        .platform-section{margin-top:22px}
+        .platform-heading{display:flex;align-items:center;gap:15px;margin:0 0 16px}
+        .platform-icon{width:56px;height:56px;flex:0 0 56px;display:grid;place-items:center;border:1px solid #4b4b4b;border-radius:17px;background:#333;color:#fff;font-size:27px}
+        .platform-heading span{display:block;color:#b9c0ca;font-size:10px;font-weight:800;letter-spacing:1.5px;margin-bottom:3px}
+        .platform-heading h2{margin:0;color:#f2f3f5;font:900 clamp(22px,3vw,31px)/1.1 Manrope,sans-serif;letter-spacing:-.8px;text-transform:uppercase;text-shadow:2px 2px 0 #9d702e}
+        .platform-list{overflow:hidden;border:1px solid #4a4a4a;border-radius:16px;background:#303030}
+        .platform-row{display:flex;align-items:center;gap:14px;min-height:60px;padding:9px 17px;border-bottom:1px solid #484848;color:#fff;text-decoration:none;transition:background .15s}
+        .platform-row:last-child{border-bottom:0}
+        .platform-row[href]:hover{background:#393939}
+        .platform-brand-icon{width:20px;flex:0 0 20px;text-align:center;color:#fff;font-size:19px;font-weight:900}
+        .platform-copy{display:flex;flex-direction:column;gap:2px;min-width:0}
+        .platform-copy>span{display:flex;flex-wrap:wrap;gap:9px;align-items:baseline}
+        .platform-copy b{font-size:13px;font-weight:900;color:#fff}
+        .platform-copy strong{font-size:12px;color:#d7d9de;font-weight:700}
+        .platform-copy small{font-size:11px;color:#c4c8d0}
+        .platform-arrow{margin-left:auto;color:#c4c4c4;font-size:16px}
                 .about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-top:22px}
         .about-panel{background:rgba(26,30,39,.94);border:1px solid #51402a;border-radius:13px;padding:26px;box-shadow:0 10px 28px #0003}
         .about-panel h2{font-size:19px;color:#f0c36b;margin:0 0 14px}
@@ -133,7 +173,7 @@ export default function AboutPage() {
         .about-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
         .about-links a{color:#fff;text-decoration:none;border:1px solid #9d702e;background:#332719;padding:10px 14px;border-radius:8px;font-weight:700;font-size:13px}
         .about-links a:hover{border-color:#f0c36b;background:#49351c}
-        @media(max-width:700px){.profile-heading{gap:11px}.profile-icon{width:48px;height:48px;flex-basis:48px}.profile-row{grid-template-columns:minmax(112px,38%) 1fr;gap:10px;padding:9px 12px;min-height:42px}.profile-row span,.profile-row strong{font-size:11px}.about-page{padding-top:24px}.about-hero{grid-template-columns:1fr;padding:25px 19px 14px}.about-hero-copy{order:1}.about-hero-visual{order:2;min-height:145px;margin-top:10px}.about-hero-visual img{height:120px;width:min(75%,280px)}.about-hero h1{font-size:clamp(25px,7vw,35px)}.about-hero p{font-size:12px}.about-facts{gap:18px;margin-top:17px}.about-facts strong{font-size:15px}.about-grid{grid-template-columns:1fr}.about-panel{padding:21px}}
+        @media(max-width:700px){.platform-heading{gap:11px}.platform-icon{width:48px;height:48px;flex-basis:48px}.platform-row{min-height:57px;padding:9px 12px;gap:11px}.platform-copy b{font-size:12px}.platform-copy strong{font-size:11px}.profile-heading{gap:11px}.profile-icon{width:48px;height:48px;flex-basis:48px}.profile-row{grid-template-columns:minmax(112px,38%) 1fr;gap:10px;padding:9px 12px;min-height:42px}.profile-row span,.profile-row strong{font-size:11px}.about-page{padding-top:24px}.about-hero{grid-template-columns:1fr;padding:25px 19px 14px}.about-hero-copy{order:1}.about-hero-visual{order:2;min-height:145px;margin-top:10px}.about-hero-visual img{height:120px;width:min(75%,280px)}.about-hero h1{font-size:clamp(25px,7vw,35px)}.about-hero p{font-size:12px}.about-facts{gap:18px;margin-top:17px}.about-facts strong{font-size:15px}.about-grid{grid-template-columns:1fr}.about-panel{padding:21px}}
       `}</style>
     </main>
   );

@@ -74,15 +74,15 @@ export default function AboutPage() {
           </div>
           <div className="platform-list">
             {[
-              { icon: "♪", name: "TikTok", handle: "@quetraonline", detail: "TikTok hesabı", href: "https://www.tiktok.com/@quetraonline" },
-              { icon: "▶", name: "YouTube", handle: "@quetraonline", detail: "YouTube kanalı", href: "https://www.youtube.com/@quetraonline" },
-              { icon: "◎", name: "Instagram", handle: "@quetraonline", detail: "Instagram hesabı", href: "https://www.instagram.com/quetraonline" },
-              { icon: "➤", name: "Telegram", handle: "quetraonline", detail: "Telegram kanalı", href: "https://t.me/quetraonline" },
-              { icon: "◉", name: "Twitch", handle: "quetraonline", detail: "Twitch kanalı", href: "https://www.twitch.tv/quetraonline" },
-              { icon: "K", name: "Kick", handle: "quetraonline", detail: "Kick kanalı", href: "https://kick.com/quetraonline" }
+              { icon: "♪", iconUrl: "https://cdn.simpleicons.org/tiktok/FFFFFF", name: "TikTok", handle: "@quetraonline", detail: "TikTok hesabı", href: "https://www.tiktok.com/@quetraonline" },
+              { icon: "▶", iconUrl: "https://cdn.simpleicons.org/youtube/FF0033", name: "YouTube", handle: "@quetraonline", detail: "YouTube kanalı", href: "https://www.youtube.com/@quetraonline" },
+              { icon: "◎", iconUrl: "https://cdn.simpleicons.org/instagram/E4405F", name: "Instagram", handle: "@quetraonline", detail: "Instagram hesabı", href: "https://www.instagram.com/quetraonline" },
+              { icon: "➤", iconUrl: "https://cdn.simpleicons.org/telegram/26A5E4", name: "Telegram", handle: "quetraonline", detail: "Telegram kanalı", href: "https://t.me/quetraonline" },
+              { icon: "◉", iconUrl: "https://cdn.simpleicons.org/twitch/9146FF", name: "Twitch", handle: "quetraonline", detail: "Twitch kanalı", href: "https://www.twitch.tv/quetraonline" },
+              { icon: "K", iconUrl: "https://cdn.simpleicons.org/kick/53FC18", name: "Kick", handle: "quetraonline", detail: "Kick kanalı", href: "https://kick.com/quetraonline" }
             ].map((item) => (
               <a className="platform-row" key={item.name + item.handle} href={item.href || undefined} target={item.href ? "_blank" : undefined} rel={item.href ? "noreferrer" : undefined}>
-                <span className="platform-brand-icon">{item.icon}</span>
+                <span className="platform-brand-icon">{item.iconUrl ? <img src={item.iconUrl} alt="" loading="lazy" /> : item.icon}</span>
                 <span className="platform-copy"><span><b>{item.name}</b><strong>{item.handle}</strong></span><small>{item.detail}</small></span>
                 {item.href && <span className="platform-arrow">↗</span>}
               </a>
@@ -168,7 +168,7 @@ export default function AboutPage() {
         .platform-row{display:flex;align-items:center;gap:14px;min-height:60px;padding:9px 17px;border-bottom:1px solid rgba(224,170,69,.16);color:#fff;text-decoration:none;transition:background .15s}
         .platform-row:last-child{border-bottom:0}
         .platform-row[href]:hover{background:#3a4252}
-        .platform-brand-icon{width:20px;flex:0 0 20px;text-align:center;color:#fff;font-size:19px;font-weight:900}
+        .platform-brand-icon{width:26px;height:26px;flex:0 0 26px;display:grid;place-items:center;text-align:center;color:#fff;font-size:19px;font-weight:900}.platform-brand-icon img{display:block;width:24px;height:24px;object-fit:contain}
         .platform-copy{display:flex;flex-direction:column;gap:2px;min-width:0}
         .platform-copy>span{display:flex;flex-wrap:wrap;gap:9px;align-items:baseline}
         .platform-copy b{font-size:13px;font-weight:900;color:#fff}

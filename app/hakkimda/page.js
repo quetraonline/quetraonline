@@ -168,7 +168,7 @@ export default function AboutPage() {
         .platform-heading{display:flex;align-items:center;gap:15px;margin:0 0 16px}
         .platform-icon{width:56px;height:56px;flex:0 0 56px;display:grid;place-items:center;border:1px solid #4b4b4b;border-radius:17px;background:#333;color:#fff;font-size:27px}
         .platform-heading span{display:block;color:#b9c0ca;font-size:10px;font-weight:800;letter-spacing:1.5px;margin-bottom:3px}
-        .platform-heading h2{margin:0;color:#f2f3f5;font:900 clamp(22px,3vw,31px)/1.1 Manrope,sans-serif;letter-spacing:-.8px;text-transform:uppercase;text-shadow:2px 2px 0 #9d702e}
+        .platform-heading h2{margin:0;color:#f0c36b;font:900 clamp(22px,3vw,31px)/1.1 Manrope,sans-serif;letter-spacing:-.8px;text-transform:uppercase;text-shadow:2px 2px 0 #9d702e}
         .platform-list{overflow:hidden;border:1px solid #51402a;border-radius:13px;background:rgba(26,30,39,.94);box-shadow:0 10px 28px #0003}
         .platform-row{display:flex;align-items:center;gap:14px;min-height:60px;padding:9px 17px;border-bottom:1px solid rgba(224,170,69,.16);color:#fff;text-decoration:none;transition:background .15s}
         .platform-row:last-child{border-bottom:0}
@@ -184,7 +184,7 @@ export default function AboutPage() {
         .faq-heading{display:flex;align-items:center;gap:15px;margin:0 0 16px}
         .faq-icon{width:56px;height:56px;flex:0 0 56px;display:grid;place-items:center;border:1px solid #4b4b4b;border-radius:17px;background:#333;color:#fff;font-size:28px;font-weight:800}
         .faq-heading span{display:block;color:#b9c0ca;font-size:10px;font-weight:800;letter-spacing:1.5px;margin-bottom:3px}
-        .faq-heading h2{margin:0;color:#f2f3f5;font:900 clamp(22px,3vw,31px)/1.1 Manrope,sans-serif;letter-spacing:-.8px;text-transform:uppercase;text-shadow:2px 2px 0 #9d702e}
+        .faq-heading h2{margin:0;color:#f0c36b;font:900 clamp(22px,3vw,31px)/1.1 Manrope,sans-serif;letter-spacing:-.8px;text-transform:uppercase;text-shadow:2px 2px 0 #9d702e}
         .faq-list{overflow:hidden;border:1px solid #51402a;border-radius:15px;background:rgba(26,30,39,.94);box-shadow:0 10px 28px #0003}
         .faq-item{border-bottom:1px solid rgba(224,170,69,.16)}
         .faq-item:last-child{border-bottom:0}

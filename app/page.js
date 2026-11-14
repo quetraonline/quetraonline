@@ -69,6 +69,18 @@ export default function Home() {
             <div><h3>ByNo<span>Game</span></h3><small>Destek Olmak İçin</small><p>ByNoGame üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>
             <img className="bynogame-mascot" src="/bynogame-logo.svg?v=20261108" alt="ByNoGame maskotu" />
           </a>
+          <div className="support-card oyunfor">
+            <div><h3>OYUNFOR</h3><small>Destek Olmak İçin</small><p>Oyunfor üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>
+            <span className="support-logo-placeholder" aria-hidden="true" />
+          </div>
+          <div className="support-card kopazar">
+            <div><h3>KOPAZAR</h3><small>Destek Olmak İçin</small><p>Kopazar üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>
+            <span className="support-logo-placeholder" aria-hidden="true" />
+          </div>
+          <div className="support-card sonteklif">
+            <div><h3>SONTEKLİF</h3><small>Destek Olmak İçin</small><p>Sonteklif üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>
+            <span className="support-logo-placeholder" aria-hidden="true" />
+          </div>
         </section>
 
         <YouTubeReplays />

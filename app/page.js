@@ -77,10 +77,10 @@ export default function Home() {
             <div><h3>KOPAZAR</h3><small>Destek Olmak İçin</small><p>Kopazar üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>
             <span className="support-logo-placeholder" aria-hidden="true" />
           </div>
-          <div className="support-card sonteklif">
+          <a className="support-card sonteklif" href="https://www.sonteklif.com/yayinci/quetraonline" target="_blank" rel="noreferrer">
             <div><h3>SONTEKLİF</h3><small>Destek Olmak İçin</small><p>Sonteklif üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>
-            <span className="support-logo-placeholder" aria-hidden="true" />
-          </div>
+            <img className="support-logo-placeholder sonteklif-logo" src="/sonteklif.png?v=20261114-1700" alt="Sonteklif logosu" />
+          </a>
         </section>
 
         <YouTubeReplays />

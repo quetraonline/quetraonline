@@ -78,6 +78,7 @@ export default function AboutPage() {
               { icon: "▶", name: "YouTube", handle: "@quetraonline", detail: "YouTube kanalı", href: "https://www.youtube.com/@quetraonline" },
               { icon: "◎", name: "Instagram", handle: "@quetraonline", detail: "Instagram hesabı", href: "https://www.instagram.com/quetraonline" },
               { icon: "➤", name: "Telegram", handle: "quetraonline", detail: "Telegram kanalı", href: "https://t.me/quetraonline" },
+              { icon: "◉", name: "Twitch", handle: "quetraonline", detail: "Twitch kanalı", href: "https://www.twitch.tv/quetraonline" },
               { icon: "K", name: "Kick", handle: "quetraonline", detail: "Kick kanalı", href: "https://kick.com/quetraonline" }
             ].map((item) => (
               <a className="platform-row" key={item.name + item.handle} href={item.href || undefined} target={item.href ? "_blank" : undefined} rel={item.href ? "noreferrer" : undefined}>

@@ -354,3 +354,10 @@
 .site-menu-trigger img{width:158px;height:54px}
 @media(max-width:850px){.site-header{height:68px;min-height:68px;padding:0}.site-menu{width:calc(100% - 28px)}.site-menu-trigger img{width:148px;height:50px}}
 @media(max-width:520px){.site-header{height:62px;min-height:62px}.site-menu{width:calc(100% - 24px)}.site-menu-trigger img{width:132px;height:46px}}
+
+
+/* Contact page width aligned with the homepage content */
+.contact-shell{width:min(calc(100% - 40px),1060px);margin:0 auto;padding:54px 0 72px}
+.contact-panel{width:100%}
+@media(max-width:850px){.contact-shell{width:min(calc(100% - 28px),700px);padding:42px 0 60px}}
+@media(max-width:520px){.contact-shell{width:calc(100% - 24px);padding:32px 0 48px}}

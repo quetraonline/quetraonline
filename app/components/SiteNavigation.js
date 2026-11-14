@@ -144,7 +144,7 @@ export default function SiteNavigation({ active = "home" }) {
         </div>
         <div style={{ marginLeft: "auto", paddingRight: "clamp(14px,3vw,34px)", display: "flex", alignItems: "center" }}>
           {isAdmin ? (
-            <a href="/admin" style={{ ...loginButtonStyle, display: "inline-flex", alignItems: "center", textDecoration: "none" }}>YÖNETİCİ PANELİ</a>
+            <button type="button" style={loginButtonStyle} onClick={() => { setError(""); setLoginOpen(true); }}>YÖNETİCİ PANELİ</button>
           ) : (
             <button type="button" style={loginButtonStyle} onClick={() => { setError(""); setLoginOpen(true); }}>GİRİŞ YAP</button>
           )}
@@ -179,7 +179,19 @@ export default function SiteNavigation({ active = "home" }) {
               <h2 id="quetra-login-title" style={{ margin: "9px 0 5px", fontSize: 27 }}>Yönetici Girişi</h2>
               <p style={{ margin: 0, color: "#9da4af", fontSize: 13 }}>Yönetim paneline erişmek için giriş yapın.</p>
             </div>
-            {isAdmin ? (\n              <div style={{ display: "grid", gap: 15 }}>\n                <div style={{ padding: 17, border: "1px solid #3a414c", borderRadius: 10, background: "#0d1015" }}>\n                  <div style={{ color: "#c9a86a", fontSize: 10, fontWeight: 900, letterSpacing: 1.5, marginBottom: 9 }}>ANA SAYFA GÖRÜNÜMÜ</div>\n                  <strong style={{ display: "block", marginBottom: 7 }}>Büyük QuetraOnline logosu</strong>\n                  <p style={{ color: "#9da4af", fontSize: 12, lineHeight: 1.5, margin: "0 0 15px" }}>Ana sayfanın üst bölümündeki büyük logonun ziyaretçilere gösterilmesini ayarlayın.</p>\n                  <button type="button" disabled={busy || panelLoading} onClick={toggleHero} style={{ ...loginButtonStyle, width: "100%" }}>{panelLoading ? "YÜKLENİYOR..." : busy ? "KAYDEDİLİYOR..." : heroVisible ? "LOGOYU GİZLE" : "LOGOYU GÖSTER"}</button>\n                  <div style={{ color: heroVisible ? "#9ed6a8" : "#ffb18a", fontSize: 12, textAlign: "center", marginTop: 10 }}>{heroVisible ? "Logo şu anda ziyaretçilere gösteriliyor." : "Logo şu anda ana sayfada gizli."}</div>\n                </div>\n                <button type="button" onClick={logout} style={{ ...loginButtonStyle, background: "transparent", color: "#d4d8df", borderColor: "#454c57" }}>GÜVENLİ ÇIKIŞ</button>\n              </div>\n            ) : (\n            <form onSubmit={handleLogin} style={{ display: "grid", gap: 12 }}>
+            {isAdmin ? (
+              <div style={{ display: "grid", gap: 15 }}>
+                <div style={{ padding: 17, border: "1px solid #3a414c", borderRadius: 10, background: "#0d1015" }}>
+                  <div style={{ color: "#c9a86a", fontSize: 10, fontWeight: 900, letterSpacing: 1.5, marginBottom: 9 }}>ANA SAYFA GÖRÜNÜMÜ</div>
+                  <strong style={{ display: "block", marginBottom: 7 }}>Büyük QuetraOnline logosu</strong>
+                  <p style={{ color: "#9da4af", fontSize: 12, lineHeight: 1.5, margin: "0 0 15px" }}>Ana sayfanın üst bölümündeki büyük logonun ziyaretçilere gösterilmesini ayarlayın.</p>
+                  <button type="button" disabled={busy || panelLoading} onClick={toggleHero} style={{ ...loginButtonStyle, width: "100%" }}>{panelLoading ? "YÜKLENİYOR..." : busy ? "KAYDEDİLİYOR..." : heroVisible ? "LOGOYU GİZLE" : "LOGOYU GÖSTER"}</button>
+                  <div style={{ color: heroVisible ? "#9ed6a8" : "#ffb18a", fontSize: 12, textAlign: "center", marginTop: 10 }}>{heroVisible ? "Logo şu anda ziyaretçilere gösteriliyor." : "Logo şu anda ana sayfada gizli."}</div>
+                </div>
+                <button type="button" onClick={logout} style={{ ...loginButtonStyle, background: "transparent", color: "#d4d8df", borderColor: "#454c57" }}>GÜVENLİ ÇIKIŞ</button>
+              </div>
+            ) : (
+            <form onSubmit={handleLogin} style={{ display: "grid", gap: 12 }}>
               <label htmlFor="quetra-admin-email" style={{ color: "#d6d9df", fontSize: 12, fontWeight: 700 }}>E-posta adresi</label>
               <input id="quetra-admin-email" type="email" value={ADMIN_EMAIL} readOnly
                 style={{ width: "100%", boxSizing: "border-box", padding: 13, borderRadius: 8, border: "1px solid #3a414c", background: "#0d1015", color: "#cbd0d8" }} />
@@ -192,6 +204,7 @@ export default function SiteNavigation({ active = "home" }) {
                 {busy ? "GİRİŞ YAPILIYOR..." : "GİRİŞ YAP"}
               </button>
             </form>
+            )}
           </section>
         </div>
       )}

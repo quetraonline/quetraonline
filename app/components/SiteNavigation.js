@@ -216,9 +216,9 @@ export default function SiteNavigation({ active = "home" }) {
             aria-modal="true"
             aria-labelledby="quetra-login-title"
             style={{
-              width: "min(100%,430px)", position: "relative", padding: "clamp(24px,5vw,36px)",
-              border: "1px solid #655033", borderRadius: 15,
-              background: "radial-gradient(ellipse at 50% 0%,#302719 0,transparent 48%),#14171d",
+              width: "min(100%,620px)", maxHeight: "90vh", overflowY: "auto", position: "relative", padding: "clamp(20px,4vw,28px)",
+              border: "1px solid #485366", borderRadius: 18,
+              background: "radial-gradient(ellipse at 50% 0%,#263242 0,transparent 52%),#141b25",
               color: "#eef0f3", boxShadow: "0 24px 90px #000b",
             }}
           >
@@ -240,15 +240,37 @@ export default function SiteNavigation({ active = "home" }) {
                 <button type="submit" disabled={busy} style={{ ...loginButtonStyle, marginTop: 9, padding: 14, opacity: busy ? .7 : 1 }}>{busy ? "KAYDEDİLİYOR..." : "ŞİFREYİ KAYDET"}</button>
               </form>
             ) : isAdmin ? (
-              <div style={{ display: "grid", gap: 15 }}>
-                <div style={{ padding: 17, border: "1px solid #3a414c", borderRadius: 10, background: "#0d1015" }}>
-                  <div style={{ color: "#c9a86a", fontSize: 10, fontWeight: 900, letterSpacing: 1.5, marginBottom: 9 }}>ANA SAYFA GÖRÜNÜMÜ</div>
-                  <strong style={{ display: "block", marginBottom: 7 }}>Büyük QuetraOnline logosu</strong>
-                  <p style={{ color: "#9da4af", fontSize: 12, lineHeight: 1.5, margin: "0 0 15px" }}>Ana sayfanın üst bölümündeki büyük logonun ziyaretçilere gösterilmesini ayarlayın.</p>
-                  <button type="button" disabled={busy || panelLoading} onClick={toggleHero} style={{ ...loginButtonStyle, width: "100%" }}>{panelLoading ? "YÜKLENİYOR..." : busy ? "KAYDEDİLİYOR..." : heroVisible ? "LOGOYU GİZLE" : "LOGOYU GÖSTER"}</button>
-                  <div style={{ color: heroVisible ? "#9ed6a8" : "#ffb18a", fontSize: 12, textAlign: "center", marginTop: 10 }}>{heroVisible ? "Logo şu anda ziyaretçilere gösteriliyor." : "Logo şu anda ana sayfada gizli."}</div>
+              <div style={{ display: "grid", gap: 16 }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, paddingBottom: 15, borderBottom: "1px solid #303b4a" }}>
+                  <div>
+                    <div style={{ color: "#e8b95c", fontSize: 10, fontWeight: 900, letterSpacing: 2 }}>QUETRAONLINE • YÖNETİM</div>
+                    <h2 style={{ margin: "5px 0 0", fontSize: 22, letterSpacing: .5 }}>YÖNETİM PANELİ</h2>
+                  </div>
+                  <span style={{ border: "1px solid #52634f", color: "#a8d6a1", background: "#18251c", borderRadius: 20, padding: "6px 10px", fontSize: 10, fontWeight: 800, whiteSpace: "nowrap" }}>● YETKİLİ</span>
                 </div>
-                <button type="button" onClick={logout} style={{ ...loginButtonStyle, background: "transparent", color: "#d4d8df", borderColor: "#454c57" }}>GÜVENLİ ÇIKIŞ</button>
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                  <span style={{ padding: "8px 12px", borderRadius: 7, border: "1px solid #d1a957", background: "linear-gradient(135deg,#d9b66b,#a47b3e)", color: "#17130c", fontSize: 11, fontWeight: 900 }}>SİTE AYARLARI</span>
+                  <button type="button" onClick={logout} style={{ marginLeft: "auto", padding: "8px 12px", borderRadius: 7, border: "1px solid #465365", background: "#1a2330", color: "#e6e9ee", fontSize: 11, fontWeight: 800, cursor: "pointer" }}>ÇIKIŞ YAP</button>
+                </div>
+                <div style={{ padding: 17, border: "1px solid #354255", borderRadius: 11, background: "linear-gradient(145deg,#192330,#111720)" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
+                    <span style={{ display: "grid", placeItems: "center", width: 34, height: 34, borderRadius: 8, background: "#332a1c", color: "#e8b95c", fontSize: 17 }}>⚙</span>
+                    <div>
+                      <div style={{ color: "#e8b95c", fontSize: 10, fontWeight: 900, letterSpacing: 1.5 }}>GENEL AYARLAR</div>
+                      <strong style={{ display: "block", marginTop: 3, fontSize: 15 }}>Ana Sayfa Görünümü</strong>
+                    </div>
+                  </div>
+                  <div style={{ padding: 14, border: "1px solid #303d4d", borderRadius: 9, background: "#0c1119" }}>
+                    <strong style={{ display: "block", color: "#f1f3f6", fontSize: 13, marginBottom: 6 }}>Büyük QuetraOnline logosu</strong>
+                    <p style={{ color: "#9da8b7", fontSize: 12, lineHeight: 1.6, margin: "0 0 14px" }}>Ana sayfanın üst bölümündeki büyük logonun ziyaretçilere gösterilip gösterilmeyeceğini belirleyin.</p>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
+                      <span style={{ color: heroVisible ? "#a8d6a1" : "#f0b17d", fontSize: 11, fontWeight: 700 }}>{heroVisible ? "● LOGO AKTİF" : "● LOGO GİZLİ"}</span>
+                      <button type="button" disabled={busy || panelLoading} onClick={toggleHero} style={{ ...loginButtonStyle, padding: "9px 14px", opacity: busy || panelLoading ? .65 : 1 }}>{panelLoading ? "YÜKLENİYOR..." : busy ? "KAYDEDİLİYOR..." : heroVisible ? "LOGOYU GİZLE" : "LOGOYU GÖSTER"}</button>
+                    </div>
+                  </div>
+                </div>
+                {error && <p role="alert" style={{ margin: 0, color: "#ff9292", fontSize: 12 }}>{error}</p>}
+                <div style={{ color: "#7f8b9b", fontSize: 10, textAlign: "center", letterSpacing: .5 }}>QUETRAONLINE YÖNETİM SİSTEMİ</div>
               </div>
             ) : (
             <form onSubmit={handleLogin} style={{ display: "grid", gap: 12 }}>

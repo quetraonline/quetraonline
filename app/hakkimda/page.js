@@ -1,4 +1,5 @@
 import SiteNavigation from "../components/SiteNavigation";
+import VisitorCounter from "../components/VisitorCounter";
 
 export const metadata = {
   title: "Hakkımızda | QuetraOnline",
@@ -51,7 +52,7 @@ export default function AboutPage() {
             </div>
           </aside>
         </section>
-        <footer className="site-footer"><p>© 2026 QuetraOnline.com - Tüm hakları saklıdır.</p><p><a href="/iletisim">İletişim</a></p></footer>
+        <footer className="site-footer" id="contact">\n          <img className="footer-logo" src="/quetra-logo.svg?v=20261108" alt="QuetraOnline" />\n          <VisitorCounter />\n          <p>© 2026 QuetraOnline.com - Tüm hakları saklıdır.</p>\n          <p>Sorun ve şikayetleriniz için <a href="/iletisim">İletişim</a> sayfasından bana ulaşın.</p>\n        </footer>
       </div>
       <style>{`
         .about-page{padding-top:42px}

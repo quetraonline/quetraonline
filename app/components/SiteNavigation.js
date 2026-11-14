@@ -9,6 +9,8 @@ const ADMIN_EMAIL = "aenesguney@gmail.com";
 export default function SiteNavigation({ active = "home" }) {
   const [open, setOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
+  const [heroVisible, setHeroVisible] = useState(true);
+  const [panelLoading, setPanelLoading] = useState(false);
   const [password, setPassword] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -16,7 +18,9 @@ export default function SiteNavigation({ active = "home" }) {
   const menuRef = useRef(null);
 
   useEffect(() => {
-    setIsAdmin(Boolean(sessionStorage.getItem("quetra_admin_token")));
+    const savedToken = sessionStorage.getItem("quetra_admin_token");
+    setIsAdmin(Boolean(savedToken));
+    if (savedToken) loadAdminSettings(savedToken);
     function handlePointerDown(event) {
       if (!menuRef.current?.contains(event.target)) setOpen(false);
     }
@@ -33,6 +37,36 @@ export default function SiteNavigation({ active = "home" }) {
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
+
+  async function loadAdminSettings(token) {
+    setPanelLoading(true);
+    try {
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/quetra_site_settings?select=hero_logo_visible&id=eq.true`, {
+        headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${token}` }, cache: "no-store",
+      });
+      if (response.ok) { const rows = await response.json(); setHeroVisible(rows[0]?.hero_logo_visible ?? true); }
+    } finally { setPanelLoading(false); }
+  }
+
+  async function toggleHero() {
+    const token = sessionStorage.getItem("quetra_admin_token");
+    if (!token) { setIsAdmin(false); setError("Oturumunuz sona ermiş. Yeniden giriş yapın."); return; }
+    setBusy(true); setError("");
+    try {
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/quetra_site_settings?id=eq.true`, {
+        method: "PATCH", headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${token}`, "Content-Type": "application/json", Prefer: "return=representation" },
+        body: JSON.stringify({ hero_logo_visible: !heroVisible, updated_at: new Date().toISOString() }),
+      });
+      if (!response.ok) throw new Error("Ayar kaydedilemedi. Tekrar giriş yapmayı deneyin.");
+      setHeroVisible(!heroVisible);
+    } catch (err) { setError(err.message || "Ayar kaydedilemedi."); }
+    finally { setBusy(false); }
+  }
+
+  function logout() {
+    sessionStorage.removeItem("quetra_admin_token");
+    setIsAdmin(false); setLoginOpen(false); setError(""); setPassword("");
+  }
 
   async function handleLogin(event) {
     event.preventDefault();
@@ -63,8 +97,8 @@ export default function SiteNavigation({ active = "home" }) {
       sessionStorage.setItem("quetra_admin_token", data.access_token);
       setIsAdmin(true);
       setPassword("");
-      setLoginOpen(false);
-      window.location.href = "/admin";
+      await loadAdminSettings(data.access_token);
+      setLoginOpen(true);
     } catch (err) {
       setError(err.message || "Giriş yapılamadı.");
     } finally {
@@ -145,7 +179,7 @@ export default function SiteNavigation({ active = "home" }) {
               <h2 id="quetra-login-title" style={{ margin: "9px 0 5px", fontSize: 27 }}>Yönetici Girişi</h2>
               <p style={{ margin: 0, color: "#9da4af", fontSize: 13 }}>Yönetim paneline erişmek için giriş yapın.</p>
             </div>
-            <form onSubmit={handleLogin} style={{ display: "grid", gap: 12 }}>
+            {isAdmin ? (\n              <div style={{ display: "grid", gap: 15 }}>\n                <div style={{ padding: 17, border: "1px solid #3a414c", borderRadius: 10, background: "#0d1015" }}>\n                  <div style={{ color: "#c9a86a", fontSize: 10, fontWeight: 900, letterSpacing: 1.5, marginBottom: 9 }}>ANA SAYFA GÖRÜNÜMÜ</div>\n                  <strong style={{ display: "block", marginBottom: 7 }}>Büyük QuetraOnline logosu</strong>\n                  <p style={{ color: "#9da4af", fontSize: 12, lineHeight: 1.5, margin: "0 0 15px" }}>Ana sayfanın üst bölümündeki büyük logonun ziyaretçilere gösterilmesini ayarlayın.</p>\n                  <button type="button" disabled={busy || panelLoading} onClick={toggleHero} style={{ ...loginButtonStyle, width: "100%" }}>{panelLoading ? "YÜKLENİYOR..." : busy ? "KAYDEDİLİYOR..." : heroVisible ? "LOGOYU GİZLE" : "LOGOYU GÖSTER"}</button>\n                  <div style={{ color: heroVisible ? "#9ed6a8" : "#ffb18a", fontSize: 12, textAlign: "center", marginTop: 10 }}>{heroVisible ? "Logo şu anda ziyaretçilere gösteriliyor." : "Logo şu anda ana sayfada gizli."}</div>\n                </div>\n                <button type="button" onClick={logout} style={{ ...loginButtonStyle, background: "transparent", color: "#d4d8df", borderColor: "#454c57" }}>GÜVENLİ ÇIKIŞ</button>\n              </div>\n            ) : (\n            <form onSubmit={handleLogin} style={{ display: "grid", gap: 12 }}>
               <label htmlFor="quetra-admin-email" style={{ color: "#d6d9df", fontSize: 12, fontWeight: 700 }}>E-posta adresi</label>
               <input id="quetra-admin-email" type="email" value={ADMIN_EMAIL} readOnly
                 style={{ width: "100%", boxSizing: "border-box", padding: 13, borderRadius: 8, border: "1px solid #3a414c", background: "#0d1015", color: "#cbd0d8" }} />

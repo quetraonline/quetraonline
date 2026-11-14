@@ -250,7 +250,7 @@ export default function SiteNavigation({ active = "home" }) {
                   <span style={{ padding: "8px 12px", borderRadius: 7, border: "1px solid #d1a957", background: "linear-gradient(135deg,#d9b66b,#a47b3e)", color: "#17130c", fontSize: 11, fontWeight: 900 }}>SİTE AYARLARI</span>
                   <button type="button" onClick={logout} style={{ marginLeft: "auto", padding: "8px 12px", borderRadius: 7, border: "1px solid #465365", background: "#1a2330", color: "#e6e9ee", fontSize: 11, fontWeight: 800, cursor: "pointer" }}>ÇIKIŞ YAP</button>
                 </div>
-                <div style={{ padding: 17, border: "1px solid #354255", borderRadius: 11, background: "linear-gradient(145deg,#192330,#111720)" }}>
+                <div style={{ padding: "4px 0 0", border: 0, borderRadius: 0, background: "transparent" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
                     <span style={{ display: "grid", placeItems: "center", width: 34, height: 34, borderRadius: 8, background: "#332a1c", color: "#e8b95c", fontSize: 17 }}>⚙</span>
                     <div>
@@ -258,7 +258,7 @@ export default function SiteNavigation({ active = "home" }) {
                       <strong style={{ display: "block", marginTop: 3, fontSize: 15 }}>Ana Sayfa Görünümü</strong>
                     </div>
                   </div>
-                  <div style={{ padding: 14, border: "1px solid #303d4d", borderRadius: 9, background: "#0c1119" }}>
+                  <div style={{ padding: "0 0 0 44px", border: 0, borderRadius: 0, background: "transparent" }}>
                     <strong style={{ display: "block", color: "#f1f3f6", fontSize: 13, marginBottom: 6 }}>Büyük QuetraOnline logosu</strong>
                     <p style={{ color: "#9da8b7", fontSize: 12, lineHeight: 1.6, margin: "0 0 14px" }}>Ana sayfanın üst bölümündeki büyük logonun ziyaretçilere gösterilip gösterilmeyeceğini belirleyin.</p>
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
@@ -268,7 +268,6 @@ export default function SiteNavigation({ active = "home" }) {
                   </div>
                 </div>
                 {error && <p role="alert" style={{ margin: 0, color: "#ff9292", fontSize: 12 }}>{error}</p>}
-                <div style={{ color: "#7f8b9b", fontSize: 10, textAlign: "center", letterSpacing: .5 }}>QUETRAONLINE YÖNETİM SİSTEMİ</div>
               </div>
             ) : (
             <form onSubmit={handleLogin} style={{ display: "grid", gap: 12 }}>

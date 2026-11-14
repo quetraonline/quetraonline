@@ -108,6 +108,29 @@ export default function AboutPage() {
             </div>
           </aside>
         </section>
+        <section className="faq-section">
+          <div className="faq-heading">
+            <div className="faq-icon" aria-hidden="true">?</div>
+            <div><span>S.S.S.</span><h2>SIK SORULAN SORULAR</h2></div>
+          </div>
+          <div className="faq-list">
+            {[
+              ["Cenk Pekkan kimdir?", "Cenk Pekkan, CenkBeyResmi adıyla tanınan Türk yayıncı ve içerik üreticisidir. Minecraft ve Knight Online yayınlarıyla tanınmıştır."],
+              ["Cenk Pekkan nerede yaşıyor?", "Sayfada yer alan biyografi bilgisine göre Malta'da yaşamaktadır."],
+              ["Cenk Pekkan'ın gerçek adı ne?", "Gerçek adı Cenk Pekkan'dır."],
+              ["Cenk Pekkan kaç yaşında?", "1990 doğumludur. Doğum günü bilgisi paylaşılmadığı için kesin yaşı belirtilmemiştir."],
+              ["Cenk Pekkan hangi platformda yayın yapıyor?", "Ana yayın kanalı YouTube'dur. Kanalı: @CenkBeyYayin."],
+              ["Cenk Pekkan'ın Kick hesabına ne oldu?", "Paylaşılan biyografi bilgisinde Kick hesabının şu anda askıda olduğu belirtilmektedir."],
+              ["Cenk Pekkan neden gündemde?", "Bu sayfada güncel gündem konusu hakkında doğrulanmış bir bilgi bulunmamaktadır."],
+              ["Cenk Pekkan çekiliş yapıyor mu?", "Çekiliş ve etkinlik duyuruları için CenkBey'in Telegram etkinlik kanalını takip edebilirsiniz."]
+            ].map(([question, answer]) => (
+              <details className="faq-item" key={question}>
+                <summary>{question}</summary>
+                <p>{answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
         <footer className="site-footer" id="contact">
           <img className="footer-logo" src="/quetra-logo.svg?v=20261108" alt="QuetraOnline" />
           <VisitorCounter />
@@ -157,6 +180,19 @@ export default function AboutPage() {
         .platform-copy strong{font-size:12px;color:#d7d9de;font-weight:700}
         .platform-copy small{font-size:11px;color:#c4c8d0}
         .platform-arrow{margin-left:auto;color:#c4c4c4;font-size:16px}
+        .faq-section{margin-top:24px}
+        .faq-heading{display:flex;align-items:center;gap:15px;margin:0 0 16px}
+        .faq-icon{width:56px;height:56px;flex:0 0 56px;display:grid;place-items:center;border:1px solid #4b4b4b;border-radius:17px;background:#333;color:#fff;font-size:28px;font-weight:800}
+        .faq-heading span{display:block;color:#b9c0ca;font-size:10px;font-weight:800;letter-spacing:1.5px;margin-bottom:3px}
+        .faq-heading h2{margin:0;color:#f2f3f5;font:900 clamp(22px,3vw,31px)/1.1 Manrope,sans-serif;letter-spacing:-.8px;text-transform:uppercase;text-shadow:2px 2px 0 #9d702e}
+        .faq-list{overflow:hidden;border:1px solid #51402a;border-radius:15px;background:rgba(26,30,39,.94);box-shadow:0 10px 28px #0003}
+        .faq-item{border-bottom:1px solid rgba(224,170,69,.16)}
+        .faq-item:last-child{border-bottom:0}
+        .faq-item summary{position:relative;display:flex;align-items:center;min-height:51px;padding:0 42px 0 16px;color:#f5f6f8;font-size:13px;font-weight:800;cursor:pointer;list-style:none}
+        .faq-item summary::-webkit-details-marker{display:none}
+        .faq-item summary:after{content:"⌄";position:absolute;right:17px;top:50%;transform:translateY(-55%);color:#bfc4ce;font-size:18px;font-weight:400;transition:transform .15s}
+        .faq-item[open] summary:after{transform:translateY(-35%) rotate(180deg)}
+        .faq-item p{margin:0;padding:0 42px 15px 16px;color:#cbd0d9;font-size:13px;line-height:1.7}
                 .about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-top:22px}
         .about-panel{background:rgba(26,30,39,.94);border:1px solid #51402a;border-radius:13px;padding:26px;box-shadow:0 10px 28px #0003}
         .about-panel h2{font-size:19px;color:#f0c36b;margin:0 0 14px}
@@ -168,7 +204,7 @@ export default function AboutPage() {
         .about-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
         .about-links a{color:#fff;text-decoration:none;border:1px solid #9d702e;background:#332719;padding:10px 14px;border-radius:8px;font-weight:700;font-size:13px}
         .about-links a:hover{border-color:#f0c36b;background:#49351c}
-        @media(max-width:700px){.platform-heading{gap:11px}.platform-icon{width:48px;height:48px;flex-basis:48px}.platform-row{min-height:57px;padding:9px 12px;gap:11px}.platform-copy b{font-size:12px}.platform-copy strong{font-size:11px}.profile-heading{gap:11px}.profile-icon{width:48px;height:48px;flex-basis:48px}.profile-row{grid-template-columns:minmax(112px,38%) 1fr;gap:10px;padding:9px 12px;min-height:42px}.profile-row span,.profile-row strong{font-size:11px}.about-page{padding-top:24px}.about-hero{grid-template-columns:1fr;padding:25px 19px 14px}.about-hero-copy{order:1}.about-hero-visual{order:2;min-height:145px;margin-top:10px}.about-hero-visual img{height:120px;width:min(75%,280px)}.about-hero h1{font-size:clamp(25px,7vw,35px)}.about-hero p{font-size:12px}.about-facts{gap:18px;margin-top:17px}.about-facts strong{font-size:15px}.about-grid{grid-template-columns:1fr}.about-panel{padding:21px}}
+        @media(max-width:700px){.faq-heading{gap:11px}.faq-icon{width:48px;height:48px;flex-basis:48px}.faq-item summary{min-height:49px;padding-left:12px;font-size:12px}.faq-item p{padding-left:12px;font-size:12px}.platform-heading{gap:11px}.platform-icon{width:48px;height:48px;flex-basis:48px}.platform-row{min-height:57px;padding:9px 12px;gap:11px}.platform-copy b{font-size:12px}.platform-copy strong{font-size:11px}.profile-heading{gap:11px}.profile-icon{width:48px;height:48px;flex-basis:48px}.profile-row{grid-template-columns:minmax(112px,38%) 1fr;gap:10px;padding:9px 12px;min-height:42px}.profile-row span,.profile-row strong{font-size:11px}.about-page{padding-top:24px}.about-hero{grid-template-columns:1fr;padding:25px 19px 14px}.about-hero-copy{order:1}.about-hero-visual{order:2;min-height:145px;margin-top:10px}.about-hero-visual img{height:120px;width:min(75%,280px)}.about-hero h1{font-size:clamp(25px,7vw,35px)}.about-hero p{font-size:12px}.about-facts{gap:18px;margin-top:17px}.about-facts strong{font-size:15px}.about-grid{grid-template-columns:1fr}.about-panel{padding:21px}}
       `}</style>
     </main>
   );

@@ -8,6 +8,12 @@ export default function sitemap() {
       priority: 1
     },
     {
+      url: `${baseUrl}/hakkimda`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.6
+    },
+    {
       url: `${baseUrl}/iletisim`,
       lastModified: new Date(),
       changeFrequency: "monthly",

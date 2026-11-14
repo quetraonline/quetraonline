@@ -74,14 +74,10 @@ export default function AboutPage() {
           </div>
           <div className="platform-list">
             {[
-              { icon: "▶", name: "YouTube", handle: "@CenkBeyYayin", detail: "Ana yayın kanalı", href: "https://www.youtube.com/@CenkBeyYayin" },
-              { icon: "◎", name: "Instagram", handle: "@realcenkkpekkan", detail: "Aktif Instagram hesabı", href: "https://www.instagram.com/realcenkkpekkan" },
-              { icon: "➤", name: "Telegram", handle: "cenkbeychat", detail: "Sohbet grubu", href: "https://t.me/cenkbeychat" },
-              { icon: "➤", name: "Telegram", handle: "cenkbeyduyuru", detail: "Duyuru kanalı", href: "https://t.me/cenkbeyduyuru" },
-              { icon: "➤", name: "Telegram", handle: "cenkbeyetkinlik", detail: "Etkinlik ve çekiliş kanalı", href: "https://t.me/cenkbeyetkinlik" },
-              { icon: "◉", name: "WhatsApp", handle: "CenkBey WhatsApp", detail: "WhatsApp kanalı" },
-              { icon: "◉", name: "Spotify", handle: "CenkBey Spotify", detail: "Spotify profili" },
-              { icon: "K", name: "Kick", handle: "cenkbeyresmi", detail: "Eski ana platform, hesap askıda", href: "https://kick.com/cenkbeyresmi" }
+              { icon: "▶", name: "YouTube", handle: "@quetraonline", detail: "YouTube kanalı", href: "https://www.youtube.com/@quetraonline" },
+              { icon: "◎", name: "Instagram", handle: "@quetraonline", detail: "Instagram hesabı", href: "https://www.instagram.com/quetraonline" },
+              { icon: "➤", name: "Telegram", handle: "quetraonline", detail: "Telegram kanalı", href: "https://t.me/quetraonline" },
+              { icon: "K", name: "Kick", handle: "quetraonline", detail: "Kick kanalı", href: "https://kick.com/quetraonline" }
             ].map((item) => (
               <a className="platform-row" key={item.name + item.handle} href={item.href || undefined} target={item.href ? "_blank" : undefined} rel={item.href ? "noreferrer" : undefined}>
                 <span className="platform-brand-icon">{item.icon}</span>

@@ -157,3 +157,10 @@
   .hamburger-icon{width:27px;flex-basis:27px;gap:4px}
   .hamburger-icon i{width:27px;height:3px}
 }
+
+/* Additional donation cards: logo spaces reserved for supplied brand assets */
+.support-logo-placeholder{width:58px;height:70px;flex:0 0 58px;display:block}
+.support-card.oyunfor h3{color:#f3f3f3}
+.support-card.kopazar h3{color:#f3f3f3}
+.support-card.sonteklif h3{color:#f3f3f3}
+@media(max-width:520px){.support-logo-placeholder{width:46px;height:60px;flex-basis:46px}}

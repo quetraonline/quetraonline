@@ -162,7 +162,7 @@
 .support-logo-placeholder{width:58px;height:70px;flex:0 0 58px;display:block}
 .support-card.oyunfor h3{color:#ff8a00}
 .support-card.kopazar h3{color:#f3f3f3}
-.support-card.sonteklif h3{color:#f3f3f3}
+.support-card.sonteklif h3{color:#ff8a00}
 .support-logo-placeholder.sonteklif-logo{width:58px;height:58px;min-width:58px;max-width:58px;flex:0 0 58px;object-fit:contain;object-position:center;border-radius:0;display:block;overflow:visible}
 @media(max-width:520px){.support-logo-placeholder{width:46px;height:60px;flex-basis:46px}}
 

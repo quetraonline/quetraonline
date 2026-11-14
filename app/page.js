@@ -75,7 +75,7 @@ export default function Home() {
           </a>
           <a className="support-card kopazar" href="https://www.kopazar.com/streamer/quetraonline" target="_blank" rel="noreferrer">
             <div><h3>KOPAZAR</h3><small>Destek Olmak İçin</small><p>Kopazar üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>
-            <img className="support-logo-placeholder kopazar-logo" src="/kopazar.png?v=20261114-1709" alt="Kopazar logosu" />
+            <img className="support-logo-placeholder kopazar-logo" src="/kopazarr.png?v=20261114-1715" alt="Kopazar logosu" />
           </a>
           <a className="support-card sonteklif" href="https://www.sonteklif.com/yayinci/quetraonline" target="_blank" rel="noreferrer">
             <div><h3>SONTEKLİF</h3><small>Destek Olmak İçin</small><p>Sonteklif üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>

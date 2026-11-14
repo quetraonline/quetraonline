@@ -15,7 +15,7 @@ export default function ContactPage() {
         </div>
       </section>
       <div className="contact-shell">
-        <a className="contact-back" href="/">← Ana Sayfaya Dön</a>
+        <a className="contact-back" href="/"><span className="contact-back-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14.5 5 7.5 12l7 7M8 12h12" /></svg></span><span>Ana Sayfaya Dön</span></a>
         <section className="contact-panel">
           <p className="contact-eyebrow">QUETRAONLINE</p>
           <h1>Benimle İletişime Geçin</h1>

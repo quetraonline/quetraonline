@@ -161,7 +161,7 @@
 /* Additional donation cards: logo spaces reserved for supplied brand assets */
 .support-logo-placeholder{width:58px;height:70px;flex:0 0 58px;display:block}
 .support-card.oyunfor h3{color:#ff8a00}
-.support-card.kopazar h3{color:#f3f3f3}
+.support-card.kopazar h3{color:#ffcc33}
 .support-card.sonteklif h3{color:#ff8a00}
 .support-logo-placeholder.sonteklif-logo{width:58px;height:58px;min-width:58px;max-width:58px;flex:0 0 58px;object-fit:contain;object-position:center;border-radius:0;display:block;overflow:visible}
 .support-card.kopazar img.kopazar-logo{display:block;width:58px;height:58px;min-width:58px;max-width:58px;min-height:58px;max-height:58px;flex:0 0 58px;aspect-ratio:1/1;object-fit:contain;object-position:center;align-self:center;border-radius:0;overflow:visible}

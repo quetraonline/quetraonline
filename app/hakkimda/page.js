@@ -74,6 +74,7 @@ export default function AboutPage() {
           </div>
           <div className="platform-list">
             {[
+              { icon: "♪", name: "TikTok", handle: "@quetraonline", detail: "TikTok hesabı", href: "https://www.tiktok.com/@quetraonline" },
               { icon: "▶", name: "YouTube", handle: "@quetraonline", detail: "YouTube kanalı", href: "https://www.youtube.com/@quetraonline" },
               { icon: "◎", name: "Instagram", handle: "@quetraonline", detail: "Instagram hesabı", href: "https://www.instagram.com/quetraonline" },
               { icon: "➤", name: "Telegram", handle: "quetraonline", detail: "Telegram kanalı", href: "https://t.me/quetraonline" },

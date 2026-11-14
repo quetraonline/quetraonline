@@ -4,6 +4,8 @@ import SiteNavigation from "../components/SiteNavigation";
 
 export const metadata = { title: "İletişim | QuetraOnline - Resmi Web Sitesi", description: "QuetraOnline ile iletişime geçin." };
 
+export const dynamic = "force-dynamic";
+
 export default async function ContactPage() {
   let heroLogoVisible = true;
   try {

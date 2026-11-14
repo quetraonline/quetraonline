@@ -49,7 +49,7 @@ export default function AboutPage() {
         <section className="profile-section">
           <div className="profile-heading">
             <div className="profile-icon" aria-hidden="true">▣</div>
-            <div><span>BİYOGRAFİ</span><h2>CENK PEKKAN KİMDİR?</h2></div>
+            <div><span>BİYOGRAFİ</span><h2>Quetra</h2></div>
           </div>
           <div className="profile-table">
             {[
@@ -158,7 +158,7 @@ export default function AboutPage() {
         .profile-heading{display:flex;align-items:center;gap:15px;margin:0 0 16px}
         .profile-icon{width:56px;height:56px;flex:0 0 56px;display:grid;place-items:center;border:1px solid #4b4b4b;border-radius:17px;background:#333;color:#f3f3f3;font-size:26px}
         .profile-heading span{display:block;color:#b9c0ca;font-size:10px;font-weight:800;letter-spacing:1.5px;margin-bottom:3px}
-        .profile-heading h2{margin:0;color:#f2f3f5;font:900 clamp(22px,3vw,31px)/1.1 Manrope,sans-serif;letter-spacing:-.8px;text-transform:uppercase;text-shadow:2px 2px 0 #9d702e}
+        .profile-heading h2{margin:0;color:#f0c36b;font:900 clamp(22px,3vw,31px)/1.1 Manrope,sans-serif;letter-spacing:-.8px;text-transform:none;text-shadow:none}
         .profile-table{overflow:hidden;border:1px solid #51402a;border-radius:13px;background:rgba(26,30,39,.94);box-shadow:0 10px 28px #0003}
         .profile-row{display:grid;grid-template-columns:minmax(180px,18%) 1fr;min-height:41px;align-items:center;border-bottom:1px solid rgba(224,170,69,.16);padding:0 16px;gap:16px}
         .profile-row:last-child{border-bottom:0}

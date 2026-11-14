@@ -30,17 +30,30 @@ export default async function Home() {
       if (typeof settings[0]?.hero_logo_visible === "boolean") heroLogoVisible = settings[0].hero_logo_visible;
     }
   } catch {}
+  let heroLogoVisible = true;
+  try {
+    const response = await fetch("https://hfmosadynxpwkscvpard.supabase.co/rest/v1/quetra_site_settings?select=hero_logo_visible&id=eq.true", {
+      headers: { apikey: "sb_publishable_1UDqJWj6DAKrx7tfWMs2lA_nW-Ee29S", Authorization: "Bearer sb_publishable_1UDqJWj6DAKrx7tfWMs2lA_nW-Ee29S" },
+      cache: "no-store",
+    });
+    if (response.ok) {
+      const settings = await response.json();
+      if (typeof settings[0]?.hero_logo_visible === "boolean") heroLogoVisible = settings[0].hero_logo_visible;
+    }
+  } catch {}
   return (
     <main className="quetra-site">
       <SiteNavigation active="home" />
 
       {heroLogoVisible && (
+        {heroLogoVisible && (
         <section className="hero-banner" id="home">
           <div className="hero-sky" />
           <div className="hero-copy">
             <img className="hero-logo" src="/quetra-logo.svg?v=20261108" alt="QuetraOnline" />
           </div>
         </section>
+      )}
       )}
 
       <div className="content-shell">

@@ -28,10 +28,25 @@ export default function AboutPage() {
       <SiteNavigation active="about" />
       <div className="content-shell about-page">
         <section className="about-hero">
-          <span className="about-eyebrow">BİZ KİMİZ?</span>
-          <img src="/quetra-logo.svg" alt="QuetraOnline" />
-          <h1>Hakkımızda</h1>
-          <p>Oyun, canlı yayın ve topluluk ruhunu aynı çatı altında buluşturuyoruz. QuetraOnline; Nowa Online World başta olmak üzere çevrim içi oyun dünyasına, yayıncılara ve oyunculara odaklanan bir topluluk ve içerik platformudur.</p>
+          <div className="about-hero-copy">
+            <span className="about-eyebrow">BİYOGRAFİ</span>
+            <h1>QUETRAONLINE KİMDİR?</h1>
+            <p>QuetraOnline; oyun, canlı yayın ve topluluk kültürünü bir araya getiren kişisel bir marka ve dijital buluşma noktasıdır. Nowa Online World ve Knight Online başta olmak üzere çevrim içi oyun dünyasındaki yayınları, içerikleri ve topluluk çalışmalarını tek çatı altında buluşturur.</p>
+            <div className="about-facts">
+              <div><span>ODAK NOKTASI</span><strong>Oyun & Yayın</strong></div>
+              <div><span>TOPLULUK</span><strong>Nowa Online World</strong></div>
+              <div><span>İÇERİK</span><strong>Canlı Yayınlar</strong></div>
+            </div>
+            <div className="about-hero-actions">
+              <a href="https://www.youtube.com/@quetraonline" target="_blank" rel="noreferrer">YouTube Kanalı ↗</a>
+              <a href="#social-links">Sosyal Hesaplar</a>
+            </div>
+          </div>
+          <div className="about-hero-visual">
+            <div className="about-hero-glow" />
+            <img src="/quetra-logo.svg?v=20261108" alt="QuetraOnline logosu" />
+            <span>QUETRAONLINE</span>
+          </div>
         </section>
         <section className="about-grid">
           <article className="about-panel">
@@ -45,7 +60,7 @@ export default function AboutPage() {
             <div className="about-values">
               {values.map(([title, desc]) => <div className="about-value" key={title}><b>{title}</b><span>{desc}</span></div>)}
             </div>
-            <div className="about-links">
+            <div className="about-links" id="social-links">
               <a href="https://www.youtube.com/@quetraonline" target="_blank" rel="noreferrer">YouTube</a>
               <a href="https://www.tiktok.com/@quetraonline" target="_blank" rel="noreferrer">TikTok</a>
               <a href="https://www.instagram.com/quetraonline" target="_blank" rel="noreferrer">Instagram</a>
@@ -60,12 +75,23 @@ export default function AboutPage() {
         </footer>
       </div>
       <style>{`
-        .about-page{padding-top:42px}
-        .about-hero{text-align:center;padding:42px 26px 38px;border:1px solid rgba(224,170,69,.45);border-radius:16px;background:linear-gradient(135deg,rgba(36,30,25,.96),rgba(22,26,35,.96));box-shadow:0 16px 50px #0006}
-        .about-eyebrow{display:block;color:#e8b85b;letter-spacing:3px;font-size:12px;font-weight:800}
-        .about-hero img{display:block;width:min(310px,75%);max-height:120px;object-fit:contain;margin:18px auto}
-        .about-hero h1{font-size:clamp(30px,5vw,46px);margin:12px 0;color:#f0bd59}
-        .about-hero p{max-width:760px;margin:0 auto;color:#d6d8df;font-size:17px;line-height:1.8}
+        .about-page{padding-top:34px}
+        .about-hero{position:relative;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(250px,.65fr);align-items:stretch;min-height:285px;overflow:hidden;padding:30px 24px 24px;border:1px solid rgba(224,170,69,.38);border-radius:15px;background:linear-gradient(110deg,#24262a 0%,#1b1e24 58%,#292b30 100%);box-shadow:0 16px 45px #0005}
+        .about-hero-copy{position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;max-width:690px}
+        .about-eyebrow{display:block;color:#c9a86a;letter-spacing:2px;font-size:10px;font-weight:800;margin-bottom:8px}
+        .about-hero h1{font:900 clamp(28px,4vw,43px)/1.05 Manrope,sans-serif;letter-spacing:-1.7px;margin:0 0 12px;color:#f1f2f4;text-transform:uppercase;text-shadow:2px 2px 0 #8d6a36}
+        .about-hero p{max-width:650px;margin:0;color:#d1d4da;font-size:13px;line-height:1.75}
+        .about-facts{display:flex;flex-wrap:wrap;gap:28px;margin-top:22px}
+        .about-facts div{display:flex;flex-direction:column;gap:5px}
+        .about-facts span{font-size:9px;font-weight:800;letter-spacing:1.3px;color:#aeb4bf}
+        .about-facts strong{font:800 18px Manrope,sans-serif;color:#f1f2f4}
+        .about-hero-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:17px}
+        .about-hero-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 15px;border-radius:7px;background:#e51d2a;color:#fff;font-size:11px;font-weight:800}
+        .about-hero-actions a+ a{background:#41454c;border:1px solid #555b65}
+        .about-hero-visual{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;min-height:230px;overflow:hidden}
+        .about-hero-glow{position:absolute;width:280px;height:220px;bottom:-90px;border-radius:50%;background:#c9a86a26;filter:blur(35px)}
+        .about-hero-visual img{position:relative;z-index:1;display:block;width:min(100%,330px);height:190px;object-fit:contain;filter:drop-shadow(0 8px 18px #0009)}
+        .about-hero-visual span{position:relative;z-index:1;margin:0 0 7px;color:#c9a86a;font-size:9px;font-weight:800;letter-spacing:3px}
         .about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-top:22px}
         .about-panel{background:rgba(26,30,39,.94);border:1px solid #51402a;border-radius:13px;padding:26px;box-shadow:0 10px 28px #0003}
         .about-panel h2{font-size:19px;color:#f0c36b;margin:0 0 14px}
@@ -77,7 +103,7 @@ export default function AboutPage() {
         .about-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
         .about-links a{color:#fff;text-decoration:none;border:1px solid #9d702e;background:#332719;padding:10px 14px;border-radius:8px;font-weight:700;font-size:13px}
         .about-links a:hover{border-color:#f0c36b;background:#49351c}
-        @media(max-width:700px){.about-page{padding-top:24px}.about-hero{padding:30px 18px}.about-hero p{font-size:15px}.about-grid{grid-template-columns:1fr}.about-panel{padding:21px}}
+        @media(max-width:700px){.about-page{padding-top:24px}.about-hero{grid-template-columns:1fr;padding:25px 19px 14px}.about-hero-copy{order:1}.about-hero-visual{order:2;min-height:145px;margin-top:10px}.about-hero-visual img{height:120px;width:min(75%,280px)}.about-hero h1{font-size:clamp(25px,7vw,35px)}.about-hero p{font-size:12px}.about-facts{gap:18px;margin-top:17px}.about-facts strong{font-size:15px}.about-grid{grid-template-columns:1fr}.about-panel{padding:21px}}
       `}</style>
     </main>
   );

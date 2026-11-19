@@ -420,3 +420,24 @@
 .site-header .site-menu-dropdown a{display:flex;align-items:center;gap:10px}
 .site-menu-item-icon{display:block;width:17px;height:17px;flex:0 0 17px;fill:none;stroke:var(--gold);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;opacity:.95}
 .site-header .site-menu-dropdown a:hover .site-menu-item-icon,.site-header .site-menu-dropdown a.active .site-menu-item-icon{stroke:var(--gold-soft)}
+
+
+/* Keep dropdown icons and labels on one clean horizontal line, including active item */
+.site-header .site-menu-dropdown a,
+.site-header .site-menu-dropdown a:hover,
+.site-header .site-menu-dropdown a.active{
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:flex-start;
+  gap:11px;
+  min-height:44px;
+  padding:11px 13px;
+  text-align:left;
+}
+.site-header .site-menu-dropdown a .site-menu-item-icon{
+  width:18px;
+  height:18px;
+  flex:0 0 18px;
+}
+.site-header .site-menu-dropdown a span{display:block;margin:0;line-height:1.2}

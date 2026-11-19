@@ -1,9 +1,9 @@
-import { createCipheriv, createHash, randomBytes, timingSafeEqual } from "node:crypto";
+import { createCipheriv, createDecipheriv, randomBytes, timingSafeEqual } from "node:crypto";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-function encryptTokens(value) {
+function encryptionKey() {\n  const key = encryptionKey();\n  return key;\n}\n\nfunction encryptTokens(value) {
   const secret = process.env.OAUTH_TOKEN_ENCRYPTION_KEY;
   if (!secret) throw new Error("OAUTH_TOKEN_ENCRYPTION_KEY ortam değişkeni eksik.");
   const key = Buffer.from(secret, "base64");
@@ -14,7 +14,7 @@ function encryptTokens(value) {
   return [iv.toString("base64"), cipher.getAuthTag().toString("base64"), encrypted.toString("base64")].join(".");
 }
 
-function cookieValue(request, name) {
+function decryptTokens(value) {\n  const [iv, tag, encrypted] = String(value || "").split(".");\n  if (!iv || !tag || !encrypted) return null;\n  const decipher = createDecipheriv("aes-256-gcm", encryptionKey(), Buffer.from(iv, "base64"));\n  decipher.setAuthTag(Buffer.from(tag, "base64"));\n  return JSON.parse(Buffer.concat([decipher.update(Buffer.from(encrypted, "base64")), decipher.final()]).toString("utf8"));\n}\n\nfunction cookieValue(request, name) {
   const raw = request.headers.get("cookie") || "";
   const match = raw.split(";").map((part) => part.trim()).find((part) => part.startsWith(name + "="));
   return match ? decodeURIComponent(match.slice(name.length + 1)) : "";
@@ -79,7 +79,7 @@ export async function GET(request) {
       { headers: { apikey: serviceKey, Authorization: "Bearer " + serviceKey }, cache: "no-store" }
     );
     const existing = existingResponse.ok ? await existingResponse.json() : [];
-    const previousRefreshToken = existing[0]?.encrypted_tokens ? null : null;
+    const previousTokens = existing[0]?.encrypted_tokens ? decryptTokens(existing[0].encrypted_tokens) : null;\n    const previousRefreshToken = previousTokens?.refresh_token || null;
     const storedTokens = {
       access_token: tokens.access_token,
       refresh_token: tokens.refresh_token || previousRefreshToken,

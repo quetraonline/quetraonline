@@ -189,8 +189,8 @@ export default function SiteNavigation({ active = "home" }) {
             className={`site-menu-dropdown${open ? " is-open" : ""}`}
             aria-label="Ana menü"
           >
-            <a className={active === "home" ? "active" : ""} href="/" onClick={() => setOpen(false)}>Ana Sayfa</a>
-            <a className={active === "contact" ? "active" : ""} href="/iletisim" onClick={() => setOpen(false)}>İletişim</a>
+            <a className={active === "home" ? "active" : ""} href="/" onClick={() => setOpen(false)}><svg className="site-menu-item-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z" /></svg><span>Ana Sayfa</span></a>
+            <a className={active === "contact" ? "active" : ""} href="/iletisim" onClick={() => setOpen(false)}><svg className="site-menu-item-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg><span>İletişim</span></a>
           </nav>
         </div>
         <div style={{ position: "absolute", top: "50%", right: "max(calc((100vw - 1024px)/2),20px)", transform: "translateY(-50%)", paddingRight: 0, display: "flex", alignItems: "center", zIndex: 2 }}>

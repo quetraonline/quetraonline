@@ -485,3 +485,34 @@
 /* Arrow at the end of each support action label */
 .support-card .support-button{display:inline-flex;align-items:center;gap:7px}
 .support-button-arrow{display:block;width:14px;height:14px;flex:0 0 14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+
+/* Atatürk and Turkish flag beside the Quetra header logo */
+.site-menu .site-ataturk-flag{
+  display:block;
+  width:72px;
+  height:50px;
+  max-width:22vw;
+  margin-left:10px;
+  flex:0 0 auto;
+  object-fit:contain;
+  object-position:center;
+  pointer-events:none;
+  -webkit-user-select:none;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+@media(max-width:850px){
+  .site-menu .site-ataturk-flag{
+    width:64px;
+    height:46px;
+    margin-left:8px;
+  }
+}
+@media(max-width:520px){
+  .site-menu .site-ataturk-flag{
+    width:52px;
+    height:39px;
+    margin-left:6px;
+  }
+}

@@ -59,14 +59,14 @@ function fromRenderers(renderers) {
     const thumbnail = thumbnails[thumbnails.length - 1]?.url
       || "https://i.ytimg.com/vi/" + video.videoId + "/hqdefault.jpg";
     const published = textOf(video.publishedTimeText);
-    const views = textOf(video.shortViewCountText) || textOf(video.viewCountText);
-    const meta = [published, views ? "◉ " + views : ""].filter(Boolean).join(" · ");
+    const viewCount = textOf(video.shortViewCountText) || textOf(video.viewCountText);
     unique.set(video.videoId, {
       id: video.videoId,
       title: title || "QuetraOnline canlı yayın kaydı",
       thumbnail,
       url: "https://www.youtube.com/watch?v=" + video.videoId,
-      meta,
+      published,
+      viewCount,
     });
   }
   return Array.from(unique.values()).slice(0, 5);
@@ -96,7 +96,8 @@ function fromRss(xml) {
         title: title || "QuetraOnline yayın kaydı",
         thumbnail,
         url: "https://www.youtube.com/watch?v=" + id,
-        meta: published ? new Date(published).toLocaleDateString("tr-TR") : "",
+        published: published ? new Date(published).toLocaleDateString("tr-TR") : "",
+        viewCount: "",
       } : null;
     })
     .filter(Boolean);

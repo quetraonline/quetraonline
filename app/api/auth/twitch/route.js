@@ -15,7 +15,6 @@ export async function GET(request) {
     client_id: clientId,
     redirect_uri: redirectUri,
     response_type: "code",
-    scope: "user:read:email",
     force_verify: "true",
     state,
   });

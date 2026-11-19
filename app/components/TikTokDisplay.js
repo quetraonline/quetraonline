@@ -80,10 +80,14 @@ export default function TikTokDisplay() {
             <strong>TikTok hesabı henüz bağlanmadı.</strong>
             <span>Hesap sahibi, TikTok üzerinden izin vererek profilini ve herkese açık videolarını QuetraOnline'da gösterebilir.</span>
           </div>
-          <a className="tiktok-connect-button" href="/api/auth/tiktok">
-            <img src="/tiktok-logo.svg?v=20261108" alt="" />
-            TikTok ile Bağlan
-          </a>
+          {data?.canConnect ? (
+            <a className="tiktok-connect-button" href="/api/auth/tiktok">
+              <img src="/tiktok-logo.svg?v=20261108" alt="" />
+              TikTok ile Bağlan
+            </a>
+          ) : (
+            <span className="tiktok-connect-pending">TikTok Developer anahtarları eklendiğinde hesap bağlantısı açılacak.</span>
+          )}
         </div>
       ) : (
         <>

@@ -478,3 +478,7 @@
 .youtube-all-link{border-color:#d92b36;color:#ff7a82;gap:8px}
 .youtube-all-link:hover{background:#2a1519;border-color:#ff4652;color:#ff9aa0}
 .youtube-all-link-logo{display:block;width:15px;height:15px;flex:0 0 15px;object-fit:contain}
+
+/* Partner logos beside every support action */
+.support-card .support-button{display:inline-flex;align-items:center;gap:6px}
+.support-card .support-button-logo{display:block;width:15px;height:15px;flex:0 0 15px;object-fit:contain;border-radius:3px}

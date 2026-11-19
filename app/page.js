@@ -1,5 +1,5 @@
 import YouTubeReplays from "./components/YouTubeReplays";
-import VisitorCounter from "./components/VisitorCounter";
+import SiteFooter from "./components/SiteFooter";
 import SiteNavigation from "./components/SiteNavigation";
 
 const live = [
@@ -106,12 +106,7 @@ export default async function Home() {
 
         <YouTubeReplays />
 
-        <footer className="site-footer" id="contact">
-          <img className="footer-logo" src="/quetra-logo.svg?v=20261108" alt="QuetraOnline" />
-          <VisitorCounter />
-          <p>© 2026 QuetraOnline.com - Tüm hakları saklıdır.</p>
-          <p>Sorun ve şikayetleriniz için <a href="/iletisim">İletişim</a> sayfasından bana ulaşın.</p>
-        </footer>
+        <SiteFooter />
       </div>
     </main>
   );

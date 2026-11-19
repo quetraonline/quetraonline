@@ -22,15 +22,11 @@ export async function GET(request) {
     code_challenge_method: "S256",
     state,
   });
-  return new Response(null, {
-    status: 302,
-    headers: {
-      Location: "https://id.kick.com/oauth/authorize?" + params.toString(),
-      "Set-Cookie": [
-        `quetra_kick_oauth_state=${state}; HttpOnly; Secure; SameSite=Lax; Path=/api/auth/kick; Max-Age=600`,
-        `quetra_kick_oauth_verifier=${verifier}; HttpOnly; Secure; SameSite=Lax; Path=/api/auth/kick; Max-Age=600`,
-      ].join(", "),
-      "Cache-Control": "no-store",
-    },
+  const headers = new Headers({
+    Location: "https://id.kick.com/oauth/authorize?" + params.toString(),
+    "Cache-Control": "no-store",
   });
+  headers.append("Set-Cookie", `quetra_kick_oauth_state=${state}; HttpOnly; Secure; SameSite=Lax; Path=/api/auth/kick; Max-Age=600`);
+  headers.append("Set-Cookie", `quetra_kick_oauth_verifier=${verifier}; HttpOnly; Secure; SameSite=Lax; Path=/api/auth/kick; Max-Age=600`);
+  return new Response(null, { status: 302, headers });
 }

@@ -72,6 +72,40 @@ function fromRenderers(renderers) {
   return Array.from(unique.values()).slice(0, 5);
 }
 
+async function addVideoViewCounts(videos) {
+  return Promise.all(videos.map(async (video) => {
+    try {
+      const response = await fetch(video.url, {
+        headers: {
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/131.0.0.0 Safari/537.36",
+          "Accept-Language": "tr-TR,tr;q=0.9,en;q=0.8",
+        },
+        signal: AbortSignal.timeout(8000),
+        cache: "no-store",
+      });
+      if (!response.ok) return video;
+      const html = await response.text();
+      const playerJson = extractJsonAfter(html, "ytInitialPlayerResponse");
+      let rawCount = "";
+      if (playerJson) {
+        const player = JSON.parse(playerJson);
+        rawCount = player.videoDetails?.viewCount || "";
+      }
+      if (!rawCount) {
+        rawCount = html.match(/"viewCount"\s*:\s*"([0-9]+)"/)?.[1] || "";
+      }
+      if (!rawCount) return video;
+      return {
+        ...video,
+        viewCount: new Intl.NumberFormat("tr-TR").format(Number(rawCount)) + " görüntülenme",
+      };
+    } catch (error) {
+      console.warn("[youtube-streams] Görüntülenme sayısı alınamadı:", video.id, error);
+      return video;
+    }
+  }));
+}
+
 function decodeXml(value = "") {
   return value
     .replace(/&amp;/g, "&")
@@ -122,7 +156,8 @@ export async function GET() {
       const data = JSON.parse(jsonText);
       const videos = fromRenderers(findVideoRenderers(data));
       if (videos.length) {
-        return Response.json({ videos, source: "youtube-streams" }, {
+        const videosWithViews = await addVideoViewCounts(videos);
+        return Response.json({ videos: videosWithViews, source: "youtube-streams" }, {
           headers: { "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600" },
         });
       }
@@ -139,7 +174,8 @@ export async function GET() {
       if (rssResponse.ok) {
         const videos = fromRss(await rssResponse.text());
         if (videos.length) {
-          return Response.json({ videos, source: "youtube-rss" }, {
+          const videosWithViews = await addVideoViewCounts(videos);
+          return Response.json({ videos: videosWithViews, source: "youtube-rss" }, {
             headers: { "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600" },
           });
         }

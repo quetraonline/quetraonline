@@ -1,5 +1,4 @@
 import YouTubeReplays from "./components/YouTubeReplays";
-import TikTokDisplay from "./components/TikTokDisplay";
 import VisitorCounter from "./components/VisitorCounter";
 import SiteNavigation from "./components/SiteNavigation";
 
@@ -71,7 +70,6 @@ export default async function Home() {
           </div>
         </section>
 
-        <TikTokDisplay />
 
         <h2 className="gold-heading support-heading">💰 BANA DESTEK OLMAK İSTERSENİZ;</h2>
         <section className="support-grid" id="support">

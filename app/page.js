@@ -74,7 +74,7 @@ export default async function Home() {
         <h2 className="gold-heading support-heading">💰 BANA DESTEK OLMAK İSTERSENİZ;</h2>
         <section className="support-grid" id="support">
           <a className="support-card klas" href="https://www.klasgame.com/yayincilar/quetraonline" target="_blank" rel="noreferrer">
-            <div><h3>KLAS<span>GAME</span></h3><small>Destek Olmak İçin</small><p>KlasGame üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>
+            <div><h3>KLAS<span>GAME</span></h3><small>Destek Olmak İçin</small><p>KlasGame üzerinden bağış yapabilirsiniz.</p><b className="support-button"><img className="support-button-logo klasgame-support-button-logo" src="/klasgame-logo.svg?v=20261108" alt="" aria-hidden="true" />Destek Ol</b></div>
             <picture><source media="(max-width: 520px)" srcSet="/klasgame-mobile-logo.svg?v=20261108" /><img className="klasgame-logo" src="/klasgame-logo.svg?v=20261108" alt="KLASGAME" /></picture>
           </a>
           <a className="support-card oyuneks" href="https://oyuneks.com/yayinci/quetraonline" target="_blank" rel="noreferrer">

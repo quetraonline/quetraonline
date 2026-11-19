@@ -40,7 +40,7 @@ export async function GET(request) {
     const clientSecret = process.env.TIKTOK_CLIENT_SECRET;
     if (!clientKey || !clientSecret) throw new Error("TikTok uygulama kimlik bilgileri eksik.");
 
-    const redirectUri = new URL("/api/auth/tiktok/callback", request.url).toString();
+    const redirectUri = "https://quetraonline.com/api/auth/tiktok/callback";
     const tokenResponse = await fetch("https://open.tiktokapis.com/v2/oauth/token/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -78,7 +78,7 @@ export async function GET(request) {
         access_token: tokens.access_token,
         refresh_token: tokens.refresh_token || null,
         token_type: tokens.token_type || "Bearer",
-        expiry_date: Date.now() + Number(tokens.expires_in || 86400) * 1000,
+        expiry_date: Date.now() + Number(tokens.expires_in || 7200) * 1000,
         refresh_expiry_date: Date.now() + Number(tokens.refresh_expires_in || 31536000) * 1000,
       },
       scopes: tokens.scope || url.searchParams.get("scopes") || "user.info.basic video.list",

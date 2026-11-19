@@ -10,6 +10,7 @@ export default function SiteNavigation({ active = "home" }) {
   const [open, setOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
   const [heroVisible, setHeroVisible] = useState(true);
+  const [ataturkFlagVisible, setAtaturkFlagVisible] = useState(true);
   const [panelLoading, setPanelLoading] = useState(false);
   const [password, setPassword] = useState("");
   const [recoveryOpen, setRecoveryOpen] = useState(false);
@@ -32,6 +33,7 @@ export default function SiteNavigation({ active = "home" }) {
         setLoginOpen(false);
       }
     }
+    loadAtaturkFlagSetting();
     const savedToken = sessionStorage.getItem("quetra_admin_token");
     setIsAdmin(Boolean(savedToken));
     if (savedToken) loadAdminSettings(savedToken);
@@ -52,13 +54,29 @@ export default function SiteNavigation({ active = "home" }) {
     };
   }, []);
 
+  async function loadAtaturkFlagSetting() {
+    try {
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/quetra_site_settings?select=ataturk_flag_visible&id=eq.true`, {
+        headers: { apikey: SUPABASE_KEY }, cache: "no-store",
+      });
+      if (response.ok) {
+        const rows = await response.json();
+        setAtaturkFlagVisible(rows[0]?.ataturk_flag_visible ?? true);
+      }
+    } catch {}
+  }
+
   async function loadAdminSettings(token) {
     setPanelLoading(true);
     try {
-      const response = await fetch(`${SUPABASE_URL}/rest/v1/quetra_site_settings?select=hero_logo_visible&id=eq.true`, {
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/quetra_site_settings?select=hero_logo_visible,ataturk_flag_visible&id=eq.true`, {
         headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${token}` }, cache: "no-store",
       });
-      if (response.ok) { const rows = await response.json(); setHeroVisible(rows[0]?.hero_logo_visible ?? true); }
+      if (response.ok) {
+        const rows = await response.json();
+        setHeroVisible(rows[0]?.hero_logo_visible ?? true);
+        setAtaturkFlagVisible(rows[0]?.ataturk_flag_visible ?? true);
+      }
     } finally { setPanelLoading(false); }
   }
 
@@ -74,6 +92,22 @@ export default function SiteNavigation({ active = "home" }) {
       if (!response.ok) throw new Error("Ayar kaydedilemedi. Tekrar giriş yapmayı deneyin.");
       setHeroVisible(!heroVisible);
     } catch (err) { setError(err.message || "Ayar kaydedilemedi."); }
+    finally { setBusy(false); }
+  }
+
+  async function toggleAtaturkFlag() {
+    const token = sessionStorage.getItem("quetra_admin_token");
+    if (!token) { setIsAdmin(false); setError("Oturumunuz sona ermiş. Yeniden giriş yapın."); return; }
+    setBusy(true); setError("");
+    try {
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/quetra_site_settings?id=eq.true`, {
+        method: "PATCH",
+        headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${token}`, "Content-Type": "application/json", Prefer: "return=representation" },
+        body: JSON.stringify({ ataturk_flag_visible: !ataturkFlagVisible, updated_at: new Date().toISOString() }),
+      });
+      if (!response.ok) throw new Error("Atatürk ve Bayrak ayarı kaydedilemedi. Tekrar giriş yapmayı deneyin.");
+      setAtaturkFlagVisible(!ataturkFlagVisible);
+    } catch (err) { setError(err.message || "Atatürk ve Bayrak ayarı kaydedilemedi."); }
     finally { setBusy(false); }
   }
 
@@ -184,6 +218,9 @@ export default function SiteNavigation({ active = "home" }) {
           >
             <img src="/quetra-logo.svg?v=20261108" alt="QuetraOnline menüsünü aç" />
           </button>
+          {ataturkFlagVisible ? (
+            <img className="site-ataturk-flag" src="/ataturkbayrak.gif" alt="Atatürk ve Türk Bayrağı" draggable={false} />
+          ) : null}
           <nav
             id="site-navigation-links"
             className={`site-menu-dropdown${open ? " is-open" : ""}`}
@@ -278,6 +315,24 @@ export default function SiteNavigation({ active = "home" }) {
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap", padding: "14px 0 2px" }}>
                   <span style={{ color: heroVisible ? "#a8d6a1" : "#f0b17d", fontSize: 12, fontWeight: 800 }}>{heroVisible ? "● LOGO AKTİF" : "● LOGO GİZLİ"}</span>
                   <button type="button" disabled={busy || panelLoading} onClick={toggleHero} style={{ ...loginButtonStyle, padding: "9px 14px", opacity: busy || panelLoading ? .65 : 1 }}>{panelLoading ? "YÜKLENİYOR..." : busy ? "KAYDEDİLİYOR..." : heroVisible ? "LOGOYU GİZLE" : "LOGOYU GÖSTER"}</button>
+                </div>
+
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap", padding: "14px 0 2px", borderTop: "1px solid #303b4a" }}>
+                  <div style={{ display: "grid", gap: 4 }}>
+                    <span style={{ color: "#eef0f3", fontSize: 12, fontWeight: 800 }}>Atatürk ve Bayrak</span>
+                    <span style={{ color: ataturkFlagVisible ? "#a8d6a1" : "#f0b17d", fontSize: 10, fontWeight: 800 }}>{ataturkFlagVisible ? "AÇIK" : "KAPALI"}</span>
+                  </div>
+                  <button
+                    type="button"
+                    role="switch"
+                    aria-label="Atatürk ve Bayrak"
+                    aria-checked={ataturkFlagVisible}
+                    disabled={busy || panelLoading}
+                    onClick={toggleAtaturkFlag}
+                    style={{ width: 48, height: 27, padding: 3, display: "inline-flex", alignItems: "center", justifyContent: ataturkFlagVisible ? "flex-end" : "flex-start", border: "1px solid #7d6846", borderRadius: 999, background: ataturkFlagVisible ? "linear-gradient(135deg,#d9b66b,#a47b3e)" : "#303946", cursor: busy || panelLoading ? "wait" : "pointer", opacity: busy || panelLoading ? .65 : 1, transition: "background .18s" }}
+                  >
+                    <span style={{ display: "block", width: 19, height: 19, borderRadius: "50%", background: "#fff", boxShadow: "0 1px 4px #0006" }} />
+                  </button>
                 </div>
 
                 {error && <p role="alert" style={{ margin: 0, color: "#ff9292", fontSize: 12 }}>{error}</p>}

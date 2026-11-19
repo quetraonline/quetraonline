@@ -516,3 +516,19 @@
     margin-left:6px;
   }
 }
+
+
+/* Precisely center the Atatürk flag between the header's top and bottom edges */
+.site-menu .site-ataturk-flag{
+  position:absolute;
+  top:50%;
+  left:168px;
+  margin:0;
+  transform:translateY(-50%);
+}
+@media(max-width:850px){
+  .site-menu .site-ataturk-flag{left:156px}
+}
+@media(max-width:520px){
+  .site-menu .site-ataturk-flag{left:138px}
+}

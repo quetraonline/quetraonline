@@ -3,14 +3,21 @@ import { randomBytes } from "node:crypto";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
+const CANONICAL_ORIGIN = "https://quetraonline.com";
+
 export async function GET(request) {
+  const currentUrl = new URL(request.url);
+  if (currentUrl.origin !== CANONICAL_ORIGIN) {
+    return Response.redirect(new URL("/api/auth/tiktok", CANONICAL_ORIGIN), 302);
+  }
+
   const clientKey = process.env.TIKTOK_CLIENT_KEY;
   if (!clientKey) {
     return Response.json({ error: "TIKTOK_CLIENT_KEY ortam değişkeni eksik." }, { status: 500 });
   }
 
   const state = randomBytes(32).toString("hex");
-  const redirectUri = new URL("/api/auth/tiktok/callback", request.url).toString();
+  const redirectUri = CANONICAL_ORIGIN + "/api/auth/tiktok/callback";
   const params = new URLSearchParams({
     client_key: clientKey,
     response_type: "code",

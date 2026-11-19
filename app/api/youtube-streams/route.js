@@ -87,17 +87,22 @@ async function addVideoViewCounts(videos) {
       const html = await response.text();
       const playerJson = extractJsonAfter(html, "ytInitialPlayerResponse");
       let rawCount = "";
+      let publishedAt = "";
       if (playerJson) {
         const player = JSON.parse(playerJson);
         rawCount = player.videoDetails?.viewCount || "";
+        publishedAt = player.microformat?.playerMicroformatRenderer?.publishDate
+          || player.microformat?.playerMicroformatRenderer?.uploadDate
+          || "";
       }
       if (!rawCount) {
         rawCount = html.match(/"viewCount"\s*:\s*"([0-9]+)"/)?.[1] || "";
       }
-      if (!rawCount) return video;
+      if (!rawCount && !publishedAt) return video;
       return {
         ...video,
-        viewCount: new Intl.NumberFormat("tr-TR").format(Number(rawCount)) + " görüntülenme",
+        ...(publishedAt ? { publishedAt: new Date(publishedAt).getTime(), published: new Date(publishedAt).toLocaleDateString("tr-TR") } : {}),
+        ...(rawCount ? { viewCount: new Intl.NumberFormat("tr-TR").format(Number(rawCount)) + " görüntülenme" } : {}),
       };
     } catch (error) {
       console.warn("[youtube-streams] Görüntülenme sayısı alınamadı:", video.id, error);
@@ -131,6 +136,7 @@ function fromRss(xml) {
         thumbnail,
         url: "https://www.youtube.com/watch?v=" + id,
         published: published ? new Date(published).toLocaleDateString("tr-TR") : "",
+        publishedAt: published ? new Date(published).getTime() : 0,
         viewCount: "",
       } : null;
     })

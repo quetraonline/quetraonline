@@ -76,7 +76,22 @@ export default function YouTubeReplays() {
                   <img src={video.thumbnail} alt="" loading="lazy" />
                 </div>
                 <strong>{video.title}</strong>
-                {video.meta ? <small>{video.meta}</small> : null}
+                {(video.published || video.meta || video.viewCount) ? (
+                  <div className="youtube-replay-meta">
+                    {(video.published || video.meta) ? (
+                      <span className="youtube-replay-meta-item">
+                        <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2.25" y="3.5" width="11.5" height="10" rx="1.5" /><path d="M5 2v3M11 2v3M2.5 6.5h11" /></svg>
+                        <span>{video.published || video.meta}</span>
+                      </span>
+                    ) : null}
+                    {video.viewCount ? (
+                      <span className="youtube-replay-meta-item">
+                        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 8s2.3-4 6.5-4 6.5 4 6.5 4-2.3 4-6.5 4-6.5-4-6.5-4Z" /><circle cx="8" cy="8" r="1.8" /></svg>
+                        <span>{video.viewCount}</span>
+                      </span>
+                    ) : null}
+                  </div>
+                ) : null}
               </a>
             ))}
           </div>

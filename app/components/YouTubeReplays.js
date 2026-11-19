@@ -61,7 +61,8 @@ export default function YouTubeReplays() {
           <p><span className="youtube-copy-desktop">YouTube kanalındaki en yeni 5 canlı yayın kaydı.</span><span className="youtube-copy-mobile">YouTube kanalındaki en yeni 4 canlı yayın kaydı.</span></p>
         </div>
         <a className="youtube-all-link" href="https://www.youtube.com/@quetraonline/streams" target="_blank" rel="noreferrer">
-          Kanalıma Git <span>↗</span>
+          <img className="youtube-all-link-logo" src="/youtube-logo.svg?v=20261108" alt="" aria-hidden="true" />
+          Kanalıma Git
         </a>
       </div>
 

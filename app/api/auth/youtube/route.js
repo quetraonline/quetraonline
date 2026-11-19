@@ -20,7 +20,12 @@ export async function GET(request) {
     prompt: "consent",
     state,
   });
-  const response = Response.redirect("https://accounts.google.com/o/oauth2/v2/auth?" + params.toString());
-  response.headers.append("Set-Cookie", `quetra_youtube_oauth_state=${state}; HttpOnly; Secure; SameSite=Lax; Path=/api/auth/youtube; Max-Age=600`);
-  return response;
+  return new Response(null, {
+    status: 302,
+    headers: {
+      Location: "https://accounts.google.com/o/oauth2/v2/auth?" + params.toString(),
+      "Set-Cookie": `quetra_youtube_oauth_state=${state}; HttpOnly; Secure; SameSite=Lax; Path=/api/auth/youtube; Max-Age=600`,
+      "Cache-Control": "no-store",
+    },
+  });
 }

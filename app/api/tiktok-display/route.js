@@ -118,7 +118,7 @@ export async function GET() {
   try {
     const connection = await getLatestConnection();
     if (!connection) {
-      return Response.json({ connected: false, videos: [] }, { headers: { "Cache-Control": "no-store" } });
+      return Response.json({ connected: false, canConnect: Boolean(process.env.TIKTOK_CLIENT_KEY && process.env.TIKTOK_CLIENT_SECRET), videos: [] }, { headers: { "Cache-Control": "no-store" } });
     }
 
     const scopes = getScopeList(connection.scopes);

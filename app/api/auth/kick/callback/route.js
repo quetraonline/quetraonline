@@ -11,17 +11,13 @@ function cookieValue(request, name) {
 }
 
 function redirect(request, path) {
-  return new Response(null, {
-    status: 302,
-    headers: {
-      Location: new URL(path, request.url).toString(),
-      "Set-Cookie": [
-        "quetra_kick_oauth_state=; HttpOnly; Secure; SameSite=Lax; Path=/api/auth/kick; Max-Age=0",
-        "quetra_kick_oauth_verifier=; HttpOnly; Secure; SameSite=Lax; Path=/api/auth/kick; Max-Age=0",
-      ].join(", "),
-      "Cache-Control": "no-store",
-    },
+  const headers = new Headers({
+    Location: new URL(path, request.url).toString(),
+    "Cache-Control": "no-store",
   });
+  headers.append("Set-Cookie", "quetra_kick_oauth_state=; HttpOnly; Secure; SameSite=Lax; Path=/api/auth/kick; Max-Age=0");
+  headers.append("Set-Cookie", "quetra_kick_oauth_verifier=; HttpOnly; Secure; SameSite=Lax; Path=/api/auth/kick; Max-Age=0");
+  return new Response(null, { status: 302, headers });
 }
 
 export async function GET(request) {

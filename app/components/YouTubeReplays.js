@@ -58,7 +58,7 @@ export default function YouTubeReplays() {
             <span className="youtube-title-desktop">YOUTUBE SON 5 CANLI YAYINIM</span>
             <span className="youtube-title-mobile">YOUTUBE SON 4 CANLI YAYINIM</span>
           </h2>
-          <p><span className="youtube-copy-desktop">YouTube kanalındaki en yeni 5 canlı yayın kaydı.</span><span className="youtube-copy-mobile">YouTube kanalındaki en yeni 4 canlı yayın kaydı.</span></p>
+          <p><span className="youtube-copy-desktop">YouTube kanalımdaki en yeni 5 canlı yayın kaydı.</span><span className="youtube-copy-mobile">YouTube kanalımdaki en yeni 4 canlı yayın kaydı.</span></p>
         </div>
         <a className="youtube-all-link" href="https://www.youtube.com/@quetraonline/streams" target="_blank" rel="noreferrer">
           <img className="youtube-all-link-logo" src="/youtube-logo.svg?v=20261108" alt="" aria-hidden="true" />

@@ -14,17 +14,5 @@ export default function sitemap() {
       changeFrequency: "monthly",
       priority: 0.6
     },
-    {
-      url: `${baseUrl}/terms-of-service`,
-      lastModified,
-      changeFrequency: "yearly",
-      priority: 0.3
-    },
-    {
-      url: `${baseUrl}/privacy-policy`,
-      lastModified,
-      changeFrequency: "yearly",
-      priority: 0.3
-    }
   ];
 }

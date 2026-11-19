@@ -1,5 +1,6 @@
 import "./globals.css";
 import BackToTop from "./components/BackToTop";
+import ImageProtection from "./components/ImageProtection";
 
 export const metadata = {
   title: "QuetraOnline - Resmi Web Sitesi",
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
       <body>
         {children}
         <BackToTop />
+        <ImageProtection />
       </body>
     </html>
   );

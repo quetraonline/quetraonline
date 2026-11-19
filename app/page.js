@@ -82,23 +82,23 @@ export default async function Home() {
             <picture><source media="(max-width: 520px)" srcSet="/klasgame-mobile-logo.svg?v=20261108" /><img className="klasgame-logo" src="/klasgame-logo.svg?v=20261108" alt="KLASGAME" /></picture>
           </a>
           <a className="support-card oyuneks" href="https://oyuneks.com/yayinci/quetraonline" target="_blank" rel="noreferrer">
-            <div><h3>OYUN<span>EKS</span></h3><small>Destek Olmak İçin</small><p>Oyuneks üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>
+            <div><h3>OYUN<span>EKS</span></h3><small>Destek Olmak İçin</small><p>Oyuneks üzerinden bağış yapabilirsiniz.</p><b className="support-button"><img className="support-button-logo" src="/oyuneks-mark.svg?v=20261108" alt="" aria-hidden="true" />Destek Ol</b></div>
             <img className="oyuneks-logo" src="/oyuneks-mark.svg?v=20261108" alt="Oyuneks logosu" />
           </a>
           <a className="support-card byno" href="https://donate.bynogame.com/quetraonline" target="_blank" rel="noreferrer">
-            <div><h3>ByNo<span>Game</span></h3><small>Destek Olmak İçin</small><p>ByNoGame üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>
+            <div><h3>ByNo<span>Game</span></h3><small>Destek Olmak İçin</small><p>ByNoGame üzerinden bağış yapabilirsiniz.</p><b className="support-button"><img className="support-button-logo" src="/bynogame-mark.svg?v=20261108" alt="" aria-hidden="true" />Destek Ol</b></div>
             <img className="bynogame-mascot" src="/bynogame-logo.svg?v=20261108" alt="ByNoGame maskotu" />
           </a>
           <a className="support-card oyunfor" href="https://www.oyunfor.com/donate/quetraonline" target="_blank" rel="noreferrer">
-            <div><h3>OYUNFOR</h3><small>Destek Olmak İçin</small><p>Oyunfor üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>
+            <div><h3>OYUNFOR</h3><small>Destek Olmak İçin</small><p>Oyunfor üzerinden bağış yapabilirsiniz.</p><b className="support-button"><img className="support-button-logo" src="/oyunfor-logo.png?v=20261108" alt="" aria-hidden="true" />Destek Ol</b></div>
             <img className="support-logo-placeholder oyunfor-logo" src="/oyunfor.png?v=20261114-1634" alt="Oyunfor logosu" />
           </a>
           <a className="support-card kopazar" href="https://www.kopazar.com/streamer/quetraonline" target="_blank" rel="noreferrer">
-            <div><h3>KOPAZAR</h3><small>Destek Olmak İçin</small><p>Kopazar üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>
+            <div><h3>KOPAZAR</h3><small>Destek Olmak İçin</small><p>Kopazar üzerinden bağış yapabilirsiniz.</p><b className="support-button"><img className="support-button-logo" src="/kopazar.png?v=20261114-1715" alt="" aria-hidden="true" />Destek Ol</b></div>
             <img className="support-logo-placeholder kopazar-logo" src="/kopazarr.png?v=20261114-1715" alt="Kopazar logosu" />
           </a>
           <a className="support-card sonteklif" href="https://www.sonteklif.com/yayinci/quetraonline" target="_blank" rel="noreferrer">
-            <div><h3>SONTEKLİF</h3><small>Destek Olmak İçin</small><p>Sonteklif üzerinden bağış yapabilirsiniz.</p><b className="support-button">Destek Ol ›</b></div>
+            <div><h3>SONTEKLİF</h3><small>Destek Olmak İçin</small><p>Sonteklif üzerinden bağış yapabilirsiniz.</p><b className="support-button"><img className="support-button-logo" src="/sonteklif.png?v=20261114-1705" alt="" aria-hidden="true" />Destek Ol</b></div>
             <img className="support-logo-placeholder sonteklif-logo" src="/sontekliflogoo.png?v=20261114-1705" alt="Sonteklif logosu" />
           </a>
         </section>

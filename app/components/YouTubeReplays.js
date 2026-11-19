@@ -78,18 +78,29 @@ export default function YouTubeReplays() {
                 <strong>{video.title}</strong>
                 {(video.published || video.meta || video.viewCount) ? (
                   <div className="youtube-replay-meta">
-                    {(video.published || video.meta) ? (
-                      <span className="youtube-replay-meta-item">
-                        <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2.25" y="3.5" width="11.5" height="10" rx="1.5" /><path d="M5 2v3M11 2v3M2.5 6.5h11" /></svg>
-                        <span>{video.published || video.meta}</span>
-                      </span>
-                    ) : null}
-                    {video.viewCount ? (
-                      <span className="youtube-replay-meta-item">
-                        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 8s2.3-4 6.5-4 6.5 4 6.5 4-2.3 4-6.5 4-6.5-4-6.5-4Z" /><circle cx="8" cy="8" r="1.8" /></svg>
-                        <span>{video.viewCount}</span>
-                      </span>
-                    ) : null}
+                    <span className="youtube-replay-avatar-wrap">
+                      <img
+                        className="youtube-replay-avatar"
+                        src="https://hfmosadynxpwkscvpard.supabase.co/storage/v1/object/public/publisher-avatars/publishers/f18d4762-9947-4cb0-b9dd-92c51a744fe0.png"
+                        alt="Quetra TikTok profil fotoğrafı"
+                        loading="lazy"
+                        referrerPolicy="no-referrer"
+                      />
+                    </span>
+                    <span className="youtube-replay-meta-info">
+                      {(video.published || video.meta) ? (
+                        <span className="youtube-replay-meta-item">
+                          <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2.25" y="3.5" width="11.5" height="10" rx="1.5" /><path d="M5 2v3M11 2v3M2.5 6.5h11" /></svg>
+                          <span>{video.published || video.meta}</span>
+                        </span>
+                      ) : null}
+                      {video.viewCount ? (
+                        <span className="youtube-replay-meta-item">
+                          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 8s2.3-4 6.5-4 6.5 4 6.5 4-2.3 4-6.5 4-6.5-4-6.5-4Z" /><circle cx="8" cy="8" r="1.8" /></svg>
+                          <span>{video.viewCount} görüntülenme</span>
+                        </span>
+                      ) : null}
+                    </span>
                   </div>
                 ) : null}
               </a>

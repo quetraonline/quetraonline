@@ -10,7 +10,7 @@ export default function SiteNavigation({ active = "home" }) {
   const [open, setOpen] = useState(false);
   const [loginOpen, setLoginOpen] = useState(false);
   const [heroVisible, setHeroVisible] = useState(true);
-  const [ataturkFlagVisible, setAtaturkFlagVisible] = useState(true);
+  const [ataturkFlagVisible, setAtaturkFlagVisible] = useState(false);
   const [panelLoading, setPanelLoading] = useState(false);
   const [password, setPassword] = useState("");
   const [recoveryOpen, setRecoveryOpen] = useState(false);
@@ -219,7 +219,7 @@ export default function SiteNavigation({ active = "home" }) {
             <img src="/quetra-logo.svg?v=20261108" alt="QuetraOnline menüsünü aç" />
           </button>
           {ataturkFlagVisible ? (
-            <img className="site-ataturk-flag" src="/ataturkbayrak.gif" alt="Atatürk ve Türk Bayrağı" draggable={false} />
+            <img className="site-ataturk-flag" src="/ataturkbayrak.gif?v=20261120" alt="Atatürk ve Türk Bayrağı" draggable={false} />
           ) : null}
           <nav
             id="site-navigation-links"

@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import SiteFooter from "../components/SiteFooter";
 import "./web.css";
 
 export default function BrowserGamePage() {
@@ -38,7 +39,7 @@ export default function BrowserGamePage() {
             </div>
             <div className="cross-panel-bottom"><span><i/>DURUM BİLGİSİ</span><button onClick={() => window.location.reload()}><b>⟳</b> YENİDEN DENE</button><button onClick={toggleFullscreen}><b>⛶</b> {fullscreen ? "TAM EKRANDAN ÇIK" : "TAM EKRAN"}</button></div>
           </div>
-          <footer className="cross-footer"><nav><a href="https://panel.crossmyko.com/">PANEL</a><i>✦</i><a href="https://panel.crossmyko.com/sss">YARDIM</a><i>✦</i><a href="https://panel.crossmyko.com/rehber">OYUN REHBERİ</a></nav><small>© {new Date().getFullYear()} QUETRA ONLINE WORLD</small></footer>
+          <SiteFooter />
         </section>
       </div>
     </main>

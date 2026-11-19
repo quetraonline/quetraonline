@@ -41,7 +41,12 @@ export default async function ContactPage() {
       <footer className="site-footer" id="contact">
         <img className="footer-logo" src="/quetra-logo.svg?v=20261108" alt="QuetraOnline" />
         <VisitorCounter />
-        <p>© 2026 QuetraOnline.com - Tüm hakları saklıdır.</p>
+        <nav className="legal-footer-links" aria-label="Yasal bağlantılar">
+            <a href="/terms-of-service">Kullanım Koşulları</a>
+            <a href="/privacy-policy">Gizlilik Politikası</a>
+            <a href="/iletisim">İletişim</a>
+          </nav>
+          <p>© 2026 QuetraOnline.com - Tüm hakları saklıdır.</p>
         <p>Sorun ve şikayetleriniz için <a href="/iletisim">İletişim</a> sayfasından bana ulaşın.</p>
       </footer>
     </main>

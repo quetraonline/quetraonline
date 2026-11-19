@@ -98,7 +98,7 @@ export default function YouTubeReplays() {
                       {video.viewCount ? (
                         <span className="youtube-replay-meta-item">
                           <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5 8s2.3-4 6.5-4 6.5 4 6.5 4-2.3 4-6.5 4-6.5-4-6.5-4Z" /><circle cx="8" cy="8" r="1.8" /></svg>
-                          <span>{String(video.viewCount).replace(/\\s*görüntülenme\\s*$/i, "")}</span>
+                          <span>{String(video.viewCount).replace(/\s*görüntülenme\s*$/i, "")}</span>
                         </span>
                       ) : null}
                     </span>

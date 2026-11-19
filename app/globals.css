@@ -442,22 +442,6 @@
 }
 .site-header .site-menu-dropdown a span{display:block;margin:0;line-height:1.2}
 
-
-/* Platform tabs for the unified livestream archive */
-.youtube-replays-heading-copy{min-width:0}
-.replay-tabs{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:0 0 18px;padding-bottom:13px;border-bottom:1px solid var(--line)}
-.replay-tab{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:36px;padding:8px 13px;border:1px solid #303640;border-radius:8px;background:#171b22;color:#b9c0ca;font:700 11px 'DM Sans',sans-serif;cursor:pointer;transition:background .18s,border-color .18s,color .18s}
-.replay-tab:hover{border-color:#766344;color:#f0dfbd;background:#1d2026}
-.replay-tab.active{border-color:#a88a59;background:linear-gradient(135deg,#3a3021,#27231c);color:var(--gold-soft);box-shadow:inset 0 0 0 1px #c9a86a22}
-.replay-tab-logo{display:block;width:17px;height:17px;object-fit:contain;flex:0 0 17px}
-.replay-tab-all-logos{display:flex;align-items:center;gap:2px}
-.replay-tab-all-logos img{display:block;width:13px;height:13px;object-fit:contain}
-.replay-platform-badge{position:absolute;left:7px;top:7px;display:grid;place-items:center;width:25px;height:25px;padding:4px;border:1px solid #ffffff25;border-radius:6px;background:#0b0d12e8;backdrop-filter:blur(5px)}
-.replay-platform-badge img{display:block;width:100%;height:100%;object-fit:contain}
-.replay-thumb-fallback{width:100%;height:100%;display:grid;place-items:center;background:linear-gradient(135deg,#1d222b,#11151b);color:#aeb6c2;font-size:10px;font-weight:800;letter-spacing:1px}
-@media(max-width:520px){.replay-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;margin-bottom:14px;padding-bottom:11px}.replay-tab{gap:5px;min-width:0;padding:8px 4px;font-size:10px}.replay-tab-logo{width:15px;height:15px;flex-basis:15px}.replay-tab-all-logos img{width:10px;height:10px}.replay-platform-badge{width:22px;height:22px;left:5px;top:5px;padding:3px}}
-
-
 /* Legal and policy pages */
 .legal-shell{width:min(calc(100% - 40px),900px);margin:0 auto;padding:48px 0 64px}
 .legal-panel{border:1px solid var(--line);border-radius:14px;background:linear-gradient(145deg,#171a20,#111419);padding:clamp(22px,5vw,42px);box-shadow:0 18px 55px #0003}

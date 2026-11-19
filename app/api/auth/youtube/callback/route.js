@@ -3,18 +3,30 @@ import { createCipheriv, createDecipheriv, randomBytes, timingSafeEqual } from "
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-function encryptionKey() {\n  const key = encryptionKey();\n  return key;\n}\n\nfunction encryptTokens(value) {
+function encryptionKey() {
   const secret = process.env.OAUTH_TOKEN_ENCRYPTION_KEY;
   if (!secret) throw new Error("OAUTH_TOKEN_ENCRYPTION_KEY ortam değişkeni eksik.");
   const key = Buffer.from(secret, "base64");
   if (key.length !== 32) throw new Error("OAUTH_TOKEN_ENCRYPTION_KEY 32 byte Base64 anahtar olmalı.");
+  return key;
+}
+
+function encryptTokens(value) {
   const iv = randomBytes(12);
-  const cipher = createCipheriv("aes-256-gcm", key, iv);
+  const cipher = createCipheriv("aes-256-gcm", encryptionKey(), iv);
   const encrypted = Buffer.concat([cipher.update(JSON.stringify(value), "utf8"), cipher.final()]);
   return [iv.toString("base64"), cipher.getAuthTag().toString("base64"), encrypted.toString("base64")].join(".");
 }
 
-function decryptTokens(value) {\n  const [iv, tag, encrypted] = String(value || "").split(".");\n  if (!iv || !tag || !encrypted) return null;\n  const decipher = createDecipheriv("aes-256-gcm", encryptionKey(), Buffer.from(iv, "base64"));\n  decipher.setAuthTag(Buffer.from(tag, "base64"));\n  return JSON.parse(Buffer.concat([decipher.update(Buffer.from(encrypted, "base64")), decipher.final()]).toString("utf8"));\n}\n\nfunction cookieValue(request, name) {
+function decryptTokens(value) {
+  const [iv, tag, encrypted] = String(value || "").split(".");
+  if (!iv || !tag || !encrypted) return null;
+  const decipher = createDecipheriv("aes-256-gcm", encryptionKey(), Buffer.from(iv, "base64"));
+  decipher.setAuthTag(Buffer.from(tag, "base64"));
+  return JSON.parse(Buffer.concat([decipher.update(Buffer.from(encrypted, "base64")), decipher.final()]).toString("utf8"));
+}
+
+function cookieValue(request, name) {
   const raw = request.headers.get("cookie") || "";
   const match = raw.split(";").map((part) => part.trim()).find((part) => part.startsWith(name + "="));
   return match ? decodeURIComponent(match.slice(name.length + 1)) : "";
@@ -79,10 +91,10 @@ export async function GET(request) {
       { headers: { apikey: serviceKey, Authorization: "Bearer " + serviceKey }, cache: "no-store" }
     );
     const existing = existingResponse.ok ? await existingResponse.json() : [];
-    const previousTokens = existing[0]?.encrypted_tokens ? decryptTokens(existing[0].encrypted_tokens) : null;\n    const previousRefreshToken = previousTokens?.refresh_token || null;
+    const previousTokens = existing[0]?.encrypted_tokens ? decryptTokens(existing[0].encrypted_tokens) : null;
     const storedTokens = {
       access_token: tokens.access_token,
-      refresh_token: tokens.refresh_token || previousRefreshToken,
+      refresh_token: tokens.refresh_token || previousTokens?.refresh_token || null,
       token_type: tokens.token_type,
       expiry_date: Date.now() + Number(tokens.expires_in || 3600) * 1000,
     };

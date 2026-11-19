@@ -527,3 +527,6 @@
   .tiktok-video-thumb{max-height:260px}
   .tiktok-display-footnote{align-items:flex-start;flex-direction:column;gap:7px}
 }
+
+.tiktok-connect-pending{display:inline-flex;align-items:center;justify-content:center;max-width:250px;padding:10px 13px;border:1px dashed #695166;border-radius:8px;color:#d9b5c7;font-size:10px;line-height:1.5;text-align:center}
+@media(max-width:520px){.tiktok-connect-pending{max-width:none;width:100%}}

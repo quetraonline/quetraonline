@@ -33,9 +33,14 @@ function cookieValue(request, name) {
 }
 
 function redirect(request, path) {
-  const response = Response.redirect(new URL(path, request.url));
-  response.headers.append("Set-Cookie", "quetra_youtube_oauth_state=; HttpOnly; Secure; SameSite=Lax; Path=/api/auth/youtube; Max-Age=0");
-  return response;
+  return new Response(null, {
+    status: 302,
+    headers: {
+      Location: new URL(path, request.url).toString(),
+      "Set-Cookie": "quetra_youtube_oauth_state=; HttpOnly; Secure; SameSite=Lax; Path=/api/auth/youtube; Max-Age=0",
+      "Cache-Control": "no-store",
+    },
+  });
 }
 
 export async function GET(request) {

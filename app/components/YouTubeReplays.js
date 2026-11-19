@@ -79,15 +79,6 @@ export default function YouTubeReplays() {
                 <strong>{video.title}</strong>
                 {(video.published || video.meta || video.viewCount) ? (
                   <div className="youtube-replay-meta">
-                    <span className="youtube-replay-avatar-wrap">
-                      <img
-                        className="youtube-replay-avatar"
-                        src="https://hfmosadynxpwkscvpard.supabase.co/storage/v1/object/public/publisher-avatars/publishers/f18d4762-9947-4cb0-b9dd-92c51a744fe0.png"
-                        alt="Quetra TikTok profil fotoğrafı"
-                        loading="lazy"
-                        referrerPolicy="no-referrer"
-                      />
-                    </span>
                     <span className="youtube-replay-meta-info">
                       {(video.published || video.meta) ? (
                         <span className="youtube-replay-meta-item">

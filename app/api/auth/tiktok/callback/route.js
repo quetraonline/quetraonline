@@ -59,7 +59,7 @@ export async function GET(request) {
       throw new Error(tokenPayload.error?.message || tokenPayload.message || "TikTok token işlemi başarısız.");
     }
 
-    const fields = "open_id,display_name,avatar_url,profile_deep_link";
+    const fields = "open_id,display_name,avatar_url";
     const profileResponse = await fetch("https://open.tiktokapis.com/v2/user/info/?fields=" + fields, {
       headers: { Authorization: "Bearer " + tokens.access_token },
       cache: "no-store",

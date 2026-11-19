@@ -195,9 +195,33 @@ export default function SiteNavigation({ active = "home" }) {
         </div>
         <div style={{ position: "absolute", top: "50%", right: "max(calc((100vw - 1024px)/2),20px)", transform: "translateY(-50%)", paddingRight: 0, display: "flex", alignItems: "center", zIndex: 2 }}>
           {isAdmin ? (
-            <button type="button" style={{ ...loginButtonStyle, padding: "7px 11px", fontSize: 10, letterSpacing: 0.6 }} onClick={() => { setError(""); setLoginOpen(true); }}>YÖNETİCİ PANELİ</button>
+            <button
+              type="button"
+              aria-label="Yönetici Paneli"
+              title="Yönetici Paneli"
+              style={{ ...loginButtonStyle, width: 40, height: 40, minWidth: 40, padding: 0, display: "inline-flex", alignItems: "center", justifyContent: "center", letterSpacing: 0 }}
+              onClick={() => { setError(""); setLoginOpen(true); }}
+            >
+              <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#17130c" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M12 3 20 6v5c0 4.7-3.2 8.4-8 10-4.8-1.6-8-5.3-8-10V6l8-3Z" />
+                <circle cx="12" cy="10" r="2.2" />
+                <path d="M8.5 16c.8-1.6 2-2.4 3.5-2.4s2.7.8 3.5 2.4" />
+              </svg>
+            </button>
           ) : (
-            <button type="button" style={{ ...loginButtonStyle, padding: "7px 11px", fontSize: 10, letterSpacing: 0.6 }} onClick={() => { setError(""); setLoginOpen(true); }}>GİRİŞ YAP</button>
+            <button
+              type="button"
+              aria-label="Giriş Yap"
+              title="Giriş Yap"
+              style={{ ...loginButtonStyle, width: 40, height: 40, minWidth: 40, padding: 0, display: "inline-flex", alignItems: "center", justifyContent: "center", letterSpacing: 0 }}
+              onClick={() => { setError(""); setLoginOpen(true); }}
+            >
+              <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#17130c" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M10 17 15 12 10 7" />
+                <path d="M15 12H3" />
+                <path d="M12 3h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-6" />
+              </svg>
+            </button>
           )}
         </div>
       </header>

@@ -53,7 +53,11 @@ export default async function Home() {
               <a className={`live-card ${item.tone}`} href={item.href} target="_blank" rel="noreferrer" key={item.name}>
                 <div className="live-brand">{item.name === "TikTok" ? <img className="platform-mark tiktok-mark" src="/tiktok-logo.svg?v=20261108" alt="TikTok" /> : item.name === "YouTube" ? <img className="platform-mark" src="/youtube-logo.svg?v=20261108" alt="YouTube" /> : item.name === "Kick" ? <img className="platform-mark" src="/kick-logo.svg?v=20261108" alt="Kick" /> : item.name === "Twitch" ? <img className="platform-mark" src="/twitch-logo.svg?v=20261108" alt="Twitch" /> : <b>{item.mark}</b>}<strong>{item.name}</strong></div>
                 <span className="handle">{item.handle}</span>
-                <span className="live-action">{item.action} <i>›</i></span>
+                <span className="live-action">
+                  {item.name === "TikTok" ? <img className="live-action-logo" src="/tiktok-logo.svg?v=20261108" alt="" aria-hidden="true" /> : item.name === "YouTube" ? <img className="live-action-logo" src="/youtube-logo.svg?v=20261108" alt="" aria-hidden="true" /> : item.name === "Twitch" ? <img className="live-action-logo" src="/twitch-logo.svg?v=20261108" alt="" aria-hidden="true" /> : null}
+                  {item.action}
+                  {item.name === "Kick" ? <i>›</i> : null}
+                </span>
               </a>
             ))}
           </div>

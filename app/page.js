@@ -54,7 +54,11 @@ export default async function Home() {
                 <div className="live-brand">{item.name === "TikTok" ? <img className="platform-mark tiktok-mark" src="/tiktok-logo.svg?v=20261108" alt="TikTok" /> : item.name === "YouTube" ? <img className="platform-mark" src="/youtube-logo.svg?v=20261108" alt="YouTube" /> : item.name === "Kick" ? <img className="platform-mark" src="/kick-logo.svg?v=20261108" alt="Kick" /> : item.name === "Twitch" ? <img className="platform-mark" src="/twitch-logo.svg?v=20261108" alt="Twitch" /> : <b>{item.mark}</b>}<strong>{item.name}</strong></div>
                 <span className="handle">{item.handle}</span>
                 <span className="live-action">
-                  {item.name === "TikTok" ? <img className="live-action-logo" src="/tiktok-logo.svg?v=20261108" alt="" aria-hidden="true" /> : item.name === "YouTube" ? <img className="live-action-logo" src="/youtube-logo.svg?v=20261108" alt="" aria-hidden="true" /> : item.name === "Twitch" ? <img className="live-action-logo" src="/twitch-logo.svg?v=20261108" alt="" aria-hidden="true" /> : null}
+                  {item.name === "TikTok" ? (
+                    <svg className="live-action-logo live-action-arrow" viewBox="0 0 16 16" aria-hidden="true">
+                      <path d="M2.5 8h10M8.5 3.5 13 8l-4.5 4.5" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  ) : item.name === "YouTube" ? <img className="live-action-logo" src="/youtube-logo.svg?v=20261108" alt="" aria-hidden="true" /> : item.name === "Twitch" ? <img className="live-action-logo" src="/twitch-logo.svg?v=20261108" alt="" aria-hidden="true" /> : null}
                   {item.action}
                   {item.name === "Kick" ? <i>›</i> : null}
                 </span>

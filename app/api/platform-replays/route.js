@@ -7,7 +7,7 @@ function normalizeVideo(item, platform) {
   const id = String(item.id || item.video_id || item.uuid || "");
   const title = item.title || item.name || item.livestream?.session_title || item.livestream?.title || "";
   const created = item.created_at || item.createdAt || item.published_at || item.started_at || item.livestream?.created_at || "";
-  const thumbnail = item.thumbnail_url || item.thumbnailURL || item.thumbnail?.src || item.thumbnail?.url || item.preview?.thumbnail_url || "";
+  const thumbnail = item.thumbnail_url || item.thumbnailURL || (typeof item.thumbnail === "string" ? item.thumbnail : item.thumbnail?.src || item.thumbnail?.url) || item.preview?.thumbnail_url || "";
   const url = platform === "twitch"
     ? (item.url || (id ? "https://www.twitch.tv/videos/" + id : ""))
     : (item.url || (item.uuid ? "https://kick.com/video/" + item.uuid : id ? "https://kick.com/video/" + id : ""));
@@ -108,7 +108,7 @@ async function getKickVideos() {
   });
   if (!response.ok) throw new Error("Kick HTTP " + response.status);
   const payload = await response.json();
-  const source = Array.isArray(payload) ? payload : payload.videos || payload.data || payload?.data?.videos || [];
+  const source = Array.isArray(payload) ? payload : Array.isArray(payload.videos) ? payload.videos : Array.isArray(payload.data) ? payload.data : Array.isArray(payload.data?.videos) ? payload.data.videos : [];
   return source.map((item) => normalizeVideo(item, "kick")).filter(Boolean)
     .sort((a, b) => b.publishedAt - a.publishedAt).slice(0, 5);
 }
